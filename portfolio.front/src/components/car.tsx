@@ -76,8 +76,18 @@ const Car: React.FC = () => {
 		return () => cancelAnimationFrame(requestRef.current);
 	}, [loop]);
 
+	useEffect(() => {
+		if (window.innerWidth < 768) {
+			const intervalId = setInterval(() => {
+				x = Math.random() * window.innerWidth;
+				y = Math.random() * window.innerHeight;
+			}, 1000);
+			return () => clearInterval(intervalId);
+		}
+	}, []);
+
 	return (
-		<PageContainer onMouseMove={handleMouseMove}>
+		<PageContainer onMouseMove={window.innerWidth >= 768 ? handleMouseMove : undefined}>
 			<ImageContainer>
 				<BackgroundImage />
 				<ForegroundImage ref={foregroundRef}>

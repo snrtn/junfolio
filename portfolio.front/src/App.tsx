@@ -34,6 +34,8 @@ const Container = styled.div<{ page: number }>`
 const App: React.FC = () => {
 	const [page, setPage] = useState(0);
 	const lastPage = 3;
+	let startY = 0;
+	let endY = 0;
 
 	const handleWheel = debounce((e: WheelEvent) => {
 		e.preventDefault();
@@ -44,10 +46,32 @@ const App: React.FC = () => {
 		}
 	}, 200);
 
+	const handleTouchStart = (e: TouchEvent) => {
+		startY = e.touches[0].clientY;
+	};
+
+	const handleTouchMove = (e: TouchEvent) => {
+		endY = e.touches[0].clientY;
+	};
+
+	const handleTouchEnd = () => {
+		if (startY > endY) {
+			setPage((prevPage) => Math.min(prevPage + 1, lastPage));
+		} else if (startY < endY) {
+			setPage((prevPage) => Math.max(prevPage - 1, 0));
+		}
+	};
+
 	useEffect(() => {
 		window.addEventListener('wheel', handleWheel, { passive: false });
+		window.addEventListener('touchstart', handleTouchStart);
+		window.addEventListener('touchmove', handleTouchMove);
+		window.addEventListener('touchend', handleTouchEnd);
 		return () => {
 			window.removeEventListener('wheel', handleWheel);
+			window.removeEventListener('touchstart', handleTouchStart);
+			window.removeEventListener('touchmove', handleTouchMove);
+			window.removeEventListener('touchend', handleTouchEnd);
 		};
 	}, []);
 

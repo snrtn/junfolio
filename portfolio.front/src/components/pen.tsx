@@ -19,6 +19,7 @@ const Gradient = styled.div`
 	left: -50%; // Center the gradient by positioning it negatively half its size
 	background: conic-gradient(#ffafcc 0% 25%, #a2d2ff 25% 50%, #bde0fe 50% 75%, #cdb4db 75% 100%);
 	animation: ${rotate} 10s linear infinite;
+	border-radius: 200%;
 `;
 
 // Styled component for static quadrant background
