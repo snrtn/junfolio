@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import Section from './components/Section';
 import { debounce } from 'lodash';
 import Kim from './components/kim';
+import Car from './components/car';
+import Tree from './components/tree';
+import Pen from './components/pen';
 
 const AppContainer = styled.div`
 	font-family: Arial, sans-serif;
@@ -30,7 +33,7 @@ const Container = styled.div<{ page: number }>`
 
 const App: React.FC = () => {
 	const [page, setPage] = useState(0);
-	const lastPage = 2;
+	const lastPage = 3;
 
 	const handleWheel = debounce((e: WheelEvent) => {
 		e.preventDefault();
@@ -56,12 +59,13 @@ const App: React.FC = () => {
 						<Kim />
 					</Section>
 					<Section>
-						<h1>Section 2</h1>
-						<p>Content of section 2</p>
+						<Car />
 					</Section>
 					<Section>
-						<h1>Section 3</h1>
-						<p>Content of section 3</p>
+						<Tree />
+					</Section>
+					<Section>
+						<Pen />
 					</Section>
 				</Container>
 			</Wrap>

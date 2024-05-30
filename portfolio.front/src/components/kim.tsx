@@ -26,7 +26,7 @@ const Background = styled('div')`
 
 const StaticText = styled(Typography)(({ theme }) => ({
 	marginRight: '10px',
-	fontSize: '24px',
+	fontSize: '4vh',
 	fontWeight: 600,
 	color: 'white',
 	position: 'relative',
@@ -35,7 +35,11 @@ const StaticText = styled(Typography)(({ theme }) => ({
 const Slider = styled('div')`
 	width: 300px;
 	display: flex;
-	font-size: 24px;
+	font-size: 4vh;
+
+	@media (max-width: 768px) {
+		width: 200px;
+	}
 `;
 
 const SliderValue = styled('div')`
@@ -85,19 +89,19 @@ const Kim: React.FC = () => {
 			<svg width='0' height='0'>
 				<defs>
 					<filter id='crumple-effect-1'>
-						<feTurbulence type='fractalNoise' baseFrequency='0.1' numOctaves='5' result='turbulence'>
+						<feTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3' result='turbulence'>
 							<animate
 								attributeName='baseFrequency'
-								values='0.1;0.3;0.6;1.0'
+								values='0;0.05;0.1;0.05'
 								keyTimes='0;0.5;0.75;1'
 								dur='15s'
 								repeatCount='indefinite'
 							/>
 						</feTurbulence>
-						<feDisplacementMap in2='turbulence' in='SourceGraphic' scale='0'>
+						<feDisplacementMap in2='turbulence' in='SourceGraphic' scale='100'>
 							<animate
 								attributeName='scale'
-								values='0;20;50;100'
+								values='0;30;60;100'
 								keyTimes='0;0.5;0.75;1'
 								dur='60s'
 								repeatCount='indefinite'
