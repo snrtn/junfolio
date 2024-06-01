@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MenuItem, Select, SelectChangeEvent, IconButton, List } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import LoginIcon from '@mui/icons-material/Login';
+import { PiSignInBold } from 'react-icons/pi';
+import { RiMenuFill } from 'react-icons/ri';
 import {
 	HeaderContainer,
 	HeaderToolbar,
@@ -52,22 +52,24 @@ const Header: React.FC = () => {
 			<HeaderToolbar>
 				<HamburgerMenu>
 					<IconButton edge='start' color='inherit' aria-label='menu' onClick={toggleDrawer(true)}>
-						<MenuIcon />
+						<RiMenuFill />
 					</IconButton>
 				</HamburgerMenu>
 				<LogoWrapper>
-					<LogoText variant='h5'>JunFolio</LogoText>
+					<Link to='/'>
+						<LogoText variant='h5'>JunFolio</LogoText>
+					</Link>
 				</LogoWrapper>
 				<Nav>
 					<ul>
 						<li>
-							<CustomLink to='/'>{t('home')}</CustomLink>
+							<CustomLink to='/'>{t('navigation.home')}</CustomLink>
 						</li>
 						<li>
-							<CustomLink to='/about'>{t('about')}</CustomLink>
+							<CustomLink to='/about'>{t('navigation.about')}</CustomLink>
 						</li>
 						<li>
-							<CustomLink to='/contact'>{t('contact')}</CustomLink>
+							<CustomLink to='/contact'>{t('navigation.contact')}</CustomLink>
 						</li>
 					</ul>
 				</Nav>
@@ -89,7 +91,7 @@ const Header: React.FC = () => {
 						</MenuItem>
 					</Select>
 					<IconButton edge='end' color='inherit' aria-label='Login' component={Link} to='/login'>
-						<LoginIcon />
+						<PiSignInBold />
 					</IconButton>
 				</LanguageSwitcher>
 			</HeaderToolbar>
@@ -100,13 +102,13 @@ const Header: React.FC = () => {
 					</LogoWrapper>
 					<List>
 						<StyledListItem as={Link} to='/'>
-							<StyledListItemText primary={t('home')} />
+							<StyledListItemText primary={t('navigation.home')} />
 						</StyledListItem>
 						<StyledListItem as={Link} to='/about'>
-							<StyledListItemText primary={t('about')} />
+							<StyledListItemText primary={t('navigation.about')} />
 						</StyledListItem>
 						<StyledListItem as={Link} to='/contact'>
-							<StyledListItemText primary={t('contact')} />
+							<StyledListItemText primary={t('navigation.contact')} />
 						</StyledListItem>
 					</List>
 				</Sidebar>

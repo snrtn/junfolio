@@ -35,6 +35,7 @@ export const LogoText = styled(Typography)(({ theme }) => ({
 	fontFamily: '"Great Vibes", cursive !important',
 	fontStyle: 'normal',
 	color: '#F5F5F7',
+	cursor: 'pointer',
 }));
 
 export const Nav = styled('nav')(({ theme }) => ({
@@ -125,6 +126,7 @@ export const CustomLink = styled(Link)(({ theme }) => ({
 	position: 'relative',
 	zIndex: 1,
 	color: '#F5F5F7',
+	padding: '4px 6px',
 	textDecoration: 'none !important',
 	'&::before': {
 		content: '""',

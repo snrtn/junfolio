@@ -1,6 +1,23 @@
 {
-	"welcome": "Bienvenue dans mon portfolio",
-	"home": "Accueil",
-	"about": "À propos",
-	"contact": "Contact"
+	"navigation": {
+		"home": "Accueil",
+		"about": "À propos",
+		"contact": "Contact"
+	},
+	"home": {
+		"techniqueIcon": {
+			"title": "Pile technologique"
+		},
+		"services": {
+			"title1": "Développeur Full Stack",
+			"description1": "Pour le développement backend, nous utilisons Java Spring Boot, et pour le développement frontend, nous utilisons React. La gestion de l'état est assurée avec Redux Toolkit, et le style est géré avec MUI et styled-components. Nous utilisons à la fois des bases de données SQL et NoSQL.",
+			"title2": "Appareils",
+			"description2": "Pour atteindre un design réactif en temps réel complet, chaque appareil physique est géré en les connectant localement via le réseau. Cette méthode se concentre sur un développement plus rapide.",
+			"title3": "Codage Réfléchi",
+			"description3": "Pour créer une logique créative, nous utilisons des communautés et écrivons et appliquons des codes de test grâce à des recherches. Nous nous efforçons d'améliorer nos compétences en codage quotidiennement grâce à ces efforts."
+		}
+	},
+	"notFound": {
+		"title": "404 - Page non trouvée"
+	}
 }

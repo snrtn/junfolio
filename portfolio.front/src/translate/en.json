@@ -1,6 +1,23 @@
 {
-	"welcome": "Welcome to my portfolio",
-	"home": "Home",
-	"about": "About",
-	"contact": "Contact"
+	"navigation": {
+		"home": "Home",
+		"about": "About",
+		"contact": "Contact"
+	},
+	"home": {
+		"techniqueIcon": {
+			"title": "Technology Stack"
+		},
+		"services": {
+			"title1": "Full Stack Developer",
+			"description1": "For backend development, we use Java Spring Boot, and for frontend development, we use React. State management is handled with Redux Toolkit, and styling is managed with MUI and styled-components. We use both SQL and NoSQL databases.",
+			"title2": "Devices",
+			"description2": "To achieve a fully responsive real-time design, each physical device is managed by connecting them locally via network. This method focuses on faster development.",
+			"title3": "Thoughtful Coding",
+			"description3": "To create creative logic, we utilize communities and write and apply test codes through research. We strive to improve our coding skills daily through these efforts."
+		}
+	},
+	"notFound": {
+		"title": "404 - Page Not Found"
+	}
 }
