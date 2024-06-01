@@ -1,31 +1,41 @@
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import media from '../../styles/mediaQueries'; // media 객체를 가져오는 경로로 변경하세요
+import media from '../../styles/mediaQueries';
 import { FaMoon, FaSun } from 'react-icons/fa6';
 
 export const Container = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-	height: '100%',
-	width: '100%',
+}));
+export const Wrapper = styled(Box)(({ theme }) => ({
+	display: 'flex',
+	alignItems: 'center',
+	width: '80%',
+	maxWidth: '1300px',
 	textAlign: 'center',
 	flexWrap: 'wrap',
 	margin: '5rem 0',
+	gap: '20px',
+	justifyContent: 'space-between',
+	...media.desktopLarge({
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: '40px',
+	}),
 }));
 
 export const ServiceCardContainer = styled(Box)(({ theme }) => ({
-	width: '30rem',
-	height: '42rem',
-	padding: '50px 30px',
+	width: '24rem',
+	height: '40rem',
+	padding: '40px 50px',
 	boxSizing: 'border-box',
 	background: '#fff',
 	borderRadius: '7px',
-	boxShadow: '0 0 20px rgba(0, 0, 0, 0.15)',
+	boxShadow: '0 0 10px rgba(0, 0, 0, 0.15)',
 	textAlign: 'center',
 	position: 'relative',
 	display: 'inline-block',
-	margin: '20px',
 	transition: '0.5s',
 	backgroundColor: '#F5F5F7',
 	scrollSnapAlign: 'center',
@@ -34,38 +44,40 @@ export const ServiceCardContainer = styled(Box)(({ theme }) => ({
 		color: '#F5F5F7',
 	},
 	'& h6': {
-		fontSize: '26px',
+		fontSize: '24px',
 		fontWeight: 'normal',
-		lineHeight: '1.2em',
-		marginBottom: 0,
-		'& p': {
-			display: 'block',
-			fontSize: '13px',
-			color: '#bbb',
-			textTransform: 'uppercase',
-		},
-	},
-	'& p': {
-		marginTop: '5px',
 		marginBottom: '10px',
-		'& span': {
-			display: 'block',
-			color: 'royalblue',
-		},
 	},
-	...media.desktopSmall({
+	...media.desktopLarge({
 		width: '22rem',
+		padding: '40px 30px',
+	}),
+	...media.desktopSmall({
+		margin: '20px',
 		height: '38rem',
-		padding: '40px 20px',
 	}),
 	...media.laptopLarge({
-		width: '20rem',
-		height: '38rem',
-		padding: '40px 25px',
+		width: '22rem !important',
+		height: '32rem',
+		margin: '20px',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
 	}),
 	...media.laptopSmall({
-		height: '30rem',
-		padding: '20px 10px',
+		width: '30rem !important',
+		height: '36rem',
+		display: 'flex',
+		padding: '20px 50px',
+	}),
+	...media.mobileLarge({
+		width: '30rem !important',
+		margin: '20px 0',
+		padding: '20px 30px',
+		textAlign: 'left',
+	}),
+	...media.mobileSmall({
+		height: '35rem',
 	}),
 }));
 

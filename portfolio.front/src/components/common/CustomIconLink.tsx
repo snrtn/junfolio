@@ -65,9 +65,9 @@ const CustomIconLink: React.FC<CustomIconLinkProps> = ({ to, bgColor, icon: Icon
 	);
 
 	return to ? (
-		<RouterLink to={to} target='_blank' style={{ textDecoration: 'none' }}>
+		<a href={to} target='_blank' rel='noopener noreferrer' style={{ textDecoration: 'none' }}>
 			{content}
-		</RouterLink>
+		</a>
 	) : (
 		content
 	);

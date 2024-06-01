@@ -8,18 +8,21 @@ export const SectionContainer = styled(Box)(({ theme }) => ({
 	alignItems: 'center',
 	height: '80vh',
 	width: '100%',
+	padding: '50px 0',
 	backgroundColor: '#F5F5F7',
 	...media.laptopMedium({
 		height: '90vh',
 	}),
 	...media.tabletLarge({
-		maxHeight: '120vh',
+		height: '80vh',
+		padding: '4rem 0',
 	}),
 	...media.mobileLarge({
-		height: '100vh',
+		padding: '2rem 0',
+		height: '90vh',
 	}),
 	...media.mobileSmall({
-		height: '120vh',
+		height: '100vh',
 	}),
 }));
 
@@ -52,7 +55,9 @@ export const LeftContainer = styled(Box)(({ theme }) => ({
 	...media.tabletLarge({
 		width: '100%',
 		height: '100%',
-		paddingBottom: '60px',
+	}),
+	...media.tabletSmall({
+		marginTop: '2rem',
 	}),
 	...media.mobileLarge({
 		width: '100%',
@@ -80,7 +85,7 @@ export const Slide = styled(Box)(({ theme }) => ({
 	img: {
 		width: '100%',
 		height: '100%',
-		...media.desktopSmall({
+		...media.desktopLarge({
 			width: '80%',
 			height: '100%',
 		}),
@@ -92,7 +97,10 @@ export const Slide = styled(Box)(({ theme }) => ({
 		}),
 		...media.tabletLarge({
 			marginRight: '0rem',
-			width: '70%',
+			width: '50%',
+		}),
+		...media.tabletMedium({
+			marginRight: '0rem',
 		}),
 		...media.mobileLarge({
 			width: '80%',
@@ -118,7 +126,7 @@ export const RightContainer = styled(Box)(({ theme }) => ({
 		padding: '20px 0',
 	}),
 	...media.laptopMedium({
-		padding: '0px 40px',
+		padding: '0px 60px',
 	}),
 	...media.tabletLarge({
 		width: '100%',

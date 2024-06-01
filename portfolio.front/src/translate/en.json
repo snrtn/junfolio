@@ -9,12 +9,21 @@
 			"title": "Technology Stack"
 		},
 		"services": {
-			"title1": "Full Stack Developer",
-			"description1": "For backend development, we use Java Spring Boot, and for frontend development, we use React. State management is handled with Redux Toolkit, and styling is managed with MUI and styled-components. We use both SQL and NoSQL databases.",
+			"title1": "Full-Stack Developer",
+			"description1": "I develop using Java Spring Boot for the backend and React for the frontend. I use Redux Toolkit for state management, and I manage styling with MUI and styled-components. I am capable of handling both SQL and NoSQL databases.",
 			"title2": "Devices",
-			"description2": "To achieve a fully responsive real-time design, each physical device is managed by connecting them locally via network. This method focuses on faster development.",
-			"title3": "Thoughtful Coding",
-			"description3": "To create creative logic, we utilize communities and write and apply test codes through research. We strive to improve our coding skills daily through these efforts."
+			"description2": "For real-time responsive design, I use and manage each actual device connected locally through the network. This is a method aimed at faster development.",
+			"title3": "Thinking Coding",
+			"description3": "I use communities and searches to create creative logic and write test codes. I do this every day to improve my coding skills."
+		},
+		"about": {
+			"title": "About",
+			"description": "I have worked on Backend development with Java Salesforce, and on Frontend development with React and TypeScript. For state management, I have used Redux.js, and for styling, Styled-components and Material-UI. These experiences have made me proficient in FullStack development and have improved my project management and team collaboration skills according to the Agile methodology. Through these experiences, I continue to grow and progress."
+		},
+		"jumbotron": {
+			"title": "Hello, My name is",
+			"description": "Hanjun Kim,",
+			"description1": "I'am a developer Full Stack Spring/React"
 		}
 	},
 	"notFound": {

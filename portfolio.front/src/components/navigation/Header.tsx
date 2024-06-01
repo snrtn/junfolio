@@ -48,7 +48,7 @@ const Header: React.FC = () => {
 	};
 
 	return (
-		<HeaderContainer position='static'>
+		<HeaderContainer position='fixed'>
 			<HeaderToolbar>
 				<HamburgerMenu>
 					<IconButton edge='start' color='inherit' aria-label='menu' onClick={toggleDrawer(true)}>

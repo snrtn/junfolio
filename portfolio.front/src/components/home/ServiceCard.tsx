@@ -7,11 +7,12 @@ interface ServiceCardProps {
 	imgSrc: string;
 	titleKey: string;
 	descriptionKey: string;
+	initialDarkMode: boolean;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ imgSrc, titleKey, descriptionKey }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ imgSrc, titleKey, descriptionKey, initialDarkMode }) => {
 	const { t } = useTranslation();
-	const [isDarkMode, setIsDarkMode] = useState(false);
+	const [isDarkMode, setIsDarkMode] = useState(initialDarkMode);
 
 	const toggleDarkMode = () => {
 		setIsDarkMode(!isDarkMode);
