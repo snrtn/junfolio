@@ -9,7 +9,6 @@ import BlogView from './views/BlogView';
 import AboutView from './views/AboutView';
 import ContactView from './views/ContactView';
 import AuthView from './views/AuthView';
-import Project from './views/Project';
 import ExperienceView from './views/ExperienceView';
 
 const App: React.FC = () => {
@@ -21,8 +20,7 @@ const App: React.FC = () => {
 					<Route path='/auth' element={<AuthView />} />
 					<Route path='/about' element={<AboutView />} />
 					<Route path='/experience' element={<ExperienceView />} />
-					<Route path='/blog' element={<BlogView />} />s
-					<Route path='/project' element={<Project />} />s
+					<Route path='/blog' element={<BlogView />} />
 					<Route path='/contact' element={<ContactView />} />
 					<Route path='*' element={<NotFound />} />
 				</Route>

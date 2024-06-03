@@ -79,6 +79,18 @@
 			"description3": "Free site creation"
 		}
 	},
+	"contact": {
+		"title": "Contact Me",
+		"name": "Name",
+		"nameError": "Name is required",
+		"email": "Your Email",
+		"emailError": "Valid email is required",
+		"subject": "Subject",
+		"subjectError": "Subject is required",
+		"message": "Message",
+		"messageError": "Message is required",
+		"button": "Send"
+	},
 	"notFound": {
 		"title": "404 - Page Not Found"
 	}

@@ -79,6 +79,18 @@
 			"description3": "무료로 사이트 제작"
 		}
 	},
+	"contact": {
+		"title": "연락하기",
+		"name": "이름",
+		"nameError": "이름을 입력해주세요",
+		"email": "이메일",
+		"emailError": "유효한 이메일을 입력해주세요",
+		"subject": "제목",
+		"subjectError": "제목을 입력해주세요",
+		"message": "메시지",
+		"messageError": "메시지를 입력해주세요",
+		"button": "보내기"
+	},
 	"notFound": {
 		"title": "404 - 페이지를 찾을 수 없습니다"
 	}

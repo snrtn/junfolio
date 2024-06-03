@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, styled, Typography, Button } from '@mui/material';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
-import media from '../../common/mediaQueries';
+import media from '../common/mediaQueries';
 import { useTranslation } from 'react-i18next';
 
 const sectionsData = [
@@ -58,8 +58,8 @@ const Section = styled(Box)(({ background }: { background: string }) => ({
 		left: 0,
 		width: '100%',
 		height: '100%',
-		background: 'rgba(0, 0, 0, 0.3)',
-		backdropFilter: 'blur(10px)',
+		background: 'rgba(0, 0, 0, 0.7)',
+		backdropFilter: 'blur(7px)',
 		zIndex: -1,
 	},
 	'& div': {

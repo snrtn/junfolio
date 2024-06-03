@@ -108,9 +108,6 @@ const Header: React.FC = () => {
 						<li onMouseEnter={() => handleMouseEnter('blog')}>
 							<CustomLink to='/blog'>{t('navigation.blog')}</CustomLink>
 						</li>
-						<li onMouseEnter={() => handleMouseEnter('project')}>
-							<CustomLink to='/project'>{t('navigation.project')}</CustomLink>
-						</li>
 						<li onMouseEnter={() => handleMouseEnter('contact')}>
 							<CustomLink to='/contact'>{t('navigation.contact')}</CustomLink>
 						</li>
@@ -164,9 +161,6 @@ const Header: React.FC = () => {
 						</Collapse>
 						<StyledListItem as={Link} to='/blog' onClick={closeDrawer}>
 							<StyledListItemText primary={t('navigation.blog')} />
-						</StyledListItem>
-						<StyledListItem as={Link} to='/project' onClick={closeDrawer}>
-							<StyledListItemText primary={t('navigation.project')} />
 						</StyledListItem>
 						<StyledListItem as={Link} to='/contact' onClick={closeDrawer}>
 							<StyledListItemText primary={t('navigation.contact')} />

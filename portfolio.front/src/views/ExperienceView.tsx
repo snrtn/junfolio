@@ -1,4 +1,4 @@
-import Job from '../components/about/experience/Job';
+import Job from '../components/about/Job';
 
 const ExperienceView = () => {
 	return (

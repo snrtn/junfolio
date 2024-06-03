@@ -79,6 +79,18 @@
 			"description3": "Création de site gratuit"
 		}
 	},
+	"contact": {
+		"title": "Contactez-moi",
+		"name": "Nom",
+		"nameError": "Le nom est requis",
+		"email": "Votre email",
+		"emailError": "Un email valide est requis",
+		"subject": "Sujet",
+		"subjectError": "Le sujet est requis",
+		"message": "Message",
+		"messageError": "Le message est requis",
+		"button": "Envoyer"
+	},
 	"notFound": {
 		"title": "404 - Page non trouvée"
 	}

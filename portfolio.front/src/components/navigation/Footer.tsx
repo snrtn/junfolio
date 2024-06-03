@@ -23,7 +23,7 @@ const Footer = () => {
 				<Box display='flex' justifyContent='center' gap='2rem'>
 					<CustomLink to='/about'>{t('navigation.about')}</CustomLink>
 					<CustomLink to='/blog'>{t('navigation.blog')}</CustomLink>
-					<CustomLink to='/project'>{t('navigation.project')}</CustomLink>
+					<CustomLink to='/contact'>{t('navigation.contact')}</CustomLink>
 				</Box>
 			</Container>
 			<SnsSection>

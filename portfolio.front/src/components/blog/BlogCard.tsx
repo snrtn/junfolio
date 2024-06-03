@@ -1,59 +1,8 @@
-import { styled } from '@mui/material/styles';
-import { Box, Button } from '@mui/material';
+import React from 'react';
+import { styled, Box, Typography } from '@mui/material';
 import media from '../common/mediaQueries';
 
-export const BlogContainer = styled(Box)(({ theme }) => ({
-	padding: theme.spacing(4),
-	maxWidth: '1200px',
-	margin: '0 auto',
-	height: '90vh',
-	width: '80%',
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	flexDirection: 'column',
-	...media.desktopMedium({
-		padding: '100px 20px',
-	}),
-	...media.mobileLarge({
-		height: '100%',
-		fontSize: '1rem !important',
-	}),
-}));
-
-export const Header = styled(Box)(({ theme }) => ({
-	display: 'flex',
-	width: '100%',
-	justifyContent: 'space-between',
-	alignItems: 'flex-start',
-	marginBottom: theme.spacing(4),
-}));
-
-export const MoreButton = styled(Button)(({ theme }) => ({
-	display: 'flex',
-	alignItems: 'center',
-	textTransform: 'none',
-	border: '1px solid transparent',
-	color: '#1D1D1F',
-	'&:hover': {
-		border: '1px solid transparent',
-	},
-}));
-
-export const Content = styled(Box)(({ theme }) => ({
-	display: 'grid',
-	width: '100%',
-	gridTemplateColumns: 'repeat(4, 1fr)',
-	gap: theme.spacing(2),
-	[theme.breakpoints.down('md')]: {
-		gridTemplateColumns: 'repeat(3, 1fr)',
-	},
-	[theme.breakpoints.down('sm')]: {
-		gridTemplateColumns: 'repeat(1, 1fr)',
-	},
-}));
-
-export const Card = styled(Box)(({ theme }) => ({
+const Card = styled(Box)(({ theme }) => ({
 	backgroundColor: '#fff',
 	borderRadius: theme.shape.borderRadius,
 	cursor: 'pointer',
@@ -108,14 +57,14 @@ export const Card = styled(Box)(({ theme }) => ({
 	},
 }));
 
-export const Tags = styled(Box)(({ theme }) => ({
+const Tags = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	flexWrap: 'wrap',
 	gap: theme.spacing(1),
 	marginTop: theme.spacing(1),
 }));
 
-export const Tag = styled(Box)(({ theme }) => ({
+const Tag = styled(Box)(({ theme }) => ({
 	backgroundColor: 'orange',
 	color: theme.palette.primary.contrastText,
 	borderRadius: theme.shape.borderRadius,
@@ -125,3 +74,45 @@ export const Tag = styled(Box)(({ theme }) => ({
 	whiteSpace: 'nowrap',
 	textOverflow: 'ellipsis',
 }));
+
+interface BlogCardProps {
+	title: string;
+	description: string;
+	imgSrc: string;
+	tags: string[];
+}
+
+const BlogCard: React.FC<BlogCardProps> = ({ title, description, imgSrc, tags }) => {
+	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+		const card = e.currentTarget;
+		const rect = card.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
+		const centerX = rect.width / 2;
+		const centerY = rect.height / 2;
+		const rotateX = ((y - centerY) / centerY) * 12;
+		const rotateY = ((x - centerX) / centerX) * -12;
+		card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+	};
+
+	const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+		const card = e.currentTarget;
+		card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+	};
+
+	return (
+		<Card onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+			<div>
+				<Tags>
+					{tags.map((tag) => (
+						<Tag key={tag}>{tag}</Tag>
+					))}
+				</Tags>
+				<Typography variant='h6'>{title}</Typography>
+			</div>
+			<img src={imgSrc} alt={title} />
+		</Card>
+	);
+};
+
+export default BlogCard;

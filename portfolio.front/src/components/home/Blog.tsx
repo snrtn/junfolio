@@ -9,14 +9,46 @@ const Blog = () => {
 	const { t } = useTranslation();
 
 	const posts = [
-		{ title: 'Développement', tags: ['JavaScript'], imgSrc: '' },
-		{ title: 'Étude', tags: ['Education'], imgSrc: '' },
-		{ title: 'Création de site', tags: ['Web Development'], imgSrc: '' },
-		{ title: 'Divers', tags: ['Miscellaneous'], imgSrc: '' },
-		{ title: 'Programmation', tags: ['Coding'], imgSrc: '' },
-		{ title: 'Conception', tags: ['Graphic Design'], imgSrc: '' },
-		{ title: 'Base de données', tags: ['SQL'], imgSrc: '' },
-		{ title: 'Cloud', tags: ['AWS'], imgSrc: '' },
+		{
+			title: 'Développement',
+			tags: ['JavaScript'],
+			imgSrc: 'https://source.unsplash.com/1600x900/?javascript,code',
+		},
+		{
+			title: 'Étude',
+			tags: ['Education'],
+			imgSrc: 'https://source.unsplash.com/1600x900/?education,study',
+		},
+		{
+			title: 'Création de site',
+			tags: ['Web Development'],
+			imgSrc: 'https://source.unsplash.com/1600x900/?web,development',
+		},
+		{
+			title: 'Divers',
+			tags: ['Miscellaneous'],
+			imgSrc: 'https://source.unsplash.com/1600x900/?miscellaneous',
+		},
+		{
+			title: 'Programmation',
+			tags: ['Coding'],
+			imgSrc: 'https://source.unsplash.com/1600x900/?programming,code',
+		},
+		{
+			title: 'Conception',
+			tags: ['Graphic Design'],
+			imgSrc: 'https://source.unsplash.com/1600x900/?graphic,design',
+		},
+		{
+			title: 'Base de données',
+			tags: ['SQL'],
+			imgSrc: 'https://source.unsplash.com/1600x900/?database,sql',
+		},
+		{
+			title: 'Cloud',
+			tags: ['AWS'],
+			imgSrc: 'https://source.unsplash.com/1600x900/?cloud,aws',
+		},
 	];
 
 	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
@@ -58,13 +90,13 @@ const Blog = () => {
 						onMouseMove={(e) => handleMouseMove(e, index)}
 						onMouseLeave={(e) => handleMouseLeave(e, index)}
 					>
-						<img src={post.imgSrc} alt={post.title} />
 						<div>
-							<Typography variant='h6'>{post.title}</Typography>
 							<Tags>
 								<Tag>{post.tags[0]}</Tag>
 							</Tags>
+							<Typography variant='h6'>{post.title}</Typography>
 						</div>
+						<img src={post.imgSrc} alt={post.title} />
 					</Card>
 				))}
 			</Content>
