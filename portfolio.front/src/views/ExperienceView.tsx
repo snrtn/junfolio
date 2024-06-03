@@ -1,7 +1,11 @@
-import React from 'react';
+import Job from '../components/about/experience/Job';
 
 const ExperienceView = () => {
-	return <div></div>;
+	return (
+		<div>
+			<Job />
+		</div>
+	);
 };
 
 export default ExperienceView;

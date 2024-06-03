@@ -9,14 +9,14 @@ const Blog = () => {
 	const { t } = useTranslation();
 
 	const posts = [
-		{ title: 'Développement', tags: ['JavaScript'], imgSrc: 'https://source.unsplash.com/random/300x200?programming' },
-		{ title: 'Étude', tags: ['Education'], imgSrc: 'https://source.unsplash.com/random/300x200?study' },
-		{ title: 'Création de site', tags: ['Web Development'], imgSrc: 'https://source.unsplash.com/random/300x200?web' },
-		{ title: 'Divers', tags: ['Miscellaneous'], imgSrc: 'https://source.unsplash.com/random/300x200?miscellaneous' },
-		{ title: 'Programmation', tags: ['Coding'], imgSrc: 'https://source.unsplash.com/random/300x200?coding' },
-		{ title: 'Conception', tags: ['Graphic Design'], imgSrc: 'https://source.unsplash.com/random/300x200?design' },
-		{ title: 'Base de données', tags: ['SQL'], imgSrc: 'https://source.unsplash.com/random/300x200?database' },
-		{ title: 'Cloud', tags: ['AWS'], imgSrc: 'https://source.unsplash.com/random/300x200?cloud' },
+		{ title: 'Développement', tags: ['JavaScript'], imgSrc: '' },
+		{ title: 'Étude', tags: ['Education'], imgSrc: '' },
+		{ title: 'Création de site', tags: ['Web Development'], imgSrc: '' },
+		{ title: 'Divers', tags: ['Miscellaneous'], imgSrc: '' },
+		{ title: 'Programmation', tags: ['Coding'], imgSrc: '' },
+		{ title: 'Conception', tags: ['Graphic Design'], imgSrc: '' },
+		{ title: 'Base de données', tags: ['SQL'], imgSrc: '' },
+		{ title: 'Cloud', tags: ['AWS'], imgSrc: '' },
 	];
 
 	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
