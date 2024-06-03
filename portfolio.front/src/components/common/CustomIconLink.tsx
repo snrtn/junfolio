@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import { IconType } from 'react-icons';
 import { styled } from '@mui/material/styles';
-import media from '../../styles/mediaQueries';
+import media from './mediaQueries';
 
 interface CustomIconLinkProps {
 	to?: string;

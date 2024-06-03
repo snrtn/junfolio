@@ -2,6 +2,10 @@
 	"navigation": {
 		"home": "Accueil",
 		"about": "À propos",
+		"kim": "Hanjun Kim",
+		"experience": "Expérience",
+		"blog": "Blog",
+		"project": "Projet",
 		"contact": "Contact"
 	},
 	"home": {
@@ -9,21 +13,35 @@
 			"title": "Pile technologique"
 		},
 		"services": {
-			"title1": "Développeur Full-Stack",
-			"description1": "Je développe avec Java Spring Boot pour le backend et React pour le frontend. J'utilise Redux Toolkit pour la gestion d'état, et je gère le style avec MUI et styled-components. Je suis capable de gérer les bases de données SQL et NoSQL.",
+			"title1": "Expérience de Projets",
+			"description1": "J'ai de l'expérience en développement full-stack en utilisant des frameworks Java et React sur divers projets. J'utilise Redux pour la gestion de l'état et Styled-components ainsi que MUI pour le stylisme. Je suis capable de gérer des bases de données SQL et NoSQL, et je travaille également sur des designs avec Figma.",
 			"title2": "Dispositifs",
 			"description2": "Pour un design réactif en temps réel, j'utilise et gère chaque appareil réel connecté localement par le réseau. C'est une méthode visant à un développement plus rapide.",
-			"title3": "Coder avec réflexion",
-			"description3": "J'utilise des communautés et des recherches pour créer des logiques créatives et écrire des tests de code. Je fais cela tous les jours pour améliorer mes compétences en codage."
+			"title3": "Effort",
+			"description3": "Je participe à des communautés de développeurs pour m'inspirer de diverses logiques et je développe et teste de nouvelles logiques à travers des recherches, afin d'améliorer mes compétences de développement."
 		},
 		"about": {
 			"title": "Infos",
-			"description": "J'ai travaillé sur le développement BackEnd avec Java Salesforce, et sur le développement FrontEnd avec React et TypeScript. Pour la gestion de l'état, j'ai utilisé Redux.js, et pour le stylisme, Styled-components et Material-UI. Ces expériences m'ont permis de devenir compétent en développement FullStack et d'améliorer mes compétences en gestion de projet et en collaboration d'équipe selon la méthode Agile. Grâce à ces expériences, je continue de m'épanouir et de progresser."
+			"description": "J'ai de l'expérience dans le développement backend en utilisant des frameworks Java et dans le développement frontend avec React et TypeScript. J'utilise Redux.js pour la gestion de l'état et Styled-components ainsi que Material-UI pour le stylisme. Ces diverses expériences m'ont permis d'acquérir des compétences en développement full-stack et d'améliorer mes capacités de gestion de projet et de collaboration d'équipe selon la méthode Agile. Je m'efforce de continuer à grandir et à progresser en tant que développeur."
 		},
 		"jumbotron": {
 			"title": "Bonjour, Je m'appelle",
 			"description": "Hanjun Kim,",
-			"description1": "Je suis développer Full Stack Spring/React"
+			"description1": "Je suis développer Full Stack"
+		},
+		"blog": {
+			"title": "Blog",
+			"description": "Découvrez les derniers articles de blog",
+			"button": "Tous"
+		},
+		"contact": {
+			"title": "Contactez-moi",
+			"cardTitle1": "Email",
+			"cardTitle2": "France",
+			"cardTitle3": "Bénévolat",
+			"description1": "Écrire un e-mail",
+			"description2": "Hauts-de-Seine, Île-de-France",
+			"description3": "Création de site gratuit"
 		}
 	},
 	"notFound": {

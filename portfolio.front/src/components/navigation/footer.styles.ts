@@ -13,7 +13,7 @@ export const Wrapper = styled(Box)({
 	color: '#F9F9F9',
 	padding: '2rem 0',
 	textAlign: 'center',
-	height: '40vh',
+	height: '50vh',
 	display: 'flex',
 	flexDirection: 'column',
 	justifyContent: 'center',

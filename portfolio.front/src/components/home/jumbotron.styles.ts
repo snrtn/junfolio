@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Box, Typography } from '@mui/material';
-import media from '../../styles/mediaQueries';
+import media from '../common/mediaQueries';
 
 export const Container = styled(Box)({
 	display: 'flex',

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MenuItem, Select, SelectChangeEvent, IconButton, List } from '@mui/material';
+import { MenuItem, Select, SelectChangeEvent, IconButton, List, Collapse } from '@mui/material';
 import { PiSignInBold } from 'react-icons/pi';
 import { RiMenuFill } from 'react-icons/ri';
 import {
@@ -19,12 +19,15 @@ import {
 	StyledListItem,
 	StyledListItemText,
 	CustomLink,
+	DropdownMenu,
+	Overlay,
 } from './header.styles';
 
 const Header: React.FC = () => {
 	const { t, i18n } = useTranslation();
 	const [language, setLanguage] = useState('fr');
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
 	useEffect(() => {
 		const currentLanguage = i18n.language || 'fr';
@@ -47,6 +50,25 @@ const Header: React.FC = () => {
 		setIsDrawerOpen(open);
 	};
 
+	const handleMouseEnter = (menu: string) => {
+		if (activeMenu !== menu) {
+			setActiveMenu(menu);
+		}
+	};
+
+	const handleMouseLeave = () => {
+		setActiveMenu(null);
+	};
+
+	const handleItemClick = (menu: string) => {
+		setActiveMenu((prevMenu) => (prevMenu === menu ? null : menu));
+	};
+
+	const closeDrawer = () => {
+		setIsDrawerOpen(false);
+		setActiveMenu(null); // Close all menus when drawer closes
+	};
+
 	return (
 		<HeaderContainer position='fixed'>
 			<HeaderToolbar>
@@ -60,15 +82,36 @@ const Header: React.FC = () => {
 						<LogoText variant='h5'>JunFolio</LogoText>
 					</Link>
 				</LogoWrapper>
-				<Nav>
+				<Nav onMouseLeave={handleMouseLeave}>
 					<ul>
-						<li>
+						<li onMouseEnter={() => handleMouseEnter('home')}>
 							<CustomLink to='/'>{t('navigation.home')}</CustomLink>
 						</li>
-						<li>
-							<CustomLink to='/about'>{t('navigation.about')}</CustomLink>
+						<li onMouseEnter={() => handleMouseEnter('about')}>
+							<CustomLink to='#'>{t('navigation.about')}</CustomLink>
+							{activeMenu === 'about' && <Overlay onClick={() => setActiveMenu(null)} />}
+							<Collapse in={activeMenu === 'about'} timeout='auto' unmountOnExit>
+								<DropdownMenu>
+									<li>
+										<CustomLink to='/about' onClick={() => setActiveMenu(null)}>
+											{t('navigation.kim')}
+										</CustomLink>
+									</li>
+									<li>
+										<CustomLink to='/experience' onClick={() => setActiveMenu(null)}>
+											{t('navigation.experience')}
+										</CustomLink>
+									</li>
+								</DropdownMenu>
+							</Collapse>
 						</li>
-						<li>
+						<li onMouseEnter={() => handleMouseEnter('blog')}>
+							<CustomLink to='/blog'>{t('navigation.blog')}</CustomLink>
+						</li>
+						<li onMouseEnter={() => handleMouseEnter('project')}>
+							<CustomLink to='/project'>{t('navigation.project')}</CustomLink>
+						</li>
+						<li onMouseEnter={() => handleMouseEnter('contact')}>
 							<CustomLink to='/contact'>{t('navigation.contact')}</CustomLink>
 						</li>
 					</ul>
@@ -90,24 +133,42 @@ const Header: React.FC = () => {
 							<StyledReactCountryFlag countryCode='KR' svg />
 						</MenuItem>
 					</Select>
-					<IconButton edge='end' color='inherit' aria-label='Login' component={Link} to='/login'>
+					<IconButton edge='end' color='inherit' aria-label='Login' component={Link} to='/auth'>
 						<PiSignInBold />
 					</IconButton>
 				</LanguageSwitcher>
 			</HeaderToolbar>
 			<StyledDrawer anchor='left' open={isDrawerOpen} onClose={toggleDrawer(false)}>
-				<Sidebar role='presentation' onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+				<Sidebar role='presentation' onKeyDown={toggleDrawer(false)}>
 					<LogoWrapper>
-						<LogoImage src='./assets/header/logo.png' alt='Logo' />
+						<Link to='/' onClick={closeDrawer}>
+							<LogoImage src='./assets/header/logo.png' alt='Logo' />
+						</Link>
 					</LogoWrapper>
 					<List>
-						<StyledListItem as={Link} to='/'>
+						<StyledListItem as={Link} to='/' onClick={closeDrawer}>
 							<StyledListItemText primary={t('navigation.home')} />
 						</StyledListItem>
-						<StyledListItem as={Link} to='/about'>
+						<StyledListItem onClick={() => handleItemClick('about')}>
 							<StyledListItemText primary={t('navigation.about')} />
 						</StyledListItem>
-						<StyledListItem as={Link} to='/contact'>
+						<Collapse in={activeMenu === 'about'} timeout='auto' unmountOnExit>
+							<List component='div' disablePadding>
+								<StyledListItem as={Link} to='/about' onClick={closeDrawer}>
+									<StyledListItemText primary={t('navigation.kim')} />
+								</StyledListItem>
+								<StyledListItem as={Link} to='/experience' onClick={closeDrawer}>
+									<StyledListItemText primary={t('navigation.experience')} />
+								</StyledListItem>
+							</List>
+						</Collapse>
+						<StyledListItem as={Link} to='/blog' onClick={closeDrawer}>
+							<StyledListItemText primary={t('navigation.blog')} />
+						</StyledListItem>
+						<StyledListItem as={Link} to='/project' onClick={closeDrawer}>
+							<StyledListItemText primary={t('navigation.project')} />
+						</StyledListItem>
+						<StyledListItem as={Link} to='/contact' onClick={closeDrawer}>
 							<StyledListItemText primary={t('navigation.contact')} />
 						</StyledListItem>
 					</List>

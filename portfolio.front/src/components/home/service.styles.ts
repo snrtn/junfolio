@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import media from '../../styles/mediaQueries';
+import media from '../common/mediaQueries';
 import { FaMoon, FaSun } from 'react-icons/fa6';
 
 export const Container = styled(Box)(({ theme }) => ({
@@ -12,7 +12,7 @@ export const Wrapper = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	alignItems: 'center',
 	width: '80%',
-	maxWidth: '1300px',
+	maxWidth: '1200px',
 	textAlign: 'center',
 	flexWrap: 'wrap',
 	margin: '5rem 0',
@@ -27,8 +27,8 @@ export const Wrapper = styled(Box)(({ theme }) => ({
 
 export const ServiceCardContainer = styled(Box)(({ theme }) => ({
 	width: '24rem',
-	height: '40rem',
-	padding: '40px 50px',
+	height: '43rem',
+	padding: '40px 35px',
 	boxSizing: 'border-box',
 	background: '#fff',
 	borderRadius: '7px',
@@ -49,16 +49,15 @@ export const ServiceCardContainer = styled(Box)(({ theme }) => ({
 		marginBottom: '10px',
 	},
 	...media.desktopLarge({
-		width: '22rem',
 		padding: '40px 30px',
 	}),
 	...media.desktopSmall({
 		margin: '20px',
-		height: '38rem',
+		height: '40rem',
 	}),
 	...media.laptopLarge({
 		width: '22rem !important',
-		height: '32rem',
+		height: '36rem',
 		margin: '20px',
 		flexDirection: 'column',
 		justifyContent: 'center',

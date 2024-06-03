@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AppBar, Toolbar, Typography, ListItem, ListItemText, Drawer } from '@mui/material';
 import ReactCountryFlag from 'react-country-flag';
-import media from '../../styles/mediaQueries';
+import media from '../common/mediaQueries';
 import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled(AppBar)(({ theme }) => ({
@@ -27,9 +27,10 @@ export const LogoWrapper = styled('div')(({ theme }) => ({
 }));
 
 export const LogoImage = styled('img')(({ theme }) => ({
-	width: '40px',
-	height: '40px',
+	width: '100px',
+	height: '100px',
 }));
+
 export const LogoText = styled(Typography)(({ theme }) => ({
 	fontWeight: 400,
 	fontFamily: '"Great Vibes", cursive !important',
@@ -46,6 +47,7 @@ export const Nav = styled('nav')(({ theme }) => ({
 		margin: 0,
 		li: {
 			marginRight: '20px',
+			position: 'relative',
 			a: {
 				color: '#F5F5F7',
 				textDecoration: 'none',
@@ -58,6 +60,42 @@ export const Nav = styled('nav')(({ theme }) => ({
 	...media.mobileLarge({
 		display: 'none',
 	}),
+}));
+
+export const DropdownMenu = styled('ul')(({ theme }) => ({
+	position: 'fixed',
+	top: '50px',
+	left: 0,
+	width: '100vw',
+	height: '20vh',
+	backgroundColor: '#1D1D1F',
+	display: 'flex',
+	flexDirection: 'column',
+	justifyContent: 'center',
+	alignItems: 'center',
+	listStyle: 'none',
+	padding: 0,
+	margin: 0,
+	overflowY: 'auto',
+	li: {
+		padding: '10px 20px',
+		a: {
+			color: '#F5F5F7',
+			textDecoration: 'none',
+			'&:hover': {
+				textDecoration: 'underline',
+			},
+		},
+	},
+	zIndex: 999,
+}));
+
+export const Overlay = styled.div(({ theme }) => ({
+	position: 'fixed',
+	top: 0,
+	left: 0,
+	width: '100vw',
+	height: '100vh',
 }));
 
 export const LanguageSwitcher = styled('div')(({ theme }) => ({
@@ -101,7 +139,7 @@ export const Sidebar = styled('div')(({ theme }) => ({
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
-	padding: '20px 0',
+	padding: '20px 0 ',
 }));
 
 export const StyledDrawer = styled(Drawer)(({ theme }) => ({
