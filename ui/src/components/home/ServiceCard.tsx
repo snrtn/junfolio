@@ -26,10 +26,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ imgSrc, titleKey, description
 				</IconButton>
 			</ToggleButtonContainer>
 			<Face>
-				<img src={imgSrc} alt={imgSrc} />
+				<img src={imgSrc} alt={imgSrc} style={{ display: 'block' }} />
 			</Face>
-			<Typography variant='h6'>{t(titleKey)}</Typography>
-			<Typography variant='body1'>{t(descriptionKey)}</Typography>
+			<Typography variant='h6'>{t(titleKey) as string}</Typography>
+			<Typography variant='body1'>{t(descriptionKey) as string}</Typography>
 		</ServiceCardContainer>
 	);
 };

@@ -2,7 +2,7 @@
 	"navigation": {
 		"home": "Home",
 		"about": "About",
-		"kim": "Development Technology",
+		"kim": "Technology",
 		"experience": "Experience",
 		"blog": "Blog",
 		"project": "Project",
@@ -17,8 +17,7 @@
 			"content1": "JPA, Spring, Spring Boot, HTTP",
 			"content2": "Lightning Web Components (LWC), Apex (Strongly Typed, Java)",
 			"content3": "React, TypeScript, Redux, Styled-Components, MUI",
-			"content4": "Software Developer (Level 6 Bachelor's +3/4) degree obtained",
-			"content5": "Web Developer (Level 5 Associate's +2) degree obtained",
+			"content4": "Software Developer (Level 6 Bachelor's +3/4) degree obtained, Web Developer (Level 5 Associate's +2) degree obtained",
 			"detail1": "I am studying Java's polymorphism and classes, striving to write efficient object-oriented programming.",
 			"detail2": "I am deepening my understanding of object-oriented languages using Spring and JPA, and I am currently seeking an apprenticeship contract.",
 			"detail3": "I developed a managed digital resume project within the company, designed various forms (promotion, participants, questionnaire, etc.), and created a demo page.",

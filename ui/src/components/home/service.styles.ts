@@ -7,6 +7,7 @@ export const Container = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
+	background: '#fff',
 }));
 export const Wrapper = styled(Box)(({ theme }) => ({
 	display: 'flex',

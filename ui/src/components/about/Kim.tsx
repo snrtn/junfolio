@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Box, styled } from '@mui/material';
 import media from '../common/mediaQueries';
@@ -42,12 +43,13 @@ const ScrollContainer = styled(Box)<{ scrollEnabled: boolean }>(({ scrollEnabled
 	position: 'relative',
 	overflowStyle: 'none' /* IE and Edge */,
 	scrollbarWidth: 'none' /* Firefox */,
+	boxSizing: 'border-box',
 }));
 
 const Section = styled(Box)<{ backgroundColor: string; index: number; language: string }>(
 	({ backgroundColor, index, language }) => ({
 		width: '100%',
-		height: '95vh',
+		height: '90vh',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
@@ -59,28 +61,24 @@ const Section = styled(Box)<{ backgroundColor: string; index: number; language: 
 		overflow: 'hidden',
 		color: 'white',
 		...media.desktopMedium({
-			paddingTop: '120px',
+			paddingTop: '140px',
 			height: '100vh',
 		}),
 		...media.laptopLarge({
-			paddingTop: '200px',
+			paddingTop: '100px',
 			height: '90vh',
 		}),
-		...(index === 1 &&
-			media.mobileLarge({
-				paddingTop: '200px',
-				height: language === 'fr' || language === 'en' ? '170vh' : '150vh',
-			})),
-		...(index !== 1 &&
-			media.mobileLarge({
-				paddingTop: '200px',
-				height: language === 'fr' || language === 'en' ? '150vh' : '130vh',
-			})),
-		...(index !== 1 &&
-			media.mobileSmall({
-				paddingTop: '120px',
-				height: language === 'fr' || language === 'en' ? '170vh' : '150vh',
-			})),
+		...media.laptopMedium({
+			paddingTop: '150px',
+		}),
+		...media.tabletLarge({
+			paddingTop: '180px',
+			height: '85vh',
+		}),
+		...media.mobileLarge({
+			paddingTop: '100px',
+			height: '120vh',
+		}),
 	}),
 );
 
@@ -89,12 +87,17 @@ const SectionContent = styled('div')<{ visible: boolean }>(({ visible }) => ({
 	transition: 'opacity 0.5s ease-in-out',
 	zIndex: 1,
 	textAlign: 'center',
-	padding: '0 20rem',
+	padding: '0 30rem',
+	boxSizing: 'border-box',
+	...media.desktopSmall({
+		padding: '0 20rem',
+	}),
 	...media.laptopLarge({
-		padding: '0 5rem',
+		padding: '0 10rem',
 	}),
 	...media.mobileLarge({
-		padding: '0 1rem',
+		textAlign: 'left',
+		padding: '0 2rem',
 	}),
 }));
 
@@ -105,6 +108,7 @@ const SectionSVG = styled('img')<{ visible: boolean }>(({ visible }) => ({
 	right: visible ? '50%' : '-150px',
 	transform: 'translateX(50%)',
 	transition: 'right 0.5s ease-in-out',
+	display: 'block',
 }));
 
 interface KimProps {
@@ -120,6 +124,7 @@ const Kim: React.FC<KimProps> = ({ scrollEnabled, onScrollToEnd }) => {
 	const [firstTimeVisibleSections, setFirstTimeVisibleSections] = useState<boolean[]>(
 		new Array(sectionsData.length).fill(false),
 	);
+	const [active, setActive] = useState(false);
 
 	const handleScroll = useCallback(() => {
 		const container = document.getElementById('scroll-container');
@@ -190,11 +195,19 @@ const Kim: React.FC<KimProps> = ({ scrollEnabled, onScrollToEnd }) => {
 					language={language}
 				>
 					<SectionContent visible={firstTimeVisibleSections[index] || visibleSections[index]}>
-						<h1>{t(section.titleKey)}</h1>
+						<h1>{t(section.titleKey) as string}</h1>
 						<div style={{ marginTop: '1rem' }}>
-							<p style={{ marginTop: '0.5rem' }}>{t(section.descriptionKey)}</p>
-							<p style={{ marginTop: '0.5rem' }}>{t(section.descriptionKey1)}</p>
-							{section.descriptionKey2 && <p style={{ marginTop: '0.5rem' }}>{t(section.descriptionKey2)}</p>}
+							<p style={{ marginTop: '0.5rem' }}>{t(section.descriptionKey) as string}</p>
+							{active === true ? (
+								<>
+									<p style={{ marginTop: '0.5rem' }}>{t(section.descriptionKey1) as string}</p>
+									{section.descriptionKey2 && (
+										<p style={{ marginTop: '0.5rem' }}>{t(section.descriptionKey2) as string}</p>
+									)}
+								</>
+							) : (
+								''
+							)}
 						</div>
 						<SectionSVG
 							src={section.svgSrc}

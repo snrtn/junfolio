@@ -16,7 +16,7 @@ const NotFoundView: React.FC = () => {
 		>
 			<img src='./assets/notFound.svg' alt='Page not found' style={{ maxWidth: '100%', height: 'auto' }} />
 			<Typography variant='h4' component='h2' mt={2}>
-				{t('notFound.title')}
+				{t('notFound.title') as string}
 			</Typography>
 		</Box>
 	);

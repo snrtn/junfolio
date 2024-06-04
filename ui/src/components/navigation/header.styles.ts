@@ -29,6 +29,7 @@ export const LogoWrapper = styled('div')(({ theme }) => ({
 export const LogoImage = styled('img')(({ theme }) => ({
 	width: '100px',
 	height: '100px',
+	display: 'block',
 }));
 
 export const LogoText = styled(Typography)(({ theme }) => ({

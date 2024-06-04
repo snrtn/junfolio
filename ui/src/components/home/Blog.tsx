@@ -3,53 +3,12 @@ import { Typography } from '@mui/material';
 import { RiArrowRightSLine } from 'react-icons/ri';
 import { BlogContainer, Header, MoreButton, Content, Card, Tags, Tag } from './blog.styles';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { posts, Post } from '../../data/posts'; // 데이터 가져오기
 
-const Blog = () => {
+const Blog: React.FC = () => {
 	const { t } = useTranslation();
-
-	const posts = [
-		{
-			title: 'Développement',
-			tags: ['JavaScript'],
-			imgSrc: 'https://source.unsplash.com/1600x900/?javascript,code',
-		},
-		{
-			title: 'Étude',
-			tags: ['Education'],
-			imgSrc: 'https://source.unsplash.com/1600x900/?education,study',
-		},
-		{
-			title: 'Création de site',
-			tags: ['Web Development'],
-			imgSrc: 'https://source.unsplash.com/1600x900/?web,development',
-		},
-		{
-			title: 'Divers',
-			tags: ['Miscellaneous'],
-			imgSrc: 'https://source.unsplash.com/1600x900/?miscellaneous',
-		},
-		{
-			title: 'Programmation',
-			tags: ['Coding'],
-			imgSrc: 'https://source.unsplash.com/1600x900/?programming,code',
-		},
-		{
-			title: 'Conception',
-			tags: ['Graphic Design'],
-			imgSrc: 'https://source.unsplash.com/1600x900/?graphic,design',
-		},
-		{
-			title: 'Base de données',
-			tags: ['SQL'],
-			imgSrc: 'https://source.unsplash.com/1600x900/?database,sql',
-		},
-		{
-			title: 'Cloud',
-			tags: ['AWS'],
-			imgSrc: 'https://source.unsplash.com/1600x900/?cloud,aws',
-		},
-	];
+	const navigate = useNavigate();
 
 	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
 		const card = e.currentTarget;
@@ -68,18 +27,22 @@ const Blog = () => {
 		card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
 	};
 
+	const handleCardClick = (post: Post) => {
+		navigate(`/blog/${post.id}`, { state: post });
+	};
+
 	return (
 		<BlogContainer>
 			<Header>
 				<div>
 					<Typography variant='h5' sx={{ fontWeight: 500 }}>
-						{t('home.blog.title')}
+						{t('home.blog.title') as string}
 					</Typography>
-					<Typography variant='body2'>{t('home.blog.description')}</Typography>
+					<Typography variant='body2'>{t('home.blog.description') as string}</Typography>
 				</div>
 				<Link to='blog'>
 					<MoreButton variant='outlined' endIcon={<RiArrowRightSLine />}>
-						{t('home.blog.button')}
+						{t('home.blog.button') as string}
 					</MoreButton>
 				</Link>
 			</Header>
@@ -89,6 +52,7 @@ const Blog = () => {
 						key={index}
 						onMouseMove={(e) => handleMouseMove(e, index)}
 						onMouseLeave={(e) => handleMouseLeave(e, index)}
+						onClick={() => handleCardClick(post)}
 					>
 						<div>
 							<Tags>
@@ -96,7 +60,7 @@ const Blog = () => {
 							</Tags>
 							<Typography variant='h6'>{post.title}</Typography>
 						</div>
-						<img src={post.imgSrc} alt={post.title} />
+						<img src={post.imgSrc} alt={post.title} style={{ display: 'block' }} />
 					</Card>
 				))}
 			</Content>

@@ -60,6 +60,7 @@ export const ProfileImage = styled('img')({
 	maxWidth: '100%',
 	height: 'auto',
 	borderRadius: '10px',
+	display: 'block',
 	...media.tabletLarge({
 		height: '35vh',
 	}),

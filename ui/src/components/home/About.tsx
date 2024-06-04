@@ -16,8 +16,8 @@ const About: React.FC = () => {
 		<AboutContainer>
 			<ContentContainer>
 				<LeftContainer>
-					<Title>{t('home.about.title')}</Title>
-					<Description>{t('home.about.description')}</Description>
+					<Title>{t('home.about.title') as string}</Title>
+					<Description>{t('home.about.description') as string}</Description>
 				</LeftContainer>
 				<RightContainer>
 					<ProfileImage src='./assets/home/about/scrum.svg' alt='scrum Image' />

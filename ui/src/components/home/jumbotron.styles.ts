@@ -6,6 +6,7 @@ export const Container = styled(Box)({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
+	background: '#fff',
 	...media.mobileLarge({
 		marginTop: '2rem',
 	}),
@@ -19,7 +20,12 @@ export const Wrapper = styled(Box)({
 	maxWidth: '1200px',
 	alignItems: 'center',
 	height: '80vh',
-	...media.laptopMedium({
+	...media.laptopLarge({
+		width: '80%',
+	}),
+	...media.laptopSmall({
+		paddingTop: '10rem',
+		flexDirection: 'column-reverse',
 		height: '70vh',
 	}),
 	...media.mobileLarge({
@@ -34,13 +40,10 @@ export const LeftSection = styled(Box)({
 	display: 'flex',
 	flexDirection: 'column',
 	justifyContent: 'center',
-	...media.laptopSmall({
-		paddingLeft: '50px',
-	}),
 	...media.mobileLarge({
 		alignItems: 'center',
 		textAlign: 'center',
-		padding: '20px 30px',
+		padding: '0px 30px',
 	}),
 });
 
@@ -49,20 +52,34 @@ export const RightSection = styled(Box)({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
+	...media.mobileLarge({
+		alignItems: 'end',
+	}),
 });
 
 export const Title = styled(Typography)({
-	fontSize: '2.5rem',
+	fontSize: '3.8rem',
 	fontWeight: 'bold',
+	...media.mobileLarge({
+		fontSize: '2.6rem',
+	}),
 });
 
 export const Description = styled(Typography)({
-	fontSize: '1.2rem',
+	fontSize: '1.6rem',
 	lineHeight: '1.5',
+	...media.mobileLarge({
+		fontSize: '1.2rem',
+	}),
 });
 
 export const Image = styled('img')({
 	maxWidth: '100%',
-	height: 'auto',
-	borderRadius: '10px',
+	display: 'block',
+	...media.laptopSmall({
+		maxWidth: '90%',
+	}),
+	...media.mobileLarge({
+		maxWidth: '100%',
+	}),
 });

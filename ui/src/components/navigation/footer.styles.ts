@@ -11,11 +11,9 @@ export const SnsSection = styled(Box)`
 export const Wrapper = styled(Box)({
 	backgroundColor: '#1D1D1F',
 	color: '#F9F9F9',
-	padding: '2rem 0',
+	padding: '3rem 0',
 	textAlign: 'center',
-	height: '50vh',
-	display: 'flex',
-	flexDirection: 'column',
-	justifyContent: 'center',
-	alignItems: 'center',
+	width: '100%',
+	boxSizing: 'border-box',
+	display: 'block',
 });

@@ -70,14 +70,14 @@ const AuthView: React.FC = () => {
 	return (
 		<FormContainer maxWidth='xs'>
 			<Wrapper>
-				<Title variant='h5'>{t('auth.title')}</Title>
+				<Title variant='h5'>{t('auth.title') as string}</Title>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<StyledTextField
-						label={t('auth.emailLabel')}
+						label={t('auth.emailLabel') as string}
 						variant='outlined'
 						type='email'
 						{...register('email', {
-							required: t('auth.emailRequired'),
+							required: t('auth.emailRequired') as string,
 							pattern: {
 								value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
 								message: t('auth.emailInvalid'),
@@ -87,11 +87,11 @@ const AuthView: React.FC = () => {
 						helperText={errors.email ? errors.email.message : ''}
 					/>
 					<StyledTextField
-						label={t('auth.passwordLabel')}
+						label={t('auth.passwordLabel') as string}
 						variant='outlined'
 						type='password'
 						{...register('password', {
-							required: t('auth.passwordRequired'),
+							required: t('auth.passwordRequired') as string,
 							pattern: {
 								value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
 								message: t('auth.passwordInvalid'),
@@ -101,7 +101,7 @@ const AuthView: React.FC = () => {
 						helperText={errors.password ? errors.password.message : ''}
 					/>
 					<StyledButton color='primary' type='submit'>
-						{t('auth.submitButton')}
+						{t('auth.submitButton') as string}
 					</StyledButton>
 				</form>
 			</Wrapper>

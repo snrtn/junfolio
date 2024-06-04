@@ -5,6 +5,8 @@ import Pagination from '@mui/material/Pagination';
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 import media from '../components/common/mediaQueries';
+import { useNavigate } from 'react-router-dom';
+import { posts, Post } from '../data/posts'; // 데이터 가져오기
 
 const Container = styled(Box)({
 	height: '100vh',
@@ -34,92 +36,10 @@ const ContentContainer = styled(Box)({
 	}),
 });
 
-const posts = [
-	{
-		title: 'Développement',
-		tags: ['JavaScript'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?javascript,code',
-	},
-	{
-		title: 'Étude',
-		tags: ['Education'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?education,study',
-	},
-	{
-		title: 'Création de site',
-		tags: ['Web Development'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?web,development',
-	},
-	{
-		title: 'Divers',
-		tags: ['Miscellaneous'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?miscellaneous',
-	},
-	{
-		title: 'Programmation',
-		tags: ['Coding'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?programming,code',
-	},
-	{
-		title: 'Conception',
-		tags: ['Graphic Design'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?graphic,design',
-	},
-	{
-		title: 'Base de données',
-		tags: ['SQL'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?database,sql',
-	},
-	{
-		title: 'Cloud',
-		tags: ['AWS'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?cloud,aws',
-	},
-	{
-		title: 'Développement',
-		tags: ['JavaScript'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?javascript,code',
-	},
-	{
-		title: 'Étude',
-		tags: ['Education'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?education,study',
-	},
-	{
-		title: 'Création de site',
-		tags: ['Web Development'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?web,development',
-	},
-	{
-		title: 'Divers',
-		tags: ['Miscellaneous'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?miscellaneous',
-	},
-	{
-		title: 'Programmation',
-		tags: ['Coding'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?programming,code',
-	},
-	{
-		title: 'Conception',
-		tags: ['Graphic Design'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?graphic,design',
-	},
-	{
-		title: 'Base de données',
-		tags: ['SQL'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?database,sql',
-	},
-	{
-		title: 'Cloud',
-		tags: ['AWS'],
-		imgSrc: 'https://source.unsplash.com/1600x900/?cloud,aws',
-	},
-];
-
-const BlogView = () => {
+const BlogView: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const postsPerPage = 8;
+	const navigate = useNavigate();
 
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -129,17 +49,21 @@ const BlogView = () => {
 		setCurrentPage(value);
 	};
 
+	const handleCardClick = (post: Post) => {
+		navigate(`/blog/${post.id}`, { state: post });
+	};
+
 	return (
 		<Container>
 			<ContentContainer>
 				<BlogLayout>
 					{currentPosts.map((post) => (
 						<BlogCard
-							key={post.title}
+							key={post.id}
 							title={post.title}
-							description={post.tags.join(', ')}
 							imgSrc={post.imgSrc}
 							tags={post.tags}
+							onClick={() => handleCardClick(post)}
 						/>
 					))}
 				</BlogLayout>

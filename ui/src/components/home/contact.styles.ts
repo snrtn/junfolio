@@ -25,9 +25,12 @@ export const ContactContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({
-	marginBottom: theme.spacing(4),
+	marginBottom: '2rem',
 	textAlign: 'center',
 	fontWeight: 500,
+	...media.mobileLarge({
+		marginBottom: '7rem',
+	}),
 }));
 
 export const MapSection = styled(Box)(({ theme }) => ({
@@ -45,4 +48,5 @@ export const MapSection = styled(Box)(({ theme }) => ({
 export const SectionImage = styled('img')({
 	height: '12rem',
 	objectFit: 'cover',
+	display: 'block',
 });

@@ -8,12 +8,14 @@ const Jumbotron: React.FC = () => {
 		<Container>
 			<Wrapper>
 				<LeftSection>
-					<Description>{t('home.jumbotron.title')}</Description>
-					<Title>{t('home.jumbotron.description')}</Title>
-					<Description>{t('home.jumbotron.description1')}</Description>
+					<div>
+						<Description>{t('home.jumbotron.title') as string}</Description>
+						<Title>{t('home.jumbotron.description') as string}</Title>
+						<Description>{t('home.jumbotron.description1') as string}</Description>
+					</div>
 				</LeftSection>
 				<RightSection>
-					<Image src='./assets/home/about/jun.png' alt='Profile' />
+					<Image src='./assets/home/about/hello.svg' alt='Profile' />
 				</RightSection>
 			</Wrapper>
 		</Container>

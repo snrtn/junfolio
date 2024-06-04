@@ -13,8 +13,8 @@ const serviceData = [
 	{
 		id: 2,
 		imgSrc: './assets/home/service/device.svg',
-		titleKey: 'home.services.title2',
-		descriptionKey: 'home.services.description2',
+		titleKey: 'home.services.title3',
+		descriptionKey: 'home.services.description3',
 		initialDarkMode: false,
 	},
 	{

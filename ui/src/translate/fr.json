@@ -2,7 +2,7 @@
 	"navigation": {
 		"home": "Accueil",
 		"about": "À propos",
-		"kim": "Technologie de Développement",
+		"kim": "Technologie",
 		"experience": "Expérience",
 		"blog": "Blog",
 		"project": "Projet",
@@ -17,8 +17,7 @@
 			"content1": "JPA, Spring, Spring Boot, HTTP",
 			"content2": "Lightning Web Components (LWC), Apex (Fortement Typé, Java)",
 			"content3": "React, TypeScript, Redux, Styled-Components, MUI",
-			"content4": "Diplôme de développeur logiciel (niveau 6 bac +3/4) obtenu",
-			"content5": "Diplôme de développeur intégrateur web (niveau 5 bac +2) obtenu",
+			"content4": "Diplôme de développeur logiciel (niveau 6 bac +3/4) obtenu, Diplôme de développeur intégrateur web (niveau 5 bac +2) obtenu",
 			"detail1": "J'étudie le polymorphisme et les classes en Java, en m'efforçant d'écrire une programmation orientée objet efficace.",
 			"detail2": "J'approfondis ma compréhension des langages orientés objet en utilisant Spring et JPA, et je cherche actuellement un contrat d'apprentissage.",
 			"detail3": "J'ai développé un projet de CV numérique géré au sein de l'entreprise, et conçu diverses formes (promotion, participants, questionnaire, etc.) ainsi qu'une page de démonstration.",

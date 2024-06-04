@@ -92,12 +92,12 @@ const TechniqueIcon: React.FC = () => {
 				<LeftContainer>
 					{photos.map((slide, index) => (
 						<Slide key={index} className={currentSlide === index ? 'active' : ''}>
-							<img src={slide} alt={`Slide ${index + 1}`} />
+							<img src={slide} alt={`Slide ${index + 1}`} style={{ display: 'block' }} />
 						</Slide>
 					))}
 				</LeftContainer>
 				<RightContainer>
-					<Title variant='h1'>{t('home.techniqueIcon.title')}</Title>
+					<Title variant='h1'>{t('home.techniqueIcon.title') as string}</Title>
 					<IconsContainer>
 						{iconData.map((item, index) => (
 							<CustomIconLink key={index} bgColor={item.bgColor} icon={item.icon} to={item.to} />

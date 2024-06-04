@@ -15,8 +15,8 @@ const Footer = () => {
 					<LogoText variant='h4'>JunFolio</LogoText>
 				</Link>
 				<Typography variant='body1' color='orange' mt={1}>
-					{t('home.jumbotron.description')}
-					<span> {t('home.jumbotron.description1')}</span>
+					{t('home.jumbotron.description') as string}
+					<span> {t('home.jumbotron.description1') as string}</span>
 				</Typography>
 			</Container>
 			<Container sx={{ marginBottom: '3rem' }}>

@@ -29,7 +29,7 @@ const sectionsData = [
 	{
 		titleKey: 'about.job.title4',
 		descriptionKey: 'about.job.content4',
-		descriptionKey1: 'about.job.content5',
+		descriptionKey1: '',
 		descriptionKey2: 'about.job.detail7',
 		background: '#8853D0',
 	},
@@ -37,7 +37,7 @@ const sectionsData = [
 
 const Section = styled(Box)(({ background }: { background: string }) => ({
 	width: '100%',
-	height: '90vh',
+	height: '100vh',
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
@@ -45,10 +45,9 @@ const Section = styled(Box)(({ background }: { background: string }) => ({
 	position: 'relative',
 	background: `${background}`,
 	color: 'white',
-	textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)',
+	textShadow: '2px 2px 8px rgba(0, 0, 0, 0.5)',
 	transition: 'transform 0.5s ease-in-out',
 	zIndex: 0,
-
 	'&::before': {
 		content: '""',
 		position: 'absolute',
@@ -60,11 +59,14 @@ const Section = styled(Box)(({ background }: { background: string }) => ({
 	},
 	'& div': {
 		width: '50%',
-		textAlign: 'center',
+		padding: '10rem',
 		boxSizing: 'border-box',
+		textAlign: 'left',
+		...media.laptopLarge({
+			padding: '0rem',
+		}),
 		...media.mobileLarge({
 			width: '100%',
-			textAlign: 'left',
 			paddingRight: '50px',
 			paddingLeft: '15px',
 		}),
@@ -109,14 +111,14 @@ const Job: React.FC = () => {
 	};
 
 	return (
-		<Box position='relative' height='90vh' overflow='hidden'>
+		<Box position='relative' height='100vh' overflow='hidden'>
 			<Box
 				display='flex'
 				flexDirection='column'
 				width='100%'
 				sx={{
-					height: `${sectionsData.length * 90}vh`,
-					transform: `translateY(-${index * 90}vh)`,
+					height: `${sectionsData.length * 100}vh`,
+					transform: `translateY(-${index * 100}vh)`,
 					transition: 'transform 0.5s ease-in-out',
 				}}
 			>
@@ -124,16 +126,16 @@ const Job: React.FC = () => {
 					<Section key={i} background={section.background}>
 						<div>
 							<Typography variant='h5' sx={{ zIndex: 1 }}>
-								{t(section.titleKey)}
+								{t(section.titleKey) as string}
+							</Typography>
+							<Typography variant='body1' sx={{ mt: 2, zIndex: 1, color: 'lightgray' }}>
+								{t(section.descriptionKey) as string}
 							</Typography>
 							<Typography variant='body1' sx={{ mt: 2, zIndex: 1 }}>
-								{t(section.descriptionKey)}
-							</Typography>
-							<Typography variant='body1' sx={{ mt: 0, zIndex: 1 }}>
-								{t(section.descriptionKey1)}
+								{t(section.descriptionKey1) as string}
 							</Typography>
 							<Typography variant='body1' sx={{ mt: 1, zIndex: 1 }}>
-								{t(section.descriptionKey2)}
+								{t(section.descriptionKey2) as string}
 							</Typography>
 						</div>
 					</Section>

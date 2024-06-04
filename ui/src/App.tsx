@@ -22,7 +22,7 @@ const App: React.FC = () => {
 					<Route path='/about' element={<AboutView />} />
 					<Route path='/experience' element={<ExperienceView />} />
 					<Route path='/blog' element={<BlogView />} />
-					<Route path='/blog:id' element={<BlogPageView />} />
+					<Route path='/blog/:id' element={<BlogPageView />} />
 					<Route path='/contact' element={<ContactView />} />
 					<Route path='*' element={<NotFound />} />
 				</Route>

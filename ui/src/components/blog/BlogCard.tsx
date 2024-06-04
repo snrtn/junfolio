@@ -77,12 +77,11 @@ const Tag = styled(Box)(({ theme }) => ({
 
 interface BlogCardProps {
 	title: string;
-	description: string;
 	imgSrc: string;
 	tags: string[];
+	onClick?: () => void; // onClick 추가
 }
-
-const BlogCard: React.FC<BlogCardProps> = ({ title, description, imgSrc, tags }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ title, imgSrc, tags, onClick }) => {
 	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
 		const card = e.currentTarget;
 		const rect = card.getBoundingClientRect();
@@ -101,7 +100,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, description, imgSrc, tags })
 	};
 
 	return (
-		<Card onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+		<Card onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} onClick={onClick}>
 			<div>
 				<Tags>
 					{tags.map((tag) => (
@@ -110,7 +109,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, description, imgSrc, tags })
 				</Tags>
 				<Typography variant='h6'>{title}</Typography>
 			</div>
-			<img src={imgSrc} alt={title} />
+			<img src={imgSrc} alt={title} style={{ display: 'block' }} />
 		</Card>
 	);
 };
