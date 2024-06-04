@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import { Box, Typography } from '@mui/material';
 import media from '../common/mediaQueries';
 
-export const Container = styled(Box)({
+export const JumbotronContainer = styled(Box)({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
@@ -15,11 +15,11 @@ export const Container = styled(Box)({
 	}),
 });
 
-export const Wrapper = styled(Box)({
+export const JumbotronWrapper = styled(Box)({
 	display: 'flex',
 	maxWidth: '1200px',
 	alignItems: 'center',
-	height: '80vh',
+	height: '100vh',
 	...media.laptopLarge({
 		width: '80%',
 	}),
@@ -35,7 +35,7 @@ export const Wrapper = styled(Box)({
 	}),
 });
 
-export const LeftSection = styled(Box)({
+export const JumbotronLeftSection = styled(Box)({
 	flex: 1,
 	display: 'flex',
 	flexDirection: 'column',
@@ -47,7 +47,7 @@ export const LeftSection = styled(Box)({
 	}),
 });
 
-export const RightSection = styled(Box)({
+export const JumbotronRightSection = styled(Box)({
 	flex: 1,
 	display: 'flex',
 	justifyContent: 'center',
@@ -57,7 +57,7 @@ export const RightSection = styled(Box)({
 	}),
 });
 
-export const Title = styled(Typography)({
+export const JumbotronTitle = styled(Typography)({
 	fontSize: '3.8rem',
 	fontWeight: 'bold',
 	...media.mobileLarge({
@@ -65,7 +65,7 @@ export const Title = styled(Typography)({
 	}),
 });
 
-export const Description = styled(Typography)({
+export const JumbotronDescription = styled(Typography)({
 	fontSize: '1.6rem',
 	lineHeight: '1.5',
 	...media.mobileLarge({
@@ -73,7 +73,7 @@ export const Description = styled(Typography)({
 	}),
 });
 
-export const Image = styled('img')({
+export const JumbotronImage = styled('img')({
 	maxWidth: '100%',
 	display: 'block',
 	...media.laptopSmall({

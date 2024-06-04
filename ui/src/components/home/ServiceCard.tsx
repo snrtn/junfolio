@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Typography, IconButton } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { ServiceCardContainer, Face, SunIcon, MoonIcon, ToggleButtonContainer } from './service.styles';
+import {
+	ServiceCardContainer,
+	ServiceCardFace,
+	ServiceCardSunIcon,
+	ServiceCardMoonIcon,
+	ServiceCardToggleButtonContainer,
+} from './serviceCard.styles';
 
 interface ServiceCardProps {
 	imgSrc: string;
@@ -20,14 +26,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ imgSrc, titleKey, description
 
 	return (
 		<ServiceCardContainer className={isDarkMode ? 'dark' : ''}>
-			<ToggleButtonContainer>
+			<ServiceCardToggleButtonContainer>
 				<IconButton onClick={toggleDarkMode}>
-					{isDarkMode ? <SunIcon className='sun-icon' /> : <MoonIcon className='moon-icon' />}
+					{isDarkMode ? <ServiceCardSunIcon className='sun-icon' /> : <ServiceCardMoonIcon className='moon-icon' />}
 				</IconButton>
-			</ToggleButtonContainer>
-			<Face>
+			</ServiceCardToggleButtonContainer>
+			<ServiceCardFace>
 				<img src={imgSrc} alt={imgSrc} style={{ display: 'block' }} />
-			</Face>
+			</ServiceCardFace>
 			<Typography variant='h6'>{t(titleKey) as string}</Typography>
 			<Typography variant='body1'>{t(descriptionKey) as string}</Typography>
 		</ServiceCardContainer>

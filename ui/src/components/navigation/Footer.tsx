@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { SnsSection, Wrapper } from './footer.styles';
-import { CustomLink, LogoText } from './header.styles';
+import { FooterSnsSection, FooterWrapper } from './footer.styles';
+import { HeaderCustomLink, HeaderLogoText } from './header.styles';
 import { SiLinkedin, SiGithub } from 'react-icons/si';
 import CustomIconLink from '../common/CustomIconLink';
 import { Link } from 'react-router-dom';
@@ -9,10 +9,10 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
 	const { t } = useTranslation();
 	return (
-		<Wrapper>
+		<FooterWrapper>
 			<Container sx={{ marginBottom: '1rem' }}>
 				<Link to='/'>
-					<LogoText variant='h4'>JunFolio</LogoText>
+					<HeaderLogoText variant='h4'>JunFolio</HeaderLogoText>
 				</Link>
 				<Typography variant='body1' color='orange' mt={1}>
 					{t('home.jumbotron.description') as string}
@@ -21,20 +21,20 @@ const Footer = () => {
 			</Container>
 			<Container sx={{ marginBottom: '3rem' }}>
 				<Box display='flex' justifyContent='center' gap='2rem'>
-					<CustomLink to='/about'>{t('navigation.about')}</CustomLink>
-					<CustomLink to='/blog'>{t('navigation.blog')}</CustomLink>
-					<CustomLink to='/contact'>{t('navigation.contact')}</CustomLink>
+					<HeaderCustomLink to='/about'>{t('navigation.about')}</HeaderCustomLink>
+					<HeaderCustomLink to='/blog'>{t('navigation.blog')}</HeaderCustomLink>
+					<HeaderCustomLink to='/contact'>{t('navigation.contact')}</HeaderCustomLink>
 				</Box>
 			</Container>
-			<SnsSection>
+			<FooterSnsSection>
 				<CustomIconLink
 					bgColor={'#0077B5'}
 					icon={SiLinkedin}
 					to={'https://www.linkedin.com/in/hanjun-kim-1b1741171/'}
 				/>
 				<CustomIconLink bgColor={'#181717'} icon={SiGithub} to={'https://github.com/snrtn?tab=repositories'} />
-			</SnsSection>
-		</Wrapper>
+			</FooterSnsSection>
+		</FooterWrapper>
 	);
 };
 

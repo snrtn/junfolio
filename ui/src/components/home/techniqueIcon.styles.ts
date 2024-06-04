@@ -2,11 +2,11 @@ import { styled } from '@mui/material/styles';
 import { Box, Typography } from '@mui/material';
 import media from '../common/mediaQueries';
 
-export const SectionContainer = styled(Box)(({ theme }) => ({
+export const TechniqueSectionContainer = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-	height: '80vh',
+	height: '100vh',
 	width: '100%',
 	padding: '50px 0',
 	backgroundColor: '#F5F5F7',
@@ -26,7 +26,7 @@ export const SectionContainer = styled(Box)(({ theme }) => ({
 	}),
 }));
 
-export const InnerContainer = styled(Box)(({ theme }) => ({
+export const TechniqueInnerContainer = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	width: '1350px',
 	height: '100%',
@@ -45,7 +45,7 @@ export const InnerContainer = styled(Box)(({ theme }) => ({
 	}),
 }));
 
-export const LeftContainer = styled(Box)(({ theme }) => ({
+export const TechniqueLeftContainer = styled(Box)(({ theme }) => ({
 	width: '750px',
 	position: 'relative',
 	overflow: 'hidden',
@@ -70,7 +70,7 @@ export const LeftContainer = styled(Box)(({ theme }) => ({
 	}),
 }));
 
-export const Slide = styled(Box)(({ theme }) => ({
+export const TechniqueSlide = styled(Box)(({ theme }) => ({
 	width: '100%',
 	height: '100%',
 	position: 'absolute',
@@ -87,7 +87,6 @@ export const Slide = styled(Box)(({ theme }) => ({
 		height: '100%',
 		...media.desktopLarge({
 			width: '80%',
-			height: '100%',
 		}),
 		...media.desktopMedium({
 			height: '60vh',
@@ -111,7 +110,7 @@ export const Slide = styled(Box)(({ theme }) => ({
 	},
 }));
 
-export const RightContainer = styled(Box)(({ theme }) => ({
+export const TechniqueRightContainer = styled(Box)(({ theme }) => ({
 	width: '600px',
 	display: 'flex',
 	flexDirection: 'column',
@@ -133,7 +132,6 @@ export const RightContainer = styled(Box)(({ theme }) => ({
 		height: '100%',
 	}),
 	...media.mobileLarge({
-		width: '100%',
 		height: '50vh',
 		paddingTop: '80px',
 	}),
@@ -142,7 +140,7 @@ export const RightContainer = styled(Box)(({ theme }) => ({
 	}),
 }));
 
-export const Title = styled(Typography)(({ theme }) => ({
+export const TechniqueTitle = styled(Typography)(({ theme }) => ({
 	fontSize: '2rem',
 	marginBottom: '3rem',
 	fontWeight: '500',
@@ -152,7 +150,7 @@ export const Title = styled(Typography)(({ theme }) => ({
 	}),
 }));
 
-export const IconsContainer = styled(Box)(({ theme }) => ({
+export const TechniqueIconsContainer = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	justifyContent: 'center',
 	gap: '13px',

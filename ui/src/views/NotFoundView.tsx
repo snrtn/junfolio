@@ -1,24 +1,22 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { NotFoundContainer, NotFoundImage } from './NotFoundView.styles';
 
 const NotFoundView: React.FC = () => {
 	const { t } = useTranslation();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
-		<Box
-			display='flex'
-			justifyContent='center'
-			alignItems='center'
-			flexDirection='column'
-			height='100vh'
-			textAlign='center'
-			maxHeight={'90vh'}
-		>
-			<img src='./assets/notFound.svg' alt='Page not found' style={{ maxWidth: '100%', height: 'auto' }} />
+		<NotFoundContainer>
+			<NotFoundImage src='./assets/notFound.svg' alt='Page not found' />
 			<Typography variant='h4' component='h2' mt={2}>
 				{t('notFound.title') as string}
 			</Typography>
-		</Box>
+		</NotFoundContainer>
 	);
 };
 

@@ -1,59 +1,8 @@
 import { styled } from '@mui/material/styles';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import media from '../common/mediaQueries';
 
-export const BlogContainer = styled(Box)(({ theme }) => ({
-	padding: theme.spacing(4),
-	maxWidth: '1200px',
-	margin: '0 auto',
-	height: '100vh',
-	width: '80%',
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	flexDirection: 'column',
-	...media.desktopMedium({
-		padding: '100px 20px',
-	}),
-	...media.mobileLarge({
-		height: '100%',
-		fontSize: '1rem !important',
-	}),
-}));
-
-export const BlogHeader = styled(Box)(({ theme }) => ({
-	display: 'flex',
-	width: '100%',
-	justifyContent: 'space-between',
-	alignItems: 'flex-start',
-	marginBottom: theme.spacing(4),
-}));
-
-export const BlogMoreButton = styled(Button)(({ theme }) => ({
-	display: 'flex',
-	alignItems: 'center',
-	textTransform: 'none',
-	border: '1px solid transparent',
-	color: '#1D1D1F',
-	'&:hover': {
-		border: '1px solid transparent',
-	},
-}));
-
-export const BlogContent = styled(Box)(({ theme }) => ({
-	display: 'grid',
-	width: '100%',
-	gridTemplateColumns: 'repeat(4, 1fr)',
-	gap: theme.spacing(2),
-	[theme.breakpoints.down('md')]: {
-		gridTemplateColumns: 'repeat(3, 1fr)',
-	},
-	[theme.breakpoints.down('sm')]: {
-		gridTemplateColumns: 'repeat(1, 1fr)',
-	},
-}));
-
-export const BlogCard = styled(Box)(({ theme }) => ({
+export const BlogCardContainer = styled(Box)(({ theme }) => ({
 	backgroundColor: '#fff',
 	borderRadius: theme.shape.borderRadius,
 	cursor: 'pointer',
@@ -108,14 +57,14 @@ export const BlogCard = styled(Box)(({ theme }) => ({
 	},
 }));
 
-export const BlogTags = styled(Box)(({ theme }) => ({
+export const BlogCardTags = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	flexWrap: 'wrap',
 	gap: theme.spacing(1),
 	marginTop: theme.spacing(1),
 }));
 
-export const BlogTag = styled(Box)(({ theme }) => ({
+export const BlogCardTag = styled(Box)(({ theme }) => ({
 	backgroundColor: 'orange',
 	color: theme.palette.primary.contrastText,
 	borderRadius: theme.shape.borderRadius,

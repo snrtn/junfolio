@@ -21,18 +21,18 @@ export const HeaderToolbar = styled(Toolbar)(({ theme }) => ({
 	boxSizing: 'border-box',
 }));
 
-export const LogoWrapper = styled('div')(({ theme }) => ({
+export const HeaderLogoWrapper = styled('div')(({ theme }) => ({
 	display: 'flex',
 	alignItems: 'center',
 }));
 
-export const LogoImage = styled('img')(({ theme }) => ({
+export const HeaderLogoImage = styled('img')(({ theme }) => ({
 	width: '100px',
 	height: '100px',
 	display: 'block',
 }));
 
-export const LogoText = styled(Typography)(({ theme }) => ({
+export const HeaderLogoText = styled(Typography)(({ theme }) => ({
 	fontWeight: 400,
 	fontFamily: '"Great Vibes", cursive !important',
 	fontStyle: 'normal',
@@ -40,7 +40,7 @@ export const LogoText = styled(Typography)(({ theme }) => ({
 	cursor: 'pointer',
 }));
 
-export const Nav = styled('nav')(({ theme }) => ({
+export const HeaderNav = styled('nav')(({ theme }) => ({
 	ul: {
 		display: 'flex',
 		listStyle: 'none',
@@ -63,7 +63,7 @@ export const Nav = styled('nav')(({ theme }) => ({
 	}),
 }));
 
-export const DropdownMenu = styled('ul')(({ theme }) => ({
+export const HeaderDropdownMenu = styled('ul')(({ theme }) => ({
 	position: 'fixed',
 	top: '50px',
 	left: 0,
@@ -91,7 +91,7 @@ export const DropdownMenu = styled('ul')(({ theme }) => ({
 	zIndex: 999,
 }));
 
-export const Overlay = styled.div(({ theme }) => ({
+export const HeaderOverlay = styled.div(({ theme }) => ({
 	position: 'fixed',
 	top: 0,
 	left: 0,
@@ -99,7 +99,7 @@ export const Overlay = styled.div(({ theme }) => ({
 	height: '100vh',
 }));
 
-export const LanguageSwitcher = styled('div')(({ theme }) => ({
+export const HeaderLanguageSwitcher = styled('div')(({ theme }) => ({
 	display: 'flex',
 	alignItems: 'center',
 	'.MuiInputBase-root': {
@@ -122,19 +122,19 @@ export const LanguageSwitcher = styled('div')(({ theme }) => ({
 	},
 }));
 
-export const StyledReactCountryFlag = styled(ReactCountryFlag)`
+export const HeaderStyledReactCountryFlag = styled(ReactCountryFlag)`
 	width: 1.4rem !important;
 	height: 1.4rem !important;
 `;
 
-export const HamburgerMenu = styled('div')(({ theme }) => ({
+export const HeaderHamburgerMenu = styled('div')(({ theme }) => ({
 	display: 'none',
 	...media.mobileLarge({
 		display: 'block',
 	}),
 }));
 
-export const Sidebar = styled('div')(({ theme }) => ({
+export const HeaderSidebar = styled('div')(({ theme }) => ({
 	width: 250,
 	height: '100%',
 	display: 'flex',
@@ -143,25 +143,25 @@ export const Sidebar = styled('div')(({ theme }) => ({
 	padding: '20px 0 ',
 }));
 
-export const StyledDrawer = styled(Drawer)(({ theme }) => ({
+export const HeaderStyledDrawer = styled(Drawer)(({ theme }) => ({
 	'.MuiPaper-root': {
 		backgroundColor: '#1D1D1F',
 		color: '#F5F5F7',
 	},
 }));
 
-export const StyledListItem = styled(ListItem)(({ theme }) => ({
+export const HeaderStyledListItem = styled(ListItem)(({ theme }) => ({
 	color: '#F5F5F7',
 	'.MuiListItemText-root': {
 		marginTop: '20px',
 	},
 }));
 
-export const StyledListItemText = styled(ListItemText)(({ theme }) => ({
+export const HeaderStyledListItemText = styled(ListItemText)(({ theme }) => ({
 	textAlign: 'center',
 }));
 
-export const CustomLink = styled(Link)(({ theme }) => ({
+export const HeaderCustomLink = styled(Link)(({ theme }) => ({
 	position: 'relative',
 	zIndex: 1,
 	color: '#F5F5F7',

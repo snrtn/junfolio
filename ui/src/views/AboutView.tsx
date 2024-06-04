@@ -15,6 +15,10 @@ const AboutView = () => {
 	}, [scrollTop]);
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
+	useEffect(() => {
 		const container = document.getElementById('about-view');
 		if (container) {
 			const handleScroll = () => {

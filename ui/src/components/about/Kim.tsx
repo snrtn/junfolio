@@ -1,115 +1,35 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Box, styled } from '@mui/material';
-import media from '../common/mediaQueries';
+import { Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { KimScrollContainer, KimSection, KimSectionContent, KimSectionSVG } from './kim.styles';
 
 const sectionsData = [
 	{
 		titleKey: 'about.kim.title1',
 		descriptionKey: 'about.kim.description1',
-		descriptionKey1: 'about.kim.description2',
 		backgroundColor: '#e15f41',
 		svgSrc: './assets/about/back.svg',
 	},
 	{
 		titleKey: 'about.kim.title2',
-		descriptionKey: 'about.kim.description3',
-		descriptionKey1: 'about.kim.description4',
-		descriptionKey2: 'about.kim.description5',
+		descriptionKey: 'about.kim.description2',
 		backgroundColor: '#006266',
 		svgSrc: './assets/about/front.svg',
 	},
 	{
 		titleKey: 'about.kim.title3',
-		descriptionKey: 'about.kim.description6',
-		descriptionKey1: 'about.kim.description7',
+		descriptionKey: 'about.kim.description3',
 		backgroundColor: '#2980b9',
 		svgSrc: './assets/about/team.svg',
 	},
 	{
 		titleKey: 'about.kim.title4',
-		descriptionKey: 'about.kim.description8',
-		descriptionKey1: 'about.kim.description9',
+		descriptionKey: 'about.kim.description4',
 		backgroundColor: '#8854d0',
 		svgSrc: './assets/about/up.svg',
 	},
 ];
-
-const ScrollContainer = styled(Box)<{ scrollEnabled: boolean }>(({ scrollEnabled }) => ({
-	width: '100%',
-	height: scrollEnabled ? '100vh' : '100%',
-	overflowY: scrollEnabled ? 'scroll' : 'hidden',
-	position: 'relative',
-	overflowStyle: 'none' /* IE and Edge */,
-	scrollbarWidth: 'none' /* Firefox */,
-	boxSizing: 'border-box',
-}));
-
-const Section = styled(Box)<{ backgroundColor: string; index: number; language: string }>(
-	({ backgroundColor, index, language }) => ({
-		width: '100%',
-		height: '90vh',
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'start',
-		paddingTop: '200px',
-		boxSizing: 'border-box',
-		backgroundColor,
-		position: 'relative',
-		overflow: 'hidden',
-		color: 'white',
-		...media.desktopMedium({
-			paddingTop: '140px',
-			height: '100vh',
-		}),
-		...media.laptopLarge({
-			paddingTop: '100px',
-			height: '90vh',
-		}),
-		...media.laptopMedium({
-			paddingTop: '150px',
-		}),
-		...media.tabletLarge({
-			paddingTop: '180px',
-			height: '85vh',
-		}),
-		...media.mobileLarge({
-			paddingTop: '100px',
-			height: '120vh',
-		}),
-	}),
-);
-
-const SectionContent = styled('div')<{ visible: boolean }>(({ visible }) => ({
-	opacity: visible ? 1 : 0,
-	transition: 'opacity 0.5s ease-in-out',
-	zIndex: 1,
-	textAlign: 'center',
-	padding: '0 30rem',
-	boxSizing: 'border-box',
-	...media.desktopSmall({
-		padding: '0 20rem',
-	}),
-	...media.laptopLarge({
-		padding: '0 10rem',
-	}),
-	...media.mobileLarge({
-		textAlign: 'left',
-		padding: '0 2rem',
-	}),
-}));
-
-const SectionSVG = styled('img')<{ visible: boolean }>(({ visible }) => ({
-	width: '350px',
-	height: '350px',
-	position: 'absolute',
-	right: visible ? '50%' : '-150px',
-	transform: 'translateX(50%)',
-	transition: 'right 0.5s ease-in-out',
-	display: 'block',
-}));
 
 interface KimProps {
 	scrollEnabled: boolean;
@@ -183,9 +103,9 @@ const Kim: React.FC<KimProps> = ({ scrollEnabled, onScrollToEnd }) => {
 	}, [scrollEnabled, handleScroll]);
 
 	return (
-		<ScrollContainer id='scroll-container' scrollEnabled={scrollEnabled}>
+		<KimScrollContainer id='scroll-container' scrollEnabled={scrollEnabled}>
 			{sectionsData.map((section, index) => (
-				<Section
+				<KimSection
 					key={index}
 					ref={(el) => {
 						sectionRefs.current[index] = el as HTMLDivElement;
@@ -194,30 +114,20 @@ const Kim: React.FC<KimProps> = ({ scrollEnabled, onScrollToEnd }) => {
 					index={index}
 					language={language}
 				>
-					<SectionContent visible={firstTimeVisibleSections[index] || visibleSections[index]}>
+					<KimSectionContent visible={firstTimeVisibleSections[index] || visibleSections[index]}>
 						<h1>{t(section.titleKey) as string}</h1>
 						<div style={{ marginTop: '1rem' }}>
 							<p style={{ marginTop: '0.5rem' }}>{t(section.descriptionKey) as string}</p>
-							{active === true ? (
-								<>
-									<p style={{ marginTop: '0.5rem' }}>{t(section.descriptionKey1) as string}</p>
-									{section.descriptionKey2 && (
-										<p style={{ marginTop: '0.5rem' }}>{t(section.descriptionKey2) as string}</p>
-									)}
-								</>
-							) : (
-								''
-							)}
 						</div>
-						<SectionSVG
+						<KimSectionSVG
 							src={section.svgSrc}
 							alt={`Section ${index + 1} Icon`}
 							visible={firstTimeVisibleSections[index] || visibleSections[index]}
 						/>
-					</SectionContent>
-				</Section>
+					</KimSectionContent>
+				</KimSection>
 			))}
-		</ScrollContainer>
+		</KimScrollContainer>
 	);
 };
 

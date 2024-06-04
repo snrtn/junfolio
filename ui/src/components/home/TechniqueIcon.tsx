@@ -24,13 +24,13 @@ import { FaJava } from 'react-icons/fa6';
 import { IconType } from 'react-icons';
 import { useTranslation } from 'react-i18next';
 import {
-	SectionContainer,
-	InnerContainer,
-	LeftContainer,
-	Slide,
-	RightContainer,
-	Title,
-	IconsContainer,
+	TechniqueSectionContainer,
+	TechniqueInnerContainer,
+	TechniqueLeftContainer,
+	TechniqueSlide,
+	TechniqueRightContainer,
+	TechniqueTitle,
+	TechniqueIconsContainer,
 } from './techniqueIcon.styles';
 import CustomIconLink from '../common/CustomIconLink';
 
@@ -87,25 +87,25 @@ const TechniqueIcon: React.FC = () => {
 	}, []);
 
 	return (
-		<SectionContainer>
-			<InnerContainer>
-				<LeftContainer>
+		<TechniqueSectionContainer>
+			<TechniqueInnerContainer>
+				<TechniqueLeftContainer>
 					{photos.map((slide, index) => (
-						<Slide key={index} className={currentSlide === index ? 'active' : ''}>
+						<TechniqueSlide key={index} className={currentSlide === index ? 'active' : ''}>
 							<img src={slide} alt={`Slide ${index + 1}`} style={{ display: 'block' }} />
-						</Slide>
+						</TechniqueSlide>
 					))}
-				</LeftContainer>
-				<RightContainer>
-					<Title variant='h1'>{t('home.techniqueIcon.title') as string}</Title>
-					<IconsContainer>
+				</TechniqueLeftContainer>
+				<TechniqueRightContainer>
+					<TechniqueTitle variant='h1'>{t('home.techniqueIcon.title') as string}</TechniqueTitle>
+					<TechniqueIconsContainer>
 						{iconData.map((item, index) => (
 							<CustomIconLink key={index} bgColor={item.bgColor} icon={item.icon} to={item.to} />
 						))}
-					</IconsContainer>
-				</RightContainer>
-			</InnerContainer>
-		</SectionContainer>
+					</TechniqueIconsContainer>
+				</TechniqueRightContainer>
+			</TechniqueInnerContainer>
+		</TechniqueSectionContainer>
 	);
 };
 

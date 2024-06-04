@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Box, styled, Typography, Button } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
-import media from '../common/mediaQueries';
 import { useTranslation } from 'react-i18next';
+import { JobSection, JobController, JobIconButton } from './job.styles';
 
 const sectionsData = [
 	{
@@ -35,68 +35,6 @@ const sectionsData = [
 	},
 ];
 
-const Section = styled(Box)(({ background }: { background: string }) => ({
-	width: '100%',
-	height: '100vh',
-	display: 'flex',
-	flexDirection: 'column',
-	alignItems: 'center',
-	justifyContent: 'center',
-	position: 'relative',
-	background: `${background}`,
-	color: 'white',
-	textShadow: '2px 2px 8px rgba(0, 0, 0, 0.5)',
-	transition: 'transform 0.5s ease-in-out',
-	zIndex: 0,
-	'&::before': {
-		content: '""',
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		width: '100%',
-		height: '100%',
-		zIndex: -1,
-	},
-	'& div': {
-		width: '50%',
-		padding: '10rem',
-		boxSizing: 'border-box',
-		textAlign: 'left',
-		...media.laptopLarge({
-			padding: '0rem',
-		}),
-		...media.mobileLarge({
-			width: '100%',
-			paddingRight: '50px',
-			paddingLeft: '15px',
-		}),
-	},
-}));
-
-const Controller = styled(Box)({
-	position: 'fixed',
-	right: '20px',
-	top: '50%',
-	transform: 'translateY(-50%)',
-	display: 'flex',
-	flexDirection: 'column',
-	alignItems: 'center',
-	gap: '10px',
-	color: 'white',
-});
-
-const IconButton = styled(Button)({
-	minWidth: '40px',
-	minHeight: '40px',
-	borderRadius: '50%',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	padding: 0,
-	color: 'white',
-	fontSize: '40px',
-});
-
 const Job: React.FC = () => {
 	const { t } = useTranslation();
 	const [index, setIndex] = useState(0);
@@ -123,7 +61,7 @@ const Job: React.FC = () => {
 				}}
 			>
 				{sectionsData.map((section, i) => (
-					<Section key={i} background={section.background}>
+					<JobSection key={i} background={section.background}>
 						<div>
 							<Typography variant='h5' sx={{ zIndex: 1 }}>
 								{t(section.titleKey) as string}
@@ -138,20 +76,20 @@ const Job: React.FC = () => {
 								{t(section.descriptionKey2) as string}
 							</Typography>
 						</div>
-					</Section>
+					</JobSection>
 				))}
 			</Box>
-			<Controller>
-				<IconButton onClick={handlePrev} disabled={index === 0}>
+			<JobController>
+				<JobIconButton onClick={handlePrev} disabled={index === 0}>
 					<MdKeyboardArrowUp />
-				</IconButton>
+				</JobIconButton>
 				<Typography variant='h6' sx={{ color: 'white', textAlign: 'center' }}>
 					{index + 1}/{sectionsData.length}
 				</Typography>
-				<IconButton onClick={handleNext} disabled={index === maxIndex}>
+				<JobIconButton onClick={handleNext} disabled={index === maxIndex}>
 					<MdKeyboardArrowDown />
-				</IconButton>
-			</Controller>
+				</JobIconButton>
+			</JobController>
 		</Box>
 	);
 };

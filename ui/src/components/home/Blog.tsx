@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { RiArrowRightSLine } from 'react-icons/ri';
-import { BlogContainer, Header, MoreButton, Content, Card, Tags, Tag } from './blog.styles';
+import { BlogContainer, BlogHeader, BlogMoreButton, BlogContent, BlogCard, BlogTags, BlogTag } from './blog.styles';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { posts, Post } from '../../data/posts'; // 데이터 가져오기
@@ -33,7 +33,7 @@ const Blog: React.FC = () => {
 
 	return (
 		<BlogContainer>
-			<Header>
+			<BlogHeader>
 				<div>
 					<Typography variant='h5' sx={{ fontWeight: 500 }}>
 						{t('home.blog.title') as string}
@@ -41,29 +41,29 @@ const Blog: React.FC = () => {
 					<Typography variant='body2'>{t('home.blog.description') as string}</Typography>
 				</div>
 				<Link to='blog'>
-					<MoreButton variant='outlined' endIcon={<RiArrowRightSLine />}>
+					<BlogMoreButton variant='outlined' endIcon={<RiArrowRightSLine />}>
 						{t('home.blog.button') as string}
-					</MoreButton>
+					</BlogMoreButton>
 				</Link>
-			</Header>
-			<Content>
+			</BlogHeader>
+			<BlogContent>
 				{posts.map((post, index) => (
-					<Card
+					<BlogCard
 						key={index}
 						onMouseMove={(e) => handleMouseMove(e, index)}
 						onMouseLeave={(e) => handleMouseLeave(e, index)}
 						onClick={() => handleCardClick(post)}
 					>
 						<div>
-							<Tags>
-								<Tag>{post.tags[0]}</Tag>
-							</Tags>
+							<BlogTags>
+								<BlogTag>{post.tags[0]}</BlogTag>
+							</BlogTags>
 							<Typography variant='h6'>{post.title}</Typography>
 						</div>
 						<img src={post.imgSrc} alt={post.title} style={{ display: 'block' }} />
-					</Card>
+					</BlogCard>
 				))}
-			</Content>
+			</BlogContent>
 		</BlogContainer>
 	);
 };

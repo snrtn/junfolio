@@ -7,20 +7,20 @@ import { RiMenuFill } from 'react-icons/ri';
 import {
 	HeaderContainer,
 	HeaderToolbar,
-	LogoWrapper,
-	LogoText,
-	LogoImage,
-	Nav,
-	LanguageSwitcher,
-	HamburgerMenu,
-	Sidebar,
-	StyledReactCountryFlag,
-	StyledDrawer,
-	StyledListItem,
-	StyledListItemText,
-	CustomLink,
-	DropdownMenu,
-	Overlay,
+	HeaderLogoWrapper,
+	HeaderLogoText,
+	HeaderLogoImage,
+	HeaderNav,
+	HeaderLanguageSwitcher,
+	HeaderHamburgerMenu,
+	HeaderSidebar,
+	HeaderStyledReactCountryFlag,
+	HeaderStyledDrawer,
+	HeaderStyledListItem,
+	HeaderStyledListItemText,
+	HeaderCustomLink,
+	HeaderDropdownMenu,
+	HeaderOverlay,
 } from './header.styles';
 
 const Header: React.FC = () => {
@@ -72,48 +72,48 @@ const Header: React.FC = () => {
 	return (
 		<HeaderContainer position='fixed'>
 			<HeaderToolbar>
-				<HamburgerMenu>
+				<HeaderHamburgerMenu>
 					<IconButton edge='start' color='inherit' aria-label='menu' onClick={toggleDrawer(true)}>
 						<RiMenuFill />
 					</IconButton>
-				</HamburgerMenu>
-				<LogoWrapper>
+				</HeaderHamburgerMenu>
+				<HeaderLogoWrapper>
 					<Link to='/'>
-						<LogoText variant='h5'>JunFolio</LogoText>
+						<HeaderLogoText variant='h5'>JunFolio</HeaderLogoText>
 					</Link>
-				</LogoWrapper>
-				<Nav onMouseLeave={handleMouseLeave}>
+				</HeaderLogoWrapper>
+				<HeaderNav onMouseLeave={handleMouseLeave}>
 					<ul>
 						<li onMouseEnter={() => handleMouseEnter('home')}>
-							<CustomLink to='/'>{t('navigation.home')}</CustomLink>
+							<HeaderCustomLink to='/'>{t('navigation.home')}</HeaderCustomLink>
 						</li>
 						<li onMouseEnter={() => handleMouseEnter('about')}>
-							<CustomLink to='#'>{t('navigation.about')}</CustomLink>
-							{activeMenu === 'about' && <Overlay onClick={() => setActiveMenu(null)} />}
+							<HeaderCustomLink to='#'>{t('navigation.about')}</HeaderCustomLink>
+							{activeMenu === 'about' && <HeaderOverlay onClick={() => setActiveMenu(null)} />}
 							<Collapse in={activeMenu === 'about'} timeout='auto' unmountOnExit>
-								<DropdownMenu>
+								<HeaderDropdownMenu>
 									<li>
-										<CustomLink to='/about' onClick={() => setActiveMenu(null)}>
+										<HeaderCustomLink to='/about' onClick={() => setActiveMenu(null)}>
 											{t('navigation.experience')}
-										</CustomLink>
+										</HeaderCustomLink>
 									</li>
 									<li>
-										<CustomLink to='/experience' onClick={() => setActiveMenu(null)}>
+										<HeaderCustomLink to='/experience' onClick={() => setActiveMenu(null)}>
 											{t('navigation.kim')}
-										</CustomLink>
+										</HeaderCustomLink>
 									</li>
-								</DropdownMenu>
+								</HeaderDropdownMenu>
 							</Collapse>
 						</li>
 						<li onMouseEnter={() => handleMouseEnter('blog')}>
-							<CustomLink to='/blog'>{t('navigation.blog')}</CustomLink>
+							<HeaderCustomLink to='/blog'>{t('navigation.blog')}</HeaderCustomLink>
 						</li>
 						<li onMouseEnter={() => handleMouseEnter('contact')}>
-							<CustomLink to='/contact'>{t('navigation.contact')}</CustomLink>
+							<HeaderCustomLink to='/contact'>{t('navigation.contact')}</HeaderCustomLink>
 						</li>
 					</ul>
-				</Nav>
-				<LanguageSwitcher>
+				</HeaderNav>
+				<HeaderLanguageSwitcher>
 					<Select
 						value={language}
 						onChange={changeLanguage}
@@ -121,53 +121,53 @@ const Header: React.FC = () => {
 						inputProps={{ 'aria-label': 'Without label' }}
 					>
 						<MenuItem value='en'>
-							<StyledReactCountryFlag countryCode='US' svg />
+							<HeaderStyledReactCountryFlag countryCode='US' svg />
 						</MenuItem>
 						<MenuItem value='fr'>
-							<StyledReactCountryFlag countryCode='FR' svg />
+							<HeaderStyledReactCountryFlag countryCode='FR' svg />
 						</MenuItem>
 						<MenuItem value='ko'>
-							<StyledReactCountryFlag countryCode='KR' svg />
+							<HeaderStyledReactCountryFlag countryCode='KR' svg />
 						</MenuItem>
 					</Select>
 					<IconButton edge='end' color='inherit' aria-label='Login' component={Link} to='/auth'>
 						<PiSignInBold />
 					</IconButton>
-				</LanguageSwitcher>
+				</HeaderLanguageSwitcher>
 			</HeaderToolbar>
-			<StyledDrawer anchor='left' open={isDrawerOpen} onClose={toggleDrawer(false)}>
-				<Sidebar role='presentation' onKeyDown={toggleDrawer(false)}>
-					<LogoWrapper>
+			<HeaderStyledDrawer anchor='left' open={isDrawerOpen} onClose={toggleDrawer(false)}>
+				<HeaderSidebar role='presentation' onKeyDown={toggleDrawer(false)}>
+					<HeaderLogoWrapper>
 						<Link to='/' onClick={closeDrawer}>
-							<LogoImage src='./assets/header/logo.png' alt='Logo' />
+							<HeaderLogoImage src='./assets/header/logo.png' alt='Logo' />
 						</Link>
-					</LogoWrapper>
+					</HeaderLogoWrapper>
 					<List>
-						<StyledListItem as={Link} to='/' onClick={closeDrawer}>
-							<StyledListItemText primary={t('navigation.home')} />
-						</StyledListItem>
-						<StyledListItem onClick={() => handleItemClick('about')}>
-							<StyledListItemText primary={t('navigation.about')} />
-						</StyledListItem>
+						<HeaderStyledListItem as={Link} to='/' onClick={closeDrawer}>
+							<HeaderStyledListItemText primary={t('navigation.home')} />
+						</HeaderStyledListItem>
+						<HeaderStyledListItem onClick={() => handleItemClick('about')}>
+							<HeaderStyledListItemText primary={t('navigation.about')} />
+						</HeaderStyledListItem>
 						<Collapse in={activeMenu === 'about'} timeout='auto' unmountOnExit>
 							<List component='div' disablePadding>
-								<StyledListItem as={Link} to='/about' onClick={closeDrawer}>
-									<StyledListItemText primary={t('navigation.experience')} />
-								</StyledListItem>
-								<StyledListItem as={Link} to='/experience' onClick={closeDrawer}>
-									<StyledListItemText primary={t('navigation.kim')} />
-								</StyledListItem>
+								<HeaderStyledListItem as={Link} to='/about' onClick={closeDrawer}>
+									<HeaderStyledListItemText primary={t('navigation.experience')} />
+								</HeaderStyledListItem>
+								<HeaderStyledListItem as={Link} to='/experience' onClick={closeDrawer}>
+									<HeaderStyledListItemText primary={t('navigation.kim')} />
+								</HeaderStyledListItem>
 							</List>
 						</Collapse>
-						<StyledListItem as={Link} to='/blog' onClick={closeDrawer}>
-							<StyledListItemText primary={t('navigation.blog')} />
-						</StyledListItem>
-						<StyledListItem as={Link} to='/contact' onClick={closeDrawer}>
-							<StyledListItemText primary={t('navigation.contact')} />
-						</StyledListItem>
+						<HeaderStyledListItem as={Link} to='/blog' onClick={closeDrawer}>
+							<HeaderStyledListItemText primary={t('navigation.blog')} />
+						</HeaderStyledListItem>
+						<HeaderStyledListItem as={Link} to='/contact' onClick={closeDrawer}>
+							<HeaderStyledListItemText primary={t('navigation.contact')} />
+						</HeaderStyledListItem>
 					</List>
-				</Sidebar>
-			</StyledDrawer>
+				</HeaderSidebar>
+			</HeaderStyledDrawer>
 		</HeaderContainer>
 	);
 };

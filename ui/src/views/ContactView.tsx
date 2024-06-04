@@ -1,78 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import styled, { keyframes } from 'styled-components';
-import { TextField, Button, Box, Typography } from '@mui/material';
 import emailjs from 'emailjs-com';
 import { useTranslation } from 'react-i18next';
-
-const OuterContainer = styled(Box)`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 90vh;
-`;
-
-const FormContainer = styled(Box)`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 3rem;
-	box-sizing: border-box;
-	height: 600px;
-	width: 450px;
-	border-radius: 8px;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-`;
-
-const Form = styled.form`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	align-items: center;
-`;
-
-const StyledTextField = styled(TextField)`
-	margin-bottom: 1rem !important;
-	width: 100%;
-`;
-
-const StyledButton = styled(Button)`
-	color: #000 !important;
-	margin-top: 1rem !important;
-`;
-
-const Title = styled(Typography)`
-	margin-bottom: 2rem !important;
-	text-align: center;
-`;
-
-const LoaderContainer = styled(Box)`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 90vh;
-`;
-
-const spin = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-`;
-
-const Spinner = styled.div`
-	border: 8px solid #f3f3f3;
-	border-top: 8px solid #4caf50;
-	border-radius: 50%;
-	width: 60px;
-	height: 60px;
-	animation: ${spin} 2s linear infinite;
-`;
-
-const PinterestStyledImage = styled.img`
-	width: 100%;
-	height: 90vh;
-`;
+import {
+	ContactOuterContainer,
+	ContactFormContainer,
+	ContactForm,
+	ContactTextField,
+	ContactButton,
+	ContactTitle,
+	ContactLoaderContainer,
+	ContactSpinner,
+	ContactStyledImage,
+} from './ContactView.styles';
 
 interface IFormInput {
 	name: string;
@@ -90,6 +30,10 @@ const ContactView: React.FC = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<IFormInput>();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	const onSubmit: SubmitHandler<IFormInput> = (data) => {
 		if (
@@ -130,46 +74,46 @@ const ContactView: React.FC = () => {
 
 	if (loading) {
 		return (
-			<LoaderContainer>
-				<Spinner />
-			</LoaderContainer>
+			<ContactLoaderContainer>
+				<ContactSpinner />
+			</ContactLoaderContainer>
 		);
 	}
 
 	if (sent) {
 		return (
-			<OuterContainer>
-				<FormContainer>
-					<PinterestStyledImage src='./assets/sent.svg' alt='Thank you' />
-				</FormContainer>
-			</OuterContainer>
+			<ContactOuterContainer>
+				<ContactFormContainer>
+					<ContactStyledImage src='./assets/sent.svg' alt='Thank you' />
+				</ContactFormContainer>
+			</ContactOuterContainer>
 		);
 	}
 
 	return (
-		<OuterContainer>
-			<FormContainer>
-				<Title variant='h6'>{t('contact.title')}</Title>
-				<Form onSubmit={handleSubmit(onSubmit)}>
-					<StyledTextField
+		<ContactOuterContainer>
+			<ContactFormContainer>
+				<ContactTitle variant='h6'>{t('contact.title')}</ContactTitle>
+				<ContactForm onSubmit={handleSubmit(onSubmit)}>
+					<ContactTextField
 						label={t('contact.name')}
 						{...register('name', { required: true })}
 						error={!!errors.name}
 						helperText={errors.name ? t('contact.nameError') : ''}
 					/>
-					<StyledTextField
+					<ContactTextField
 						label={t('contact.email')}
 						{...register('email', { required: true, pattern: /^\S+@\S+$/i })}
 						error={!!errors.email}
 						helperText={errors.email ? t('contact.emailError') : ''}
 					/>
-					<StyledTextField
+					<ContactTextField
 						label={t('contact.subject')}
 						{...register('subject', { required: true })}
 						error={!!errors.subject}
 						helperText={errors.subject ? t('contact.subjectError') : ''}
 					/>
-					<StyledTextField
+					<ContactTextField
 						label={t('contact.message')}
 						multiline
 						rows={4}
@@ -177,12 +121,12 @@ const ContactView: React.FC = () => {
 						error={!!errors.message}
 						helperText={errors.message ? t('contact.messageError') : ''}
 					/>
-					<StyledButton color='primary' type='submit'>
+					<ContactButton color='primary' type='submit'>
 						{t('contact.button')}
-					</StyledButton>
-				</Form>
-			</FormContainer>
-		</OuterContainer>
+					</ContactButton>
+				</ContactForm>
+			</ContactFormContainer>
+		</ContactOuterContainer>
 	);
 };
 

@@ -1,40 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BlogLayout from '../components/blog/BlogLayout';
 import BlogCard from '../components/blog/BlogCard';
 import Pagination from '@mui/material/Pagination';
-import { Box } from '@mui/material';
-import { styled } from '@mui/system';
-import media from '../components/common/mediaQueries';
 import { useNavigate } from 'react-router-dom';
-import { posts, Post } from '../data/posts'; // 데이터 가져오기
-
-const Container = styled(Box)({
-	height: '100vh',
-	display: 'flex',
-	flexDirection: 'column',
-	alignItems: 'center',
-	backgroundSize: 'cover',
-	justifyContent: 'space-between',
-	...media.desktopLarge({
-		height: '100vh',
-	}),
-	...media.laptopLarge({
-		height: '100%',
-		padding: '0px 50px 20px 50px',
-	}),
-});
-
-const ContentContainer = styled(Box)({
-	flexGrow: 1,
-	width: '100%',
-	display: 'flex',
-	flexDirection: 'column',
-	alignItems: 'center',
-	justifyContent: 'center',
-	...media.laptopSmall({
-		height: '100%',
-	}),
-});
+import { posts, Post } from '../data/posts';
+import { BlogContainer, BlogContentContainer } from './BlogView.styles';
 
 const BlogView: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -53,9 +23,13 @@ const BlogView: React.FC = () => {
 		navigate(`/blog/${post.id}`, { state: post });
 	};
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
-		<Container>
-			<ContentContainer>
+		<BlogContainer>
+			<BlogContentContainer>
 				<BlogLayout>
 					{currentPosts.map((post) => (
 						<BlogCard
@@ -67,14 +41,14 @@ const BlogView: React.FC = () => {
 						/>
 					))}
 				</BlogLayout>
-			</ContentContainer>
+			</BlogContentContainer>
 			<Pagination
 				count={Math.ceil(posts.length / postsPerPage)}
 				page={currentPage}
 				onChange={handlePageChange}
 				sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}
 			/>
-		</Container>
+		</BlogContainer>
 	);
 };
 

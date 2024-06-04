@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 import media from '../common/mediaQueries';
 
 export const ContactContainer = styled(Box)(({ theme }) => ({
-	height: '80vh',
+	height: '100vh',
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
@@ -24,7 +24,7 @@ export const ContactContainer = styled(Box)(({ theme }) => ({
 	},
 }));
 
-export const Title = styled(Typography)(({ theme }) => ({
+export const ContactTitle = styled(Typography)(({ theme }) => ({
 	marginBottom: '2rem',
 	textAlign: 'center',
 	fontWeight: 500,
@@ -33,7 +33,7 @@ export const Title = styled(Typography)(({ theme }) => ({
 	}),
 }));
 
-export const MapSection = styled(Box)(({ theme }) => ({
+export const ContactMapSection = styled(Box)(({ theme }) => ({
 	flex: 1,
 	height: '400px',
 	display: 'flex',
@@ -45,7 +45,7 @@ export const MapSection = styled(Box)(({ theme }) => ({
 	}),
 }));
 
-export const SectionImage = styled('img')({
+export const ContactSectionImage = styled('img')({
 	height: '12rem',
 	objectFit: 'cover',
 	display: 'block',

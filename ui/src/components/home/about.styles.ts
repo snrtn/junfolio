@@ -5,7 +5,7 @@ export const AboutContainer = styled('section')({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-	height: '60vh',
+	height: '100vh',
 	padding: '50px 0',
 	backgroundColor: '#f9f9f9',
 	...media.tabletLarge({
@@ -14,7 +14,7 @@ export const AboutContainer = styled('section')({
 	}),
 });
 
-export const ContentContainer = styled('div')({
+export const AboutContentContainer = styled('div')({
 	display: 'flex',
 	justifyContent: 'space-between',
 	alignItems: 'center',
@@ -26,7 +26,7 @@ export const ContentContainer = styled('div')({
 	}),
 });
 
-export const LeftContainer = styled('div')({
+export const AboutLeftContainer = styled('div')({
 	flex: '1',
 	paddingRight: '30px',
 	...media.tabletLarge({
@@ -35,7 +35,7 @@ export const LeftContainer = styled('div')({
 	}),
 });
 
-export const RightContainer = styled('div')({
+export const AboutRightContainer = styled('div')({
 	flex: '1',
 	textAlign: 'center',
 	...media.tabletLarge({
@@ -44,19 +44,19 @@ export const RightContainer = styled('div')({
 	}),
 });
 
-export const Title = styled('h2')({
-	fontSize: '1,4rem',
+export const AboutTitle = styled('h2')({
+	fontSize: '1.4rem',
 	marginBottom: '20px',
 	color: '#1D1D1F',
 });
 
-export const Description = styled('p')({
+export const AboutDescription = styled('p')({
 	fontSize: '1rem',
 	lineHeight: '1.6',
 	color: '#1D1D1F',
 });
 
-export const ProfileImage = styled('img')({
+export const AboutProfileImage = styled('img')({
 	maxWidth: '100%',
 	height: 'auto',
 	borderRadius: '10px',
