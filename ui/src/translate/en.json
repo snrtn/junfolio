@@ -1,0 +1,107 @@
+{
+	"navigation": {
+		"home": "Home",
+		"about": "About",
+		"kim": "Development Technology",
+		"experience": "Experience",
+		"blog": "Blog",
+		"project": "Project",
+		"contact": "Contact"
+	},
+	"about": {
+		"job": {
+			"title1": "Java",
+			"title2": "Salesforce",
+			"title3": "React",
+			"title4": "OpenClassrooms",
+			"content1": "JPA, Spring, Spring Boot, HTTP",
+			"content2": "Lightning Web Components (LWC), Apex (Strongly Typed, Java)",
+			"content3": "React, TypeScript, Redux, Styled-Components, MUI",
+			"content4": "Software Developer (Level 6 Bachelor's +3/4) degree obtained",
+			"content5": "Web Developer (Level 5 Associate's +2) degree obtained",
+			"detail1": "I am studying Java's polymorphism and classes, striving to write efficient object-oriented programming.",
+			"detail2": "I am deepening my understanding of object-oriented languages using Spring and JPA, and I am currently seeking an apprenticeship contract.",
+			"detail3": "I developed a managed digital resume project within the company, designed various forms (promotion, participants, questionnaire, etc.), and created a demo page.",
+			"detail4": "I performed full-stack development using LWC and APEX, and designed desktop and mobile web interfaces using Figma.",
+			"detail5": "I participated in a shoot management software project, handling A-Z mobile design and UI development. I also created a demo page.",
+			"detail6": "I performed front-end development using React and TypeScript, and designed desktop, tablet, and mobile web interfaces using Figma.",
+			"detail7": "I learned to add animations using JavaScript and interface with APIs to handle complex data. I developed dynamic web applications with the React framework and managed state with Redux. Additionally, I acquired backend development skills using Node.js, Express, and MongoDB, as well as SEO optimization and web accessibility improvement techniques to enhance website performance."
+		},
+		"kim": {
+			"title1": "Backend Development Experience",
+			"title2": "Frontend Development Experience",
+			"title3": "Agile Methodology and Team Collaboration",
+			"title4": "Continuous Growth and Development",
+			"description1": "Currently, I am learning the basics of Java and studying backend development using the Java framework Spring. After mastering the basic syntax of Java and the concepts of object-oriented programming, I am learning to understand the fundamental principles and structure of backend development using powerful frameworks like Spring Boot.",
+			"description2": "Through Spring, I am learning various backend development techniques such as database design, RESTful API implementation, and authentication and authorization management. In this process, I am conducting practical exercises to understand how to handle complex business logic and build stable and scalable servers. In particular, I am learning about the design and implementation of authentication and authorization management systems using Spring Security, studying how to use OAuth2.0 and JWT (Json Web Token) for security solutions. Additionally, I am gaining knowledge on database modeling and query optimization with JPA (Java Persistence API) and methods for achieving high-performance database integration.",
+			"description3": "In frontend development, I mainly used React and TypeScript. Utilizing React's component-based architecture, I designed reusable UI components and improved code readability and maintainability through TypeScript. These technologies allowed me to create an efficient working environment even for large-scale projects.",
+			"description4": "For state management, I used Redux.js. Redux centralizes the application's state management, clarifying the data flow between components and making state management predictable. This enabled me to maintain consistent state, reduce bugs, and facilitate debugging, even in projects requiring complex state management.",
+			"description5": "Additionally, I used Styled-components and Material-UI to build a consistent design system. By defining styles within JavaScript files using Styled-components, I modularized and increased the reusability of component styling. Material-UI, a component library following Google's Material Design guidelines, greatly enhanced the user experience. With these tools, I was able to implement an intuitive and highly responsive user interface.",
+			"description6": "Project management and team collaboration skills are also strengths of mine. Through my experience in project management based on the agile methodology, I was able to communicate and collaborate effectively with team members to successfully lead projects. By adopting the Scrum technique, I established sprint plans, shared team progress in daily stand-up meetings, and continuously improved projects by integrating feedback.",
+			"description7": "In particular, I used collaboration tools such as DevOps and Slack to manage project schedules and document processes meticulously. This allowed all team members to clearly understand the project goals and progress, assign roles and responsibilities clearly, and maximize work efficiency.",
+			"description8": "I will continue to strive to be a developer who constantly grows and develops. I will study the latest technological trends and new tools and apply them in practice to propose better solutions. Additionally, I will contribute to open source projects and engage with the developer community to gain diverse perspectives and experiences, thereby enhancing my technical capabilities.",
+			"description9": "With this experience and passion, I will endeavor to fulfill my role as a developer by offering innovative and valuable solutions and responding flexibly to any challenges. In my future journey, I will continue to grow and contribute to the success of the team and organization."
+		}
+	},
+	"home": {
+		"techniqueIcon": {
+			"title": "Technology Stack"
+		},
+		"services": {
+			"title1": "Project Experience",
+			"description1": "I have full-stack development experience using Java frameworks and React on various projects. I use Redux for state management and Styled-components as well as MUI for styling. I am proficient in handling SQL and NoSQL databases, and I also work on designs using Figma.",
+			"title2": "Devices",
+			"description2": "For real-time responsive design, I use and manage each actual device connected locally through the network. This is a method aimed at faster development.",
+			"title3": "Effort",
+			"description3": "I participate in developer communities to refer to various logics, and I develop and test new logics through research, thereby improving my development skills."
+		},
+		"about": {
+			"title": "About",
+			"description": "I have experience in backend development using Java frameworks and in frontend development with React and TypeScript. I use Redux.js for state management and Styled-components as well as Material-UI for styling. These diverse experiences have allowed me to acquire full-stack development skills and improve my project management and team collaboration abilities according to the Agile methodology. I strive to continue growing and progressing as a developer."
+		},
+		"jumbotron": {
+			"title": "Hello, My name is",
+			"description": "Hanjun Kim,",
+			"description1": "I'am a developer Full Stack"
+		},
+		"blog": {
+			"title": "Blog",
+			"description": "Check out the latest blog posts",
+			"button": "More"
+		},
+		"contact": {
+			"title": "Contact Me",
+			"cardTitle1": "Email",
+			"cardTitle2": "France",
+			"cardTitle3": "Volunteer",
+			"description1": "Write an email",
+			"description2": "Hauts-de-Seine, Île-de-France",
+			"description3": "Free site creation"
+		}
+	},
+	"contact": {
+		"title": "Contact Me",
+		"name": "Name",
+		"nameError": "Name is required",
+		"email": "Your Email",
+		"emailError": "Valid email is required",
+		"subject": "Subject",
+		"subjectError": "Subject is required",
+		"message": "Message",
+		"messageError": "Message is required",
+		"button": "Send"
+	},
+	"auth": {
+		"title": "Login",
+		"emailLabel": "Email",
+		"emailRequired": "Please enter your email",
+		"emailInvalid": "Please enter a valid email address",
+		"passwordLabel": "Password",
+		"passwordRequired": "Please enter your password",
+		"passwordInvalid": "Password must be at least 8 characters long and include at least one letter and one number",
+		"submitButton": "Connexion"
+	},
+	"notFound": {
+		"title": "404 - Page Not Found"
+	}
+}
