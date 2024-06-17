@@ -4,9 +4,9 @@ import { BlogCardContainer, BlogCardTags, BlogCardTag } from './blogCard.styles'
 
 interface BlogCardProps {
 	title: string;
-	imgSrc: string;
+	imgSrc: string; // Image source URL or path
 	tags: string[];
-	onClick?: () => void; // onClick 추가
+	onClick?: () => void; // onClick added
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ title, imgSrc, tags, onClick }) => {

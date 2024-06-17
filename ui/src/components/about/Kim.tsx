@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { KimScrollContainer, KimSection, KimSectionContent, KimSectionSVG } from './kim.styles';
 
 const sectionsData = [
-	{
-		titleKey: 'about.kim.title1',
-		descriptionKey: 'about.kim.description1',
-		backgroundColor: '#e15f41',
-		svgSrc: './assets/about/back.svg',
-	},
+	// {
+	// 	titleKey: 'about.kim.title1',
+	// 	descriptionKey: 'about.kim.description1',
+	// 	backgroundColor: '#e15f41',
+	// 	svgSrc: './assets/about/back.svg',
+	// },
 	{
 		titleKey: 'about.kim.title2',
 		descriptionKey: 'about.kim.description2',

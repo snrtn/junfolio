@@ -5,13 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { JobSection, JobController, JobIconButton } from './job.styles';
 
 const sectionsData = [
-	{
-		titleKey: 'about.job.title1',
-		descriptionKey: 'about.job.content1',
-		descriptionKey1: 'about.job.detail1',
-		descriptionKey2: 'about.job.detail2',
-		background: '#036166',
-	},
+	// {
+	// 	titleKey: 'about.job.title1',
+	// 	descriptionKey: 'about.job.content1',
+	// 	descriptionKey1: 'about.job.detail1',
+	// 	descriptionKey2: 'about.job.detail2',
+	// 	background: '#036166',
+	// },
 	{
 		titleKey: 'about.job.title2',
 		descriptionKey: 'about.job.content2',
