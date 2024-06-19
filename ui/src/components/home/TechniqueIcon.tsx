@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {
-	SiJunit5,
 	SiTypescript,
-	SiJest,
 	SiReact,
 	SiRedux,
 	SiReactquery,
-	SiMysql,
 	SiMongodb,
-	SiSass,
 	SiStyledcomponents,
 	SiMui,
 	SiVisualstudiocode,
-	SiIntellijidea,
 	SiGit,
 	SiNotion,
 	SiFigma,
@@ -20,8 +15,9 @@ import {
 	SiJavascript,
 	SiNodedotjs,
 	SiExpress,
+	SiPostman,
+	SiSlack,
 } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa6';
 import { IconType } from 'react-icons';
 import { useTranslation } from 'react-i18next';
 import {
@@ -54,25 +50,21 @@ interface IconData {
 }
 
 const iconData: IconData[] = [
-	{ icon: FaJava, bgColor: '#f89820' },
-	{ icon: SiJunit5, bgColor: '#25a162' },
 	{ icon: SiJavascript, bgColor: '#f7df1e' },
-	{ icon: SiJest, bgColor: '#c21325' },
 	{ icon: SiTypescript, bgColor: '#007acc' },
 	{ icon: SiReact, bgColor: '#61dafb' },
 	{ icon: SiRedux, bgColor: '#764abc' },
 	{ icon: SiReactquery, bgColor: '#ff4154' },
-	{ icon: SiSass, bgColor: '#cc6699' },
 	{ icon: SiStyledcomponents, bgColor: '#db7093' },
 	{ icon: SiMui, bgColor: '#0081cb' },
 	{ icon: SiNodedotjs, bgColor: '#339933' },
 	{ icon: SiExpress, bgColor: '#000000' },
-	{ icon: SiMysql, bgColor: '#00758f' },
 	{ icon: SiMongodb, bgColor: '#47a248' },
-	{ icon: SiIntellijidea, bgColor: '#000000' },
 	{ icon: SiVisualstudiocode, bgColor: '#0078d7' },
 	{ icon: SiGit, bgColor: '#f05032' },
+	{ icon: SiPostman, bgColor: '#f89820' },
 	{ icon: SiAzuredevops, bgColor: '#0078d4' },
+	{ icon: SiSlack, bgColor: '#f89820' },
 	{ icon: SiNotion, bgColor: '#000000' },
 	{ icon: SiFigma, bgColor: '#f24e1e' },
 ];
