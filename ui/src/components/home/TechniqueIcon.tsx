@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-	SiSpring,
-	SiSpringboot,
 	SiJunit5,
 	SiTypescript,
 	SiJest,
@@ -58,8 +56,6 @@ interface IconData {
 const iconData: IconData[] = [
 	{ icon: FaJava, bgColor: '#f89820' },
 	{ icon: SiJunit5, bgColor: '#25a162' },
-	// { icon: SiSpring, bgColor: '#6db33f' },
-	// { icon: SiSpringboot, bgColor: '#6db33f' },
 	{ icon: SiJavascript, bgColor: '#f7df1e' },
 	{ icon: SiJest, bgColor: '#c21325' },
 	{ icon: SiTypescript, bgColor: '#007acc' },
