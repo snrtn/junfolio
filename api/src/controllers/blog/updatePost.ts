@@ -1,7 +1,8 @@
+import { deleteFromDropbox } from '../../utils/deleteFromDropbox';
 import { AuthenticatedRequest } from '../../interfaces/authenticatedRequest';
 import { Response } from 'express';
 import BlogPost from '../../models/blogPost';
-import { uploadToDropbox, deleteFromDropbox } from '../../utils/dropbox';
+import { uploadToDropbox } from '../../utils/uploadToDropbox';
 import upload from '../../middlewares/multer';
 
 export const updatePost = async (req: AuthenticatedRequest, res: Response) => {
@@ -14,10 +15,9 @@ export const updatePost = async (req: AuthenticatedRequest, res: Response) => {
 		const { id } = req.params;
 		const { title, content, tags, author } = req.body;
 
-		console.log('Request Body:', req.body);
+		console.log('Request Body:', req.body); // 디버깅 로그 추가
 
 		if (!title || !content || !tags || !author) {
-			console.error('Validation error: All fields are required.');
 			return res.status(400).json({ message: 'All fields are required.' });
 		}
 

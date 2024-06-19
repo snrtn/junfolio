@@ -12,6 +12,7 @@ export const uploadToDropbox = async (filename: string, fileBuffer: Buffer): Pro
 		const response = await dbx.filesUpload({ path: `/${filename}`, contents: fileBuffer });
 		console.log('File uploaded to Dropbox:', response.result.path_lower);
 
+		// URL 생성 및 로그 추가
 		const sharedLink = await dbx.sharingCreateSharedLinkWithSettings({ path: response.result.path_lower! });
 		console.log('Shared link created:', sharedLink.result.url);
 
@@ -23,22 +24,6 @@ export const uploadToDropbox = async (filename: string, fileBuffer: Buffer): Pro
 		} else {
 			console.error('Unknown error uploading to Dropbox:', error);
 			throw new Error('Failed to upload image to Dropbox');
-		}
-	}
-};
-
-export const deleteFromDropbox = async (path: string): Promise<void> => {
-	try {
-		console.log(`Deleting file from Dropbox: ${path}`);
-		await dbx.filesDeleteV2({ path });
-		console.log(`File deleted from Dropbox: ${path}`);
-	} catch (error) {
-		if (error instanceof Error) {
-			console.error('Error deleting from Dropbox:', error.message);
-			throw new Error('Failed to delete image from Dropbox');
-		} else {
-			console.error('Unknown error deleting from Dropbox:', error);
-			throw new Error('Failed to delete image from Dropbox');
 		}
 	}
 };

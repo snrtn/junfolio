@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import BlogPost from '../../models/blogPost';
 import { IBlogPost } from '../../interfaces/iBlogPost';
 import upload from '../../middlewares/multer';
-import { uploadToDropbox } from '../../utils/dropbox';
+import { uploadToDropbox } from '../../utils/uploadToDropbox';
 
 export const createPost = async (req: Request, res: Response) => {
 	upload.single('image')(req, res, async (err) => {
