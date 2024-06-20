@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-// components
 import Layout from './views/LayoutView';
 import NotFound from './views/NotFoundView';
 import Home from './views/HomeView';
@@ -11,8 +9,17 @@ import ContactView from './views/ContactView';
 import AuthView from './views/AuthView';
 import ExperienceView from './views/ExperienceView';
 import BlogPageView from './views/BlogPageView';
+import DashboardView from './views/DashboardView';
+import PrivateRoute from './components/navigation/PrivateRoute';
+import { useAuthStore } from './store/auth/useAuthStore';
 
 const App: React.FC = () => {
+	const initializeAuth = useAuthStore((state) => state.initializeAuth);
+
+	useEffect(() => {
+		initializeAuth();
+	}, [initializeAuth]);
+
 	return (
 		<Router>
 			<Routes>
@@ -24,6 +31,14 @@ const App: React.FC = () => {
 					<Route path='/blog' element={<BlogView />} />
 					<Route path='/blog/:id' element={<BlogPageView />} />
 					<Route path='/contact' element={<ContactView />} />
+					<Route
+						path='/dashboard'
+						element={
+							<PrivateRoute>
+								<DashboardView />
+							</PrivateRoute>
+						}
+					/>
 					<Route path='*' element={<NotFound />} />
 				</Route>
 			</Routes>

@@ -4,7 +4,7 @@ import BlogCard from '../components/blog/BlogCard';
 import Pagination from '@mui/material/Pagination';
 import { useNavigate } from 'react-router-dom';
 import { posts, Post } from '../data/posts';
-import { BlogContainer, BlogContentContainer } from './BlogView.styles';
+import { BlogContainer, BlogContentContainer } from './blogView.styles';
 
 const BlogView: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState(1);

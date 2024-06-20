@@ -1,46 +1,57 @@
-import create from 'zustand';
-import signup from './api/signup';
-import login from './api/login';
-import logout from './api/logout';
-
-interface User {
-	email: string;
-	password: string;
-}
+import { create } from 'zustand';
+import apiClient from '../apiClient';
 
 interface AuthState {
-	user: User | null;
+	token: string | null;
+	user: any;
 	error: string | null;
-	signup: (user: User) => Promise<void>;
-	login: (user: User) => Promise<void>;
-	logout: () => Promise<void>;
+	status: 'idle' | 'loading' | 'authenticated' | 'unauthenticated';
+	setToken: (token: string) => void;
+	clearToken: () => void;
+	initializeAuth: () => void;
+	setUser: (user: any) => void;
+	setStatus: (status: 'idle' | 'loading' | 'authenticated' | 'unauthenticated') => void;
+	setError: (error: string | null) => void;
+	logout: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
+	token: localStorage.getItem('token'),
 	user: null,
 	error: null,
-	signup: async (user: User) => {
-		try {
-			const response = await signup(user);
-			set({ user: response, error: null });
-		} catch (error: any) {
-			set({ error: error.message });
+	status: 'idle',
+	setToken: (token: string) => {
+		localStorage.setItem('token', token);
+		set({ token });
+	},
+	clearToken: () => {
+		localStorage.removeItem('token');
+		set({ token: null, user: null, status: 'unauthenticated' });
+	},
+	initializeAuth: async () => {
+		set({ status: 'loading' });
+		const token = localStorage.getItem('token');
+		if (token) {
+			try {
+				const response = await apiClient.get('/auth/validate-token', {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+					withCredentials: true,
+				});
+				set({ user: response.data.user, status: 'authenticated' });
+			} catch (error) {
+				localStorage.removeItem('token');
+				set({ token: null, user: null, status: 'unauthenticated' });
+			}
+		} else {
+			set({ status: 'unauthenticated' });
 		}
 	},
-	login: async (user: User) => {
-		try {
-			const response = await login(user);
-			set({ user: response, error: null });
-		} catch (error: any) {
-			set({ error: error.message });
-		}
-	},
-	logout: async () => {
-		try {
-			await logout();
-			set({ user: null, error: null });
-		} catch (error: any) {
-			set({ error: error.message });
-		}
+	setUser: (user: any) => set({ user }),
+	setStatus: (status: 'idle' | 'loading' | 'authenticated' | 'unauthenticated') => set({ status }),
+	setError: (error: string | null) => set({ error }),
+	logout: () => {
+		set({ token: null, user: null, status: 'unauthenticated' });
 	},
 }));

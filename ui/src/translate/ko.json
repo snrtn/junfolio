@@ -6,7 +6,8 @@
 		"experience": "경험",
 		"blog": "블로그",
 		"project": "프로젝트",
-		"contact": "연락처"
+		"contact": "연락처",
+		"dashboard": "대시보드"
 	},
 	"about": {
 		"job": {
@@ -85,13 +86,13 @@
 	},
 	"auth": {
 		"title": "로그인",
-		"emailLabel": "이메일",
-		"emailRequired": "이메일을 입력해 주세요",
-		"emailInvalid": "유효한 이메일 주소를 입력해 주세요",
+		"usernameLabel": "사용자 이름",
+		"usernameRequired": "사용자 이름은 필수 항목입니다",
+		"usernameInvalid": "사용자 이름은 영어 글자만 포함해야 합니다",
 		"passwordLabel": "비밀번호",
-		"passwordRequired": "비밀번호를 입력해 주세요",
-		"passwordInvalid": "비밀번호는 최소 8자 이상이어야 하며 최소 하나의 문자와 숫자를 포함해야 합니다",
-		"submitButton": "연결"
+		"passwordRequired": "비밀번호는 필수 항목입니다",
+		"passwordInvalid": "비밀번호는 최소 8자 이상이어야 하며, 대문자 하나, 숫자 하나, 특수 문자 하나 이상을 포함해야 합니다",
+		"submitButton": "로그인"
 	},
 	"notFound": {
 		"title": "404 - 페이지를 찾을 수 없습니다"

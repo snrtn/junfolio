@@ -8,7 +8,7 @@ import {
 	BlogPageBackButtonContainer,
 	BlogPageContentContainer,
 	BlogPageImageContainer,
-} from './BlogPageView.styles';
+} from './blogPageView.styles';
 
 const BlogPageView: React.FC = () => {
 	const navigate = useNavigate();

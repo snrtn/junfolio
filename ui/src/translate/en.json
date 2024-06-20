@@ -6,7 +6,8 @@
 		"experience": "Experience",
 		"blog": "Blog",
 		"project": "Projects",
-		"contact": "Contact"
+		"contact": "Contact",
+		"dashboard": "Dashboard"
 	},
 	"about": {
 		"job": {
@@ -85,13 +86,13 @@
 	},
 	"auth": {
 		"title": "Login",
-		"emailLabel": "Email",
-		"emailRequired": "Please enter your email",
-		"emailInvalid": "Please enter a valid email address",
+		"usernameLabel": "Username",
+		"usernameRequired": "Username is required",
+		"usernameInvalid": "Username must contain only English letters",
 		"passwordLabel": "Password",
-		"passwordRequired": "Please enter your password",
-		"passwordInvalid": "Password must be at least 8 characters long and include at least one letter and one number",
-		"submitButton": "Connect"
+		"passwordRequired": "Password is required",
+		"passwordInvalid": "Password must be at least 8 characters long and contain at least one uppercase letter, one number, and one special character",
+		"submitButton": "Login"
 	},
 	"notFound": {
 		"title": "404 - Page Not Found"

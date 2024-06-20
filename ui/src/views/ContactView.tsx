@@ -12,7 +12,7 @@ import {
 	ContactLoaderContainer,
 	ContactSpinner,
 	ContactStyledImage,
-} from './ContactView.styles';
+} from './contactView.styles';
 
 interface IFormInput {
 	name: string;

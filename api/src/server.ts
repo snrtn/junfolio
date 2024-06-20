@@ -2,26 +2,36 @@ import express from 'express';
 import connectDB from './config/db';
 import authRoutes from './routes/authRoutes';
 import blogRoutes from './routes/blogRoutes';
+import dashboardRoutes from './routes/dashboardRoutes';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
 import errorHandler from './middlewares/errorHandler';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const app = express();
 
+const corsOptions = {
+	origin: 'http://localhost:3001',
+	credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
-app.use(cors());
+app.use(cookieParser());
 
 connectDB();
 
 app.use('/api/auth', authRoutes);
 app.use('/api/blog', blogRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 app.get('/', (req, res) => {
 	res.send('API is running...');

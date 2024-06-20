@@ -6,7 +6,8 @@
 		"experience": "Expérience",
 		"blog": "Blog",
 		"project": "Projets",
-		"contact": "Contact"
+		"contact": "Contact",
+		"dashboard": "Dashboard"
 	},
 	"about": {
 		"job": {
@@ -85,13 +86,13 @@
 	},
 	"auth": {
 		"title": "Connexion",
-		"emailLabel": "Email",
-		"emailRequired": "Veuillez entrer votre email",
-		"emailInvalid": "Veuillez entrer une adresse email valide",
+		"usernameLabel": "Nom d'utilisateur",
+		"usernameRequired": "Le nom d'utilisateur est requis",
+		"usernameInvalid": "Le nom d'utilisateur ne doit contenir que des lettres anglaises",
 		"passwordLabel": "Mot de passe",
-		"passwordRequired": "Veuillez entrer votre mot de passe",
-		"passwordInvalid": "Le mot de passe doit comporter au moins 8 caractères et inclure au moins une lettre et un chiffre",
-		"submitButton": "Se connecter"
+		"passwordRequired": "Le mot de passe est requis",
+		"passwordInvalid": "Le mot de passe doit comporter au moins 8 caractères et contenir au moins une lettre majuscule, un chiffre et un caractère spécial",
+		"submitButton": "Connexion"
 	},
 	"notFound": {
 		"title": "404 - Page non trouvée"

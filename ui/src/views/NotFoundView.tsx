@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { NotFoundContainer, NotFoundImage } from './NotFoundView.styles';
+import { NotFoundContainer, NotFoundImage } from './notFoundView.styles';
 
 const NotFoundView: React.FC = () => {
 	const { t } = useTranslation();

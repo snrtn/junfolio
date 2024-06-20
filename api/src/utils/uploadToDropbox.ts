@@ -12,7 +12,6 @@ export const uploadToDropbox = async (filename: string, fileBuffer: Buffer): Pro
 		const response = await dbx.filesUpload({ path: `/${filename}`, contents: fileBuffer });
 		console.log('File uploaded to Dropbox:', response.result.path_lower);
 
-		// URL 생성 및 로그 추가
 		const sharedLink = await dbx.sharingCreateSharedLinkWithSettings({ path: response.result.path_lower! });
 		console.log('Shared link created:', sharedLink.result.url);
 

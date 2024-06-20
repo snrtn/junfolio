@@ -8,7 +8,7 @@ const dbx = new Dropbox({ accessToken: process.env.DROPBOX_ACCESS_TOKEN, fetch: 
 
 export const deleteFromDropbox = async (path: string): Promise<void> => {
 	try {
-		const cleanedPath = decodeURIComponent(path.split('?')[0]); // 쿼리 매개 변수 제거 및 경로 디코딩
+		const cleanedPath = decodeURIComponent(path.split('?')[0]);
 		console.log('Deleting file from Dropbox:', cleanedPath);
 		await dbx.filesDeleteV2({ path: cleanedPath });
 		console.log('File deleted from Dropbox:', cleanedPath);
