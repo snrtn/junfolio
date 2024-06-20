@@ -11,7 +11,7 @@ import ExperienceView from './views/ExperienceView';
 import BlogPageView from './views/BlogPageView';
 import DashboardView from './views/DashboardView';
 import PrivateRoute from './components/navigation/PrivateRoute';
-import { useAuthStore } from './store/auth/useAuthStore';
+import { useAuthStore } from './store/auth/zustand/useAuthStore';
 
 const App: React.FC = () => {
 	const initializeAuth = useAuthStore((state) => state.initializeAuth);

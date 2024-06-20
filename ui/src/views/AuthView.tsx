@@ -3,8 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { AuthFormContainer, AuthWrapper, AuthTextField, AuthButton, AuthTitle } from './authView.styles';
-import { useLogin } from '../store/auth/useAuthQuery';
-import { useAuthStore } from '../store/auth/useAuthStore';
+import { useLogin, useAuthStore } from '../store/storeAuth';
 import { User } from '../store/auth/types';
 
 interface IFormInput {
@@ -15,7 +14,7 @@ interface IFormInput {
 const AuthView: React.FC = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const setToken = useAuthStore((state) => state.setToken); // Add this line
+	const setToken = useAuthStore((state) => state.setToken);
 	const {
 		register,
 		handleSubmit,
@@ -27,8 +26,9 @@ const AuthView: React.FC = () => {
 		error,
 	} = useLogin({
 		onSuccess: (data) => {
-			setToken(data.accessToken); // Save the token
-			navigate('/dashboard'); // Redirect to the dashboard after successful login
+			console.log('Login response data:', data); // 로그 추가
+			setToken(data.token);
+			navigate('/dashboard');
 		},
 	});
 	const authError = useAuthStore((state) => state.error);

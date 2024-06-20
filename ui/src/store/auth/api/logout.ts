@@ -1,9 +1,14 @@
 import apiClient from '../../apiClient';
-import { AuthResponse } from '../types';
 
-const logout = async (): Promise<AuthResponse> => {
-	const response = await apiClient.post('/api/auth/logout');
-	return response.data;
+export const logout = async (token: string): Promise<void> => {
+	await apiClient.post(
+		'/auth/logout',
+		{},
+		{
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+			withCredentials: true,
+		},
+	);
 };
-
-export default logout;
