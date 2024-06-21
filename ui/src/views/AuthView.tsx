@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch, authThunks } from '../store/index';
 import { AuthFormContainer, AuthWrapper, AuthTextField, AuthButton, AuthTitle } from './authView.styles';
-import { useLogin, useAuthStore } from '../store/storeAuth';
-import { User } from '../store/auth/types';
 
 interface IFormInput {
 	username: string;
@@ -14,33 +14,28 @@ interface IFormInput {
 const AuthView: React.FC = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const setToken = useAuthStore((state) => state.setToken);
+	const dispatch = useDispatch<AppDispatch>(); // Here we specify the AppDispatch type
+	const { status, error, user } = useSelector((state: RootState) => state.auth);
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<IFormInput>();
-	const {
-		mutate: login,
-		status: mutationStatus,
-		error,
-	} = useLogin({
-		onSuccess: (data) => {
-			console.log('Login response data:', data); // 로그 추가
-			setToken(data.token);
-			navigate('/dashboard');
-		},
-	});
-	const authError = useAuthStore((state) => state.error);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 
 	const onSubmit: SubmitHandler<IFormInput> = (data) => {
-		console.log('Submitting login form with data:', data);
-		login(data as User);
+		dispatch(authThunks.login(data));
 	};
+
+	useEffect(() => {
+		if (user) {
+			navigate('/dashboard');
+		}
+	}, [user, navigate]);
 
 	return (
 		<AuthFormContainer maxWidth='xs'>
@@ -75,10 +70,10 @@ const AuthView: React.FC = () => {
 						error={!!errors.password}
 						helperText={errors.password ? errors.password.message : ''}
 					/>
-					<AuthButton color='primary' type='submit' disabled={mutationStatus === 'pending'}>
-						{t('auth.submitButton') as string}
+					<AuthButton color='primary' type='submit' disabled={status === 'loading'}>
+						{status === 'loading' ? 'Logging in...' : (t('auth.submitButton') as string)}
 					</AuthButton>
-					{(error || authError) && <p style={{ color: 'red' }}>{error?.message || authError}</p>}
+					{error && <p style={{ color: 'red' }}>{error}</p>}
 				</form>
 			</AuthWrapper>
 		</AuthFormContainer>

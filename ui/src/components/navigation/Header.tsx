@@ -5,7 +5,8 @@ import { MenuItem, Select, SelectChangeEvent, IconButton, List, Collapse } from 
 import { PiSignInBold } from 'react-icons/pi';
 import { RiMenuFill } from 'react-icons/ri';
 import { VscDebugDisconnect } from 'react-icons/vsc';
-import { useAuthStore, useLogout } from '../../store/storeAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch, authThunks } from '../../store/index';
 import {
 	HeaderContainer,
 	HeaderToolbar,
@@ -30,28 +31,14 @@ const Header: React.FC = () => {
 	const [language, setLanguage] = useState('fr');
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	const [activeMenu, setActiveMenu] = useState<string | null>(null);
-	const user = useAuthStore((state) => state.user);
-	const initializeAuth = useAuthStore((state) => state.initializeAuth);
 	const navigate = useNavigate();
-
-	const { mutate: logout } = useLogout({
-		onSuccess: () => {
-			navigate('/auth');
-		},
-	});
+	const dispatch = useDispatch<AppDispatch>(); // Here we specify the AppDispatch type
+	const { user } = useSelector((state: RootState) => state.auth);
 
 	useEffect(() => {
 		const currentLanguage = i18n.language || 'fr';
 		setLanguage(currentLanguage);
 	}, [i18n.language]);
-
-	useEffect(() => {
-		initializeAuth();
-	}, [initializeAuth]);
-
-	useEffect(() => {
-		console.log('User:', user);
-	}, [user]);
 
 	const changeLanguage = (event: SelectChangeEvent<string>) => {
 		const lng = event.target.value;
@@ -85,11 +72,11 @@ const Header: React.FC = () => {
 
 	const closeDrawer = () => {
 		setIsDrawerOpen(false);
-		setActiveMenu(null); // Close all menus when drawer closes
+		setActiveMenu(null);
 	};
 
 	const handleLogout = () => {
-		logout();
+		dispatch(authThunks.logout());
 	};
 
 	return (

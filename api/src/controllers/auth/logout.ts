@@ -3,18 +3,32 @@ import redisClient from '../../config/redis';
 import { AuthenticatedRequest } from '../../interfaces/authenticatedRequest';
 
 export const logout = async (req: AuthenticatedRequest, res: Response) => {
-	const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
-	console.log('Attempting to log out. Token received for logout:', token); // Log token value
+	const refreshToken = req.cookies.refreshToken;
+	const accessToken = req.headers.authorization?.split(' ')[1];
 
-	if (!token) {
-		console.log('No token provided');
-		return res.status(400).json({ message: 'No token provided' });
+	if (!refreshToken || !accessToken) {
+		return res.status(400).json({ message: 'No tokens provided' });
 	}
 
 	try {
-		await redisClient.set(token, 'blacklisted', { EX: 3600 });
-		res.clearCookie('token', { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict' });
-		console.log('Successfully logged out and token blacklisted');
+		// Add tokens to Redis blacklist
+		await redisClient.set(refreshToken, 'blacklisted', { EX: 3600 });
+		await redisClient.set(accessToken, 'blacklisted', { EX: 3600 });
+
+		// Clear refreshToken cookie
+		res.clearCookie('refreshToken', {
+			httpOnly: true,
+			secure: process.env.NODE_ENV === 'production',
+			sameSite: 'strict',
+		});
+
+		// Clear accessToken cookie if stored as a cookie
+		res.clearCookie('accessToken', {
+			httpOnly: true,
+			secure: process.env.NODE_ENV === 'production',
+			sameSite: 'strict',
+		});
+
 		res.status(200).json({ message: 'Logged out' });
 	} catch (error) {
 		console.error('Server error during logout:', error);

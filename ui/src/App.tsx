@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './views/LayoutView';
 import NotFound from './views/NotFoundView';
 import Home from './views/HomeView';
@@ -10,15 +10,16 @@ import AuthView from './views/AuthView';
 import ExperienceView from './views/ExperienceView';
 import BlogPageView from './views/BlogPageView';
 import DashboardView from './views/DashboardView';
-import PrivateRoute from './components/navigation/PrivateRoute';
-import { useAuthStore } from './store/auth/zustand/useAuthStore';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch, authThunks } from './store/index';
 
 const App: React.FC = () => {
-	const initializeAuth = useAuthStore((state) => state.initializeAuth);
+	const dispatch = useDispatch<AppDispatch>();
+	const user = useSelector((state: RootState) => state.auth.user);
 
 	useEffect(() => {
-		initializeAuth();
-	}, [initializeAuth]);
+		dispatch(authThunks.refreshToken());
+	}, [dispatch]);
 
 	return (
 		<Router>
@@ -31,14 +32,7 @@ const App: React.FC = () => {
 					<Route path='/blog' element={<BlogView />} />
 					<Route path='/blog/:id' element={<BlogPageView />} />
 					<Route path='/contact' element={<ContactView />} />
-					<Route
-						path='/dashboard'
-						element={
-							<PrivateRoute>
-								<DashboardView />
-							</PrivateRoute>
-						}
-					/>
+					<Route path='/dashboard' element={user ? <DashboardView /> : <Navigate to='/auth' />} />
 					<Route path='*' element={<NotFound />} />
 				</Route>
 			</Routes>

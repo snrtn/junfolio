@@ -2,10 +2,14 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../../models/user';
 
-const { REFRESH_SECRET_KEY } = process.env;
+const { REFRESH_SECRET_KEY, SECRET_KEY } = process.env;
 
 if (!REFRESH_SECRET_KEY) {
 	throw new Error('REFRESH_SECRET_KEY is not defined in environment variables');
+}
+
+if (!SECRET_KEY) {
+	throw new Error('SECRET_KEY is not defined in environment variables');
 }
 
 export const validateToken = async (req: Request, res: Response) => {
@@ -22,7 +26,7 @@ export const validateToken = async (req: Request, res: Response) => {
 			return res.status(401).json({ message: 'Invalid token' });
 		}
 
-		const accessToken = jwt.sign({ userId: user._id.toString() }, process.env.SECRET_KEY!, {
+		const accessToken = jwt.sign({ userId: user._id.toString() }, SECRET_KEY, {
 			expiresIn: process.env.TOKEN_EXPIRATION || '15m',
 		});
 
@@ -33,7 +37,7 @@ export const validateToken = async (req: Request, res: Response) => {
 			maxAge: 15 * 60 * 1000, // 15 minutes
 		});
 
-		res.json({ user });
+		res.json({ user, accessToken }); // 액세스 토큰을 반환하도록 수정
 	} catch (error) {
 		res.status(403).json({ message: 'Invalid refresh token' });
 	}
