@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useCallback } from 'react';
-import Kim from '../components/about/Kim';
+import { Kim } from '../components';
 
 const AboutView = () => {
 	const [scrollEnabled, setScrollEnabled] = useState(true);

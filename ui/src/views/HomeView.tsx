@@ -1,11 +1,5 @@
 import { useEffect } from 'react';
-
-import Jumbotron from '../components/home/Jumbotron';
-import About from '../components/home/About';
-import Service from '../components/home/Service';
-import TechniqueIcon from '../components/home/TechniqueIcon';
-import Blog from '../components/home/Blog';
-import Contact from '../components/home/Contact';
+import { Jumbotron, About, Service, TechniqueIcon, Blog, Contact } from '../components';
 
 const HomeView = () => {
 	useEffect(() => {

@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch, authThunks } from '../store/index';
+// import { useNavigate } from 'react-router-dom';
 import { AuthFormContainer, AuthWrapper, AuthTextField, AuthButton, AuthTitle } from './authView.styles';
 
 interface IFormInput {
@@ -13,9 +11,6 @@ interface IFormInput {
 
 const AuthView: React.FC = () => {
 	const { t } = useTranslation();
-	const navigate = useNavigate();
-	const dispatch = useDispatch<AppDispatch>(); // Here we specify the AppDispatch type
-	const { status, error, user } = useSelector((state: RootState) => state.auth);
 
 	const {
 		register,
@@ -27,21 +22,11 @@ const AuthView: React.FC = () => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	const onSubmit: SubmitHandler<IFormInput> = (data) => {
-		dispatch(authThunks.login(data));
-	};
-
-	useEffect(() => {
-		if (user) {
-			navigate('/dashboard');
-		}
-	}, [user, navigate]);
-
 	return (
 		<AuthFormContainer maxWidth='xs'>
 			<AuthWrapper>
 				<AuthTitle variant='h5'>{t('auth.title') as string}</AuthTitle>
-				<form onSubmit={handleSubmit(onSubmit)}>
+				<form>
 					<AuthTextField
 						label={t('auth.usernameLabel') as string}
 						variant='outlined'
@@ -70,10 +55,9 @@ const AuthView: React.FC = () => {
 						error={!!errors.password}
 						helperText={errors.password ? errors.password.message : ''}
 					/>
-					<AuthButton color='primary' type='submit' disabled={status === 'loading'}>
-						{status === 'loading' ? 'Logging in...' : (t('auth.submitButton') as string)}
+					<AuthButton color='primary' type='submit'>
+						(t('auth.submitButton') as string)
 					</AuthButton>
-					{error && <p style={{ color: 'red' }}>{error}</p>}
 				</form>
 			</AuthWrapper>
 		</AuthFormContainer>

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Job from '../components/about/Job';
+import { Job } from '../components';
 
 const ExperienceView = () => {
 	useEffect(() => {

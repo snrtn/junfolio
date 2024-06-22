@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MenuItem, Select, SelectChangeEvent, IconButton, List, Collapse } from '@mui/material';
-import { PiSignInBold } from 'react-icons/pi';
 import { RiMenuFill } from 'react-icons/ri';
-import { VscDebugDisconnect } from 'react-icons/vsc';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch, authThunks } from '../../store/index';
+// import { PiSignInBold } from 'react-icons/pi';
+// import { VscDebugDisconnect } from 'react-icons/vsc';
+
 import {
 	HeaderContainer,
 	HeaderToolbar,
@@ -31,9 +30,6 @@ const Header: React.FC = () => {
 	const [language, setLanguage] = useState('fr');
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	const [activeMenu, setActiveMenu] = useState<string | null>(null);
-	const navigate = useNavigate();
-	const dispatch = useDispatch<AppDispatch>(); // Here we specify the AppDispatch type
-	const { user } = useSelector((state: RootState) => state.auth);
 
 	useEffect(() => {
 		const currentLanguage = i18n.language || 'fr';
@@ -75,10 +71,6 @@ const Header: React.FC = () => {
 		setActiveMenu(null);
 	};
 
-	const handleLogout = () => {
-		dispatch(authThunks.logout());
-	};
-
 	return (
 		<HeaderContainer position='fixed'>
 			<HeaderToolbar>
@@ -115,17 +107,12 @@ const Header: React.FC = () => {
 								</HeaderDropdownMenu>
 							</Collapse>
 						</li>
-						<li onMouseEnter={() => handleMouseEnter('blog')}>
+						{/* <li onMouseEnter={() => handleMouseEnter('blog')}>
 							<HeaderCustomLink to='/blog'>{t('navigation.blog')}</HeaderCustomLink>
-						</li>
+						</li> */}
 						<li onMouseEnter={() => handleMouseEnter('contact')}>
 							<HeaderCustomLink to='/contact'>{t('navigation.contact')}</HeaderCustomLink>
 						</li>
-						{user && (
-							<li>
-								<HeaderCustomLink to='/dashboard'>{t('navigation.dashboard')}</HeaderCustomLink>
-							</li>
-						)}
 					</ul>
 				</HeaderNav>
 				<HeaderLanguageSwitcher>
@@ -145,17 +132,9 @@ const Header: React.FC = () => {
 							<HeaderStyledReactCountryFlag countryCode='KR' svg />
 						</MenuItem>
 					</Select>
-					{user ? (
-						<>
-							<IconButton edge='end' color='inherit' aria-label='Logout' onClick={handleLogout}>
-								<VscDebugDisconnect />
-							</IconButton>
-						</>
-					) : (
-						<IconButton edge='end' color='inherit' aria-label='Login' component={Link} to='/auth'>
-							<PiSignInBold />
-						</IconButton>
-					)}
+					{/* <IconButton edge='end' color='inherit' aria-label='Login' component={Link} to='/auth'>
+						<PiSignInBold />
+					</IconButton> */}
 				</HeaderLanguageSwitcher>
 			</HeaderToolbar>
 			<HeaderStyledDrawer anchor='left' open={isDrawerOpen} onClose={toggleDrawer(false)}>
@@ -182,17 +161,12 @@ const Header: React.FC = () => {
 								</HeaderStyledListItem>
 							</List>
 						</Collapse>
-						<HeaderStyledListItem as={Link} to='/blog' onClick={closeDrawer}>
+						{/* <HeaderStyledListItem as={Link} to='/blog' onClick={closeDrawer}>
 							<HeaderStyledListItemText primary={t('navigation.blog')} />
-						</HeaderStyledListItem>
+						</HeaderStyledListItem> */}
 						<HeaderStyledListItem as={Link} to='/contact' onClick={closeDrawer}>
 							<HeaderStyledListItemText primary={t('navigation.contact')} />
 						</HeaderStyledListItem>
-						{user && (
-							<HeaderStyledListItem as={Link} to='/dashboard' onClick={closeDrawer}>
-								<HeaderStyledListItemText primary={t('navigation.dashboard')} />
-							</HeaderStyledListItem>
-						)}
 					</List>
 				</HeaderSidebar>
 			</HeaderStyledDrawer>

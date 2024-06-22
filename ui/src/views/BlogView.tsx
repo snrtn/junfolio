@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import BlogLayout from '../components/blog/BlogLayout';
-import BlogCard from '../components/blog/BlogCard';
-import Pagination from '@mui/material/Pagination';
+import { BlogCard, BlogLayout } from '../components';
+
 import { useNavigate } from 'react-router-dom';
-import { posts, Post } from '../data/posts';
+
+import Pagination from '@mui/material/Pagination';
 import { BlogContainer, BlogContentContainer } from './blogView.styles';
+
+import { posts, Post } from '../data/posts';
 
 const BlogView: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState(1);
