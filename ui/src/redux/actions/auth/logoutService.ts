@@ -1,4 +1,3 @@
-// src/redux/actions/auth/logoutService.ts
 import { useMutation, useQueryClient, MutationFunction } from '@tanstack/react-query';
 import { logoutApi } from './logoutApi';
 

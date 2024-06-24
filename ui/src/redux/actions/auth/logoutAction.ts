@@ -1,4 +1,3 @@
-// src/redux/actions/auth/logoutAction.ts
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { logoutApi } from './logoutApi';
 import { clearAuthToken } from './authCookie';

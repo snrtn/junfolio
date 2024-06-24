@@ -11,15 +11,18 @@ export const logout = async (req: AuthenticatedRequest, res: Response) => {
 	}
 
 	try {
+		// Add tokens to Redis blacklist
 		await redisClient.set(refreshToken, 'blacklisted', { EX: 3600 });
 		await redisClient.set(accessToken, 'blacklisted', { EX: 3600 });
 
+		// Clear refreshToken cookie
 		res.clearCookie('refreshToken', {
-			httpOnly: true,
+			httpOnly: true, // JavaScript에서 접근 불가능
 			secure: process.env.NODE_ENV === 'production',
 			sameSite: 'strict',
 		});
 
+		// Clear accessToken cookie if stored as a cookie
 		res.clearCookie('accessToken', {
 			httpOnly: false,
 			secure: process.env.NODE_ENV === 'production',

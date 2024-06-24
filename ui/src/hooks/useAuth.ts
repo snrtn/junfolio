@@ -1,4 +1,3 @@
-// src/hooks/useAuth.ts
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../redux/store';
 import { UseAuth } from '../interfaces/auth';
@@ -6,9 +5,11 @@ import { useLogin, useLogout } from '../redux/actions/auth';
 import { setToken, clearToken, setStatus, setError } from '../redux/slices/authSlice';
 import { useEffect } from 'react';
 import { getCookie } from '../redux/actions/auth';
+import { useNavigate } from 'react-router-dom';
 
 const useAuth = (): UseAuth => {
 	const dispatch = useDispatch<AppDispatch>();
+	const navigate = useNavigate();
 	const { token, status, error } = useSelector((state: RootState) => state.auth);
 
 	const { mutate: login } = useLogin();
@@ -16,7 +17,6 @@ const useAuth = (): UseAuth => {
 
 	useEffect(() => {
 		const savedToken = getCookie('accessToken');
-		console.log('Saved Token from Cookie:', savedToken); // 쿠키에서 읽은 토큰 확인
 		if (savedToken) {
 			dispatch(setToken(savedToken));
 		}
@@ -29,10 +29,10 @@ const useAuth = (): UseAuth => {
 				{
 					onSuccess: () => {
 						const newToken = getCookie('accessToken');
-						console.log('New Token from Cookie after login:', newToken); // 로그인 후 쿠키에서 읽은 토큰 확인
 						if (newToken) {
 							dispatch(setToken(newToken));
 							dispatch(setStatus('succeeded'));
+							navigate('/dashboard');
 						}
 					},
 					onError: () => {

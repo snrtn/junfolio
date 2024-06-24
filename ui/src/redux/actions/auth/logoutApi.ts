@@ -1,4 +1,3 @@
-// src/redux/actions/auth/logoutApi.ts
 import axiosInstance from '../axiosInstance';
 
 export const logoutApi = async () => {

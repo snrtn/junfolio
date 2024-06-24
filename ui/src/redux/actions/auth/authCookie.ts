@@ -1,7 +1,5 @@
-// src/redux/actions/auth/authCookie.ts
 export const getCookie = (name: string): string | null => {
 	const value = `; ${document.cookie}`;
-	console.log('Document cookie:', document.cookie); // 현재 쿠키 값 확인
 	const parts = value.split(`; ${name}=`);
 	if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
 	return null;

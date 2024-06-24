@@ -32,7 +32,7 @@ export const login = async (req: Request, res: Response) => {
 			httpOnly: true,
 			secure: process.env.NODE_ENV === 'production',
 			sameSite: 'strict',
-			maxAge: 3600000, // 1 hour
+			maxAge: 7 * 24 * 60 * 60 * 1000, // 7일
 		});
 
 		res.json({ message: 'Login successful' });
