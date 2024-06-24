@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MenuItem, Select, SelectChangeEvent, IconButton, List, Collapse } from '@mui/material';
 import { RiMenuFill } from 'react-icons/ri';
-// import { PiSignInBold } from 'react-icons/pi';
-// import { VscDebugDisconnect } from 'react-icons/vsc';
-
+import { PiSignInBold } from 'react-icons/pi';
+import { VscDebugDisconnect } from 'react-icons/vsc';
+import useAuth from '../../hooks/useAuth';
 import {
 	HeaderContainer,
 	HeaderToolbar,
@@ -27,6 +27,7 @@ import {
 
 const Header: React.FC = () => {
 	const { t, i18n } = useTranslation();
+	const { token, logout } = useAuth();
 	const [language, setLanguage] = useState('fr');
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -107,12 +108,17 @@ const Header: React.FC = () => {
 								</HeaderDropdownMenu>
 							</Collapse>
 						</li>
-						{/* <li onMouseEnter={() => handleMouseEnter('blog')}>
+						<li onMouseEnter={() => handleMouseEnter('blog')}>
 							<HeaderCustomLink to='/blog'>{t('navigation.blog')}</HeaderCustomLink>
-						</li> */}
+						</li>
 						<li onMouseEnter={() => handleMouseEnter('contact')}>
 							<HeaderCustomLink to='/contact'>{t('navigation.contact')}</HeaderCustomLink>
 						</li>
+						{token && (
+							<li>
+								<HeaderCustomLink to='/dashboard'>{t('navigation.dashboard')}</HeaderCustomLink>
+							</li>
+						)}
 					</ul>
 				</HeaderNav>
 				<HeaderLanguageSwitcher>
@@ -132,9 +138,17 @@ const Header: React.FC = () => {
 							<HeaderStyledReactCountryFlag countryCode='KR' svg />
 						</MenuItem>
 					</Select>
-					{/* <IconButton edge='end' color='inherit' aria-label='Login' component={Link} to='/auth'>
-						<PiSignInBold />
-					</IconButton> */}
+					{token ? (
+						<>
+							<IconButton edge='end' color='inherit' aria-label='Logout' onClick={logout}>
+								<VscDebugDisconnect />
+							</IconButton>
+						</>
+					) : (
+						<IconButton edge='end' color='inherit' aria-label='Login' component={Link} to='/auth'>
+							<PiSignInBold />
+						</IconButton>
+					)}
 				</HeaderLanguageSwitcher>
 			</HeaderToolbar>
 			<HeaderStyledDrawer anchor='left' open={isDrawerOpen} onClose={toggleDrawer(false)}>
@@ -161,12 +175,17 @@ const Header: React.FC = () => {
 								</HeaderStyledListItem>
 							</List>
 						</Collapse>
-						{/* <HeaderStyledListItem as={Link} to='/blog' onClick={closeDrawer}>
+						<HeaderStyledListItem as={Link} to='/blog' onClick={closeDrawer}>
 							<HeaderStyledListItemText primary={t('navigation.blog')} />
-						</HeaderStyledListItem> */}
+						</HeaderStyledListItem>
 						<HeaderStyledListItem as={Link} to='/contact' onClick={closeDrawer}>
 							<HeaderStyledListItemText primary={t('navigation.contact')} />
 						</HeaderStyledListItem>
+						{token && (
+							<HeaderStyledListItem as={Link} to='/dashboard' onClick={closeDrawer}>
+								<HeaderStyledListItemText primary={t('navigation.dashboard')} />
+							</HeaderStyledListItem>
+						)}
 					</List>
 				</HeaderSidebar>
 			</HeaderStyledDrawer>

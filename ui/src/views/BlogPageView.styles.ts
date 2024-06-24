@@ -1,6 +1,5 @@
-import { styled } from '@mui/system';
-import { Box } from '@mui/material';
-import media from '../components/common/mediaQueries';
+import { styled, Box } from '@mui/material';
+import { media } from '../components';
 
 export const BlogPageOverlayContainer = styled(Box)({
 	position: 'fixed',
@@ -20,7 +19,8 @@ export const BlogPageOverlayContainer = styled(Box)({
 	...media.mobileLarge({
 		maxWidth: '100% !important',
 		width: '100% !important',
-		padding: '20px',
+		height: '120vh',
+		padding: '30px',
 	}),
 });
 

@@ -1,6 +1,5 @@
-import { styled } from '@mui/system';
-import { Box } from '@mui/material';
-import media from '../common/mediaQueries';
+import { styled, Box } from '@mui/material';
+import { media } from '../common';
 
 export const BlogLayoutContainer = styled(Box)(({ theme }) => ({
 	width: '100%',

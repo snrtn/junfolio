@@ -1,7 +1,6 @@
-import { styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { styled, Box } from '@mui/material';
 import { FaMoon, FaSun } from 'react-icons/fa6';
-import media from '../common/mediaQueries';
+import { media } from '../common';
 
 export const ServiceCardContainer = styled(Box)(({ theme }) => ({
 	width: '34rem',

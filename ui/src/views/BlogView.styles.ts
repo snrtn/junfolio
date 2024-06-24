@@ -1,6 +1,5 @@
-import { styled } from '@mui/system';
-import { Box } from '@mui/material';
-import media from '../components/common/mediaQueries';
+import { styled, Box } from '@mui/material';
+import { media } from '../components';
 
 export const BlogContainer = styled(Box)({
 	height: '100vh',

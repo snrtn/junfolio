@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import media from '../common/mediaQueries';
+import { media } from '../common';
 
 export const AboutContainer = styled('section')({
 	display: 'flex',

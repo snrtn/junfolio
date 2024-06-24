@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AppBar, Toolbar, Typography, ListItem, ListItemText, Drawer } from '@mui/material';
 import ReactCountryFlag from 'react-country-flag';
-import media from '../common/mediaQueries';
+import { media } from '../common';
 import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled(AppBar)(({ theme }) => ({

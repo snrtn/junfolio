@@ -1,6 +1,5 @@
-import { styled } from '@mui/system';
-import { TextField, Box, Button, Typography, Container } from '@mui/material';
-import media from '../components/common/mediaQueries';
+import { styled, TextField, Box, Button, Typography, Container } from '@mui/material';
+import { media } from '../components';
 
 export const AuthFormContainer = styled(Container)(({ theme }) => ({
 	display: 'flex',

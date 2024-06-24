@@ -1,6 +1,5 @@
-import { styled } from '@mui/material/styles';
-import { Box, Button } from '@mui/material';
-import media from '../common/mediaQueries';
+import { styled, Box, Button } from '@mui/material';
+import { media } from '../common';
 
 export const BlogContainer = styled(Box)(({ theme }) => ({
 	padding: theme.spacing(4),

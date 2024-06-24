@@ -1,6 +1,5 @@
-import { styled } from '@mui/material/styles';
-import { Box, Typography } from '@mui/material';
-import media from '../common/mediaQueries';
+import { styled, Box, Typography } from '@mui/material';
+import { media } from '../common';
 
 export const TechniqueSectionContainer = styled(Box)(({ theme }) => ({
 	display: 'flex',

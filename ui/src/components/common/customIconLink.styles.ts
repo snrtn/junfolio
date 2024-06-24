@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import media from './mediaQueries';
+import { media } from '../common';
 
 export const CustomIconLinkContainer = styled('div')<{ bgColor: string }>(({ bgColor }) => ({
 	display: 'inline-block',

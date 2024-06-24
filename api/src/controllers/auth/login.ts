@@ -35,7 +35,7 @@ export const login = async (req: Request, res: Response) => {
 			maxAge: 7 * 24 * 60 * 60 * 1000,
 		});
 
-		res.json({ message: 'Login successful', accessToken }); // 액세스 토큰을 반환하도록 수정
+		res.json({ message: 'Login successful', accessToken });
 	} catch (error) {
 		res.status(500).json({ message: 'Server Error' });
 	}

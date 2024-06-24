@@ -1,9 +1,9 @@
 import { Box, Container, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { FooterSnsSection, FooterWrapper } from './footer.styles';
-import { HeaderCustomLink, HeaderLogoText } from './header.styles';
 import { SiLinkedin, SiGithub } from 'react-icons/si';
-import CustomIconLink from '../common/CustomIconLink';
+import { CustomIconLink } from '../common';
+import { HeaderCustomLink, HeaderLogoText } from './header.styles';
+import { FooterSnsSection, FooterWrapper } from './footer.styles';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {

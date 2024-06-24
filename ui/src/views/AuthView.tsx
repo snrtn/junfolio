@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-// import { useNavigate } from 'react-router-dom';
 import { AuthFormContainer, AuthWrapper, AuthTextField, AuthButton, AuthTitle } from './authView.styles';
+import useAuth from '../hooks/useAuth';
 
 interface IFormInput {
 	username: string;
@@ -11,12 +11,16 @@ interface IFormInput {
 
 const AuthView: React.FC = () => {
 	const { t } = useTranslation();
-
+	const { login, authStatus, authError } = useAuth();
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<IFormInput>();
+
+	const onSubmit: SubmitHandler<IFormInput> = ({ username, password }) => {
+		login(username, password);
+	};
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -26,7 +30,7 @@ const AuthView: React.FC = () => {
 		<AuthFormContainer maxWidth='xs'>
 			<AuthWrapper>
 				<AuthTitle variant='h5'>{t('auth.title') as string}</AuthTitle>
-				<form>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<AuthTextField
 						label={t('auth.usernameLabel') as string}
 						variant='outlined'
@@ -56,9 +60,11 @@ const AuthView: React.FC = () => {
 						helperText={errors.password ? errors.password.message : ''}
 					/>
 					<AuthButton color='primary' type='submit'>
-						(t('auth.submitButton') as string)
+						{t('auth.submitButton') as string}
 					</AuthButton>
 				</form>
+				{authStatus === 'loading' && <p>{t('auth.loading') as string}</p>}
+				{authError && <p>{authError}</p>}
 			</AuthWrapper>
 		</AuthFormContainer>
 	);
