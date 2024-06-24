@@ -22,20 +22,20 @@ export const login = async (req: Request, res: Response) => {
 		const refreshToken = generateRefreshToken(user._id.toString());
 
 		res.cookie('accessToken', accessToken, {
-			httpOnly: true,
+			httpOnly: false, // JavaScript에서 접근 가능
 			secure: process.env.NODE_ENV === 'production',
-			sameSite: 'strict',
-			maxAge: 3600000,
+			sameSite: 'lax', // Adjust this as necessary
+			maxAge: 3600000, // 1시간
 		});
 
 		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
 			secure: process.env.NODE_ENV === 'production',
 			sameSite: 'strict',
-			maxAge: 7 * 24 * 60 * 60 * 1000,
+			maxAge: 3600000, // 1 hour
 		});
 
-		res.json({ message: 'Login successful', accessToken });
+		res.json({ message: 'Login successful' });
 	} catch (error) {
 		res.status(500).json({ message: 'Server Error' });
 	}

@@ -1,12 +1,11 @@
+// src/middleware/authMiddleware.ts
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-
-interface AuthenticatedRequest extends Request {
-	user?: { _id: string };
-}
+import { AuthenticatedRequest } from '../interfaces/authenticatedRequest';
 
 const authMiddleware = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-	const token = req.cookies.token;
+	const token = req.cookies.accessToken;
+	console.log('Token from cookie:', token); // 로그 추가
 	if (!token) return res.status(401).json({ message: 'Access denied. No token provided.' });
 
 	try {
