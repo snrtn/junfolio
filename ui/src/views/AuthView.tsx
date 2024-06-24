@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { AuthFormContainer, AuthWrapper, AuthTextField, AuthButton, AuthTitle } from './authView.styles';
-import useAuth from '../hooks/useAuth';
+import { useAuth } from '../hooks';
 
 interface IFormInput {
 	username: string;

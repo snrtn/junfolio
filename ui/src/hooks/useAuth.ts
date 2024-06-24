@@ -1,10 +1,17 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../redux/store';
-import { UseAuth } from '../interfaces/auth';
-import { useLogin, useLogout } from '../redux/actions/auth';
-import { setToken, clearToken, setStatus, setError } from '../redux/slices/authSlice';
 import { useEffect } from 'react';
-import { getCookie } from '../redux/actions/auth';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+	RootState,
+	AppDispatch,
+	useLogin,
+	useLogout,
+	getCookie,
+	clearToken,
+	setToken,
+	setStatus,
+	setError,
+} from '../redux';
+import { UseAuth } from '../interfaces';
 import { useNavigate } from 'react-router-dom';
 
 const useAuth = (): UseAuth => {

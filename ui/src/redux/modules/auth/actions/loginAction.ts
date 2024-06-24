@@ -1,8 +1,8 @@
 // src/redux/actions/auth/loginAction.ts
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { loginApi } from './loginApi';
-import { LoginData } from './authType';
-import { setAuthToken } from './authCookie';
+import { loginApi } from '../index';
+import { LoginData } from '../index';
+import { setAuthToken } from '../index';
 
 export const loginAction = createAsyncThunk('auth/login', async (data: LoginData, { rejectWithValue }) => {
 	try {

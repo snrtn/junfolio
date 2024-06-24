@@ -5,7 +5,7 @@ import { MenuItem, Select, SelectChangeEvent, IconButton, List, Collapse } from 
 import { RiMenuFill } from 'react-icons/ri';
 import { PiSignInBold } from 'react-icons/pi';
 import { VscDebugDisconnect } from 'react-icons/vsc';
-import useAuth from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 import {
 	HeaderContainer,
 	HeaderToolbar,

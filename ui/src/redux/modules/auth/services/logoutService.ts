@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient, MutationFunction } from '@tanstack/react-query';
-import { logoutApi } from './logoutApi';
+import { logoutApi } from '../index';
 
 const logoutMutationFn: MutationFunction<void, void> = async () => {
 	return logoutApi();

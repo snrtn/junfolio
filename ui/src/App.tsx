@@ -26,7 +26,7 @@ const App: React.FC = () => {
 				<Route path='blog' element={<BlogView />} />
 				<Route path='blog/:id' element={<BlogPageView />} />
 				<Route path='contact' element={<ContactView />} />
-				<Route path='dashboard' element={<PrivateRoute />}>
+				<Route path='dashboard' element={<PrivateRoute redirectPath='/auth' />}>
 					<Route path='' element={<DashboardView />} />
 				</Route>
 				<Route path='*' element={<NotFoundView />} />

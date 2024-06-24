@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getCookie, clearAuthToken } from '../actions/auth';
+import { getCookie, clearAuthToken } from './auth';
 
 const axiosInstance = axios.create({
 	baseURL: 'http://localhost:3000/api',
