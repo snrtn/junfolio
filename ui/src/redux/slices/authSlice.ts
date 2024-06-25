@@ -1,26 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface AuthState {
-	token: string | null;
-	status: 'idle' | 'loading' | 'succeeded' | 'failed';
-	error: string | null;
-}
-
-const initialState: AuthState = {
-	token: null,
-	status: 'idle',
-	error: null,
-};
+import { initialAuthState, AuthState, User } from '../modules/auth';
 
 const authSlice = createSlice({
 	name: 'auth',
-	initialState,
+	initialState: initialAuthState,
 	reducers: {
 		setToken(state, action: PayloadAction<string>) {
 			state.token = action.payload;
 		},
 		clearToken(state) {
 			state.token = null;
+			state.user = null; // 사용자 정보도 초기화
+		},
+		setUser(state, action: PayloadAction<User>) {
+			state.user = action.payload;
 		},
 		setStatus(state, action: PayloadAction<AuthState['status']>) {
 			state.status = action.payload;
@@ -31,5 +24,5 @@ const authSlice = createSlice({
 	},
 });
 
-export const { setToken, clearToken, setStatus, setError } = authSlice.actions;
+export const { setToken, clearToken, setUser, setStatus, setError } = authSlice.actions;
 export default authSlice.reducer;

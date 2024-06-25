@@ -1,6 +1,6 @@
-// src/interfaces/authenticatedRequest.ts
 import { Request } from 'express';
+import { IUserDocument } from './iUser';
 
 export interface AuthenticatedRequest extends Request {
-	user?: { _id: string };
+	user?: Omit<IUserDocument, '_id'> & { _id: string };
 }

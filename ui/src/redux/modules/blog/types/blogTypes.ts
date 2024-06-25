@@ -1,9 +1,9 @@
 import { BlogState } from '../../../../interfaces';
 
-export const initialState: BlogState = {
+export const initialBlogState: BlogState = {
 	posts: [],
 	status: 'idle',
 	error: null,
 };
 
-export type { Post } from '../../../../interfaces';
+export type { BlogState, Post } from '../../../../interfaces';

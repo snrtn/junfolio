@@ -1,8 +1,10 @@
 import { AuthState } from '../../../../interfaces';
 
-export const initialState: AuthState = {
+export const initialAuthState: AuthState = {
 	token: null,
 	status: 'idle',
 	error: null,
+	user: null,
 };
-export type { LoginData } from '../../../../interfaces';
+
+export type { AuthState, LoginData, User } from '../../../../interfaces';

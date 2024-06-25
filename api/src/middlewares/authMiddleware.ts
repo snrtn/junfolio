@@ -2,6 +2,7 @@ import { Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { AuthenticatedRequest } from '../interfaces/authenticatedRequest';
 import redisClient from '../config/redis';
+import User from '../models/user';
 
 const authMiddleware = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
 	const token = req.cookies.accessToken;
@@ -15,7 +16,14 @@ const authMiddleware = async (req: AuthenticatedRequest, res: Response, next: Ne
 		}
 
 		const decoded = jwt.verify(token, process.env.SECRET_KEY!) as { _id: string };
-		req.user = { _id: decoded._id };
+		const user = await User.findById(decoded._id).select('-password');
+		if (!user) {
+			return res.status(404).json({ message: 'User not found.' });
+		}
+		req.user = {
+			...user.toObject(),
+			_id: user._id.toString(),
+		};
 		next();
 	} catch (error) {
 		res.status(400).json({ message: 'Invalid token.' });

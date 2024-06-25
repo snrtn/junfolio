@@ -1,7 +1,8 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState, getCookie } from '../../redux';
+import { RootState } from '../../redux/store';
+import { getCookie } from '../../redux/modules/auth';
 
 interface PrivateRouteProps {
 	redirectPath?: string;
