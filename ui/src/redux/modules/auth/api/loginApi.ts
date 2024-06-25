@@ -1,4 +1,3 @@
-// src/redux/actions/auth/loginApi.ts
 import axiosInstance from '../../axiosInstance';
 
 export const loginApi = async (username: string, password: string) => {

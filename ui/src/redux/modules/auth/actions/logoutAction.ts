@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { logoutApi } from '../index';
-import { clearAuthToken } from '../index';
+import { logoutApi, clearAuthToken } from '../index';
 
 export const logoutAction = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
 	try {

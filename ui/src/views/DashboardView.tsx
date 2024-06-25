@@ -1,7 +1,13 @@
 import React from 'react';
+import BlogForm from '../components/BlogForm'; // BlogForm 컴포넌트 임포트
+import { Box } from '@mui/material';
 
 const DashboardView = () => {
-	return <div style={{ margin: '500px' }}>DashboardView</div>;
+	return (
+		<Box sx={{ margin: '20px' }}>
+			<BlogForm />
+		</Box>
+	);
 };
 
 export default DashboardView;

@@ -1,7 +1,6 @@
 // src/redux/actions/auth/loginService.ts
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { loginApi } from '../index';
-import { LoginData } from '../index';
+import { loginApi, LoginData } from '../index';
 
 interface LoginResponse {
 	token: string;

@@ -5,4 +5,4 @@ export const initialState: AuthState = {
 	status: 'idle',
 	error: null,
 };
-export type { AuthState, LoginData } from '../../../../interfaces';
+export type { LoginData } from '../../../../interfaces';
