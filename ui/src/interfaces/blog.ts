@@ -19,10 +19,14 @@ export interface BlogState {
 
 export interface UseBlog {
 	fetchPosts: UseQueryResult<Post[], Error>;
-	createPost: (post: Omit<Post, 'id'>) => void;
+	createPost: (formData: FormData) => void;
 	updatePost: (post: Post) => void;
 	deletePost: (postId: number) => void;
 	posts: Post[];
 	status: 'idle' | 'loading' | 'succeeded' | 'failed';
 	error: string | null;
+}
+
+export interface LocationState {
+	post: Post;
 }

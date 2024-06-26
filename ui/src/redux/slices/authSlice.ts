@@ -10,7 +10,7 @@ const authSlice = createSlice({
 		},
 		clearToken(state) {
 			state.token = null;
-			state.user = null; // 사용자 정보도 초기화
+			state.user = null;
 		},
 		setUser(state, action: PayloadAction<User>) {
 			state.user = action.payload;

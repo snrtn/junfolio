@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { loginApi, LoginData } from '../index';
 
 interface LoginResponse {
+	[x: string]: any;
 	token: string;
 }
 

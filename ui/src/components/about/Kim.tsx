@@ -1,16 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { KimScrollContainer, KimSection, KimSectionContent, KimSectionSVG } from './kim.styles';
 
 const sectionsData = [
-	// {
-	// 	titleKey: 'about.kim.title1',
-	// 	descriptionKey: 'about.kim.description1',
-	// 	backgroundColor: '#e15f41',
-	// 	svgSrc: './assets/about/back.svg',
-	// },
 	{
 		titleKey: 'about.kim.title2',
 		descriptionKey: 'about.kim.description2',
@@ -44,7 +36,6 @@ const Kim: React.FC<KimProps> = ({ scrollEnabled, onScrollToEnd }) => {
 	const [firstTimeVisibleSections, setFirstTimeVisibleSections] = useState<boolean[]>(
 		new Array(sectionsData.length).fill(false),
 	);
-	const [active, setActive] = useState(false);
 
 	const handleScroll = useCallback(() => {
 		const container = document.getElementById('scroll-container');
@@ -103,7 +94,7 @@ const Kim: React.FC<KimProps> = ({ scrollEnabled, onScrollToEnd }) => {
 	}, [scrollEnabled, handleScroll]);
 
 	return (
-		<KimScrollContainer id='scroll-container' scrollEnabled={scrollEnabled}>
+		<KimScrollContainer id='scroll-container' scrollEnabled={scrollEnabled.toString()}>
 			{sectionsData.map((section, index) => (
 				<KimSection
 					key={index}

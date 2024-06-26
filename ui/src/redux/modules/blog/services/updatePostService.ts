@@ -7,7 +7,7 @@ export const useUpdatePost = () => {
 	return useMutation<Post, Error, Post>({
 		mutationFn: updatePostApi,
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['posts'] });
+			queryClient.invalidateQueries({ queryKey: ['blog'] });
 		},
 	});
 };

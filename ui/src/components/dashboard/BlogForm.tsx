@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, TextField, Button, Typography, Autocomplete, Chip } from '@mui/material';
-import { useBlog } from '../hooks';
-import useAuth from '../hooks/useAuth';
-import { Post } from '../interfaces';
+import { useBlog } from '../../hooks';
+import useAuth from '../../hooks/useAuth';
 
 const BlogForm: React.FC = () => {
 	const [title, setTitle] = useState('');
@@ -11,7 +10,7 @@ const BlogForm: React.FC = () => {
 	const [image, setImage] = useState<File | null>(null);
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
 	const { createPost, status, error } = useBlog();
-	const { user } = useAuth(); // 현재 로그인된 사용자 정보 가져오기
+	const { user } = useAuth();
 
 	useEffect(() => {
 		if (image) {
@@ -25,10 +24,6 @@ const BlogForm: React.FC = () => {
 		}
 	}, [image]);
 
-	useEffect(() => {
-		console.log('Current User:', user);
-	}, [user]);
-
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		if (!user) {
@@ -36,19 +31,25 @@ const BlogForm: React.FC = () => {
 			return;
 		}
 
-		const newPost: Omit<Post, 'id'> = {
-			title,
-			content,
-			tags,
-			image: image ? URL.createObjectURL(image) : '',
-			author: user._id, // 동적으로 로그인한 사용자 ID 사용
-			createdAt: new Date().toISOString(),
-			updatedAt: new Date().toISOString(),
-		};
+		const formData = new FormData();
+		formData.append('title', title);
+		formData.append('content', content);
+		formData.append('tags', tags.join(','));
+		formData.append('author', user._id);
+		if (image) {
+			formData.append('image', image);
+		}
 
-		console.log(newPost);
+		// FormData 내용 확인 (개별 출력)
+		console.log('Title:', formData.get('title'));
+		console.log('Content:', formData.get('content'));
+		console.log('Tags:', formData.get('tags'));
+		console.log('Author:', formData.get('author'));
+		if (formData.get('image')) {
+			console.log('Image:', formData.get('image'));
+		}
 
-		createPost(newPost);
+		createPost(formData);
 	};
 
 	const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,7 +90,7 @@ const BlogForm: React.FC = () => {
 						const tagProps = getTagProps({ index });
 						return (
 							<Chip
-								key={tagProps.key}
+								key={index}
 								variant='outlined'
 								label={option}
 								className={tagProps.className}

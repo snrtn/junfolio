@@ -1,35 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Typography } from '@mui/material';
 import { RiArrowRightSLine } from 'react-icons/ri';
-import { BlogContainer, BlogHeader, BlogMoreButton, BlogContent, BlogCard, BlogTags, BlogTag } from './blog.styles';
+import { BlogContainer, BlogHeader, BlogMoreButton, BlogContent } from './blog.styles';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { posts, Post } from '../../data/posts'; // 데이터 가져오기
+import { useBlog } from '../../hooks';
+import BlogCard from '../blog/BlogCard';
+import { Post } from '../../interfaces';
 
 const Blog: React.FC = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const { posts, fetchPosts, status, error } = useBlog();
 
-	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
-		const card = e.currentTarget;
-		const rect = card.getBoundingClientRect();
-		const x = e.clientX - rect.left;
-		const y = e.clientY - rect.top;
-		const centerX = rect.width / 2;
-		const centerY = rect.height / 2;
-		const rotateX = ((y - centerY) / centerY) * 12;
-		const rotateY = ((x - centerX) / centerX) * -12;
-		card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-	};
-
-	const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
-		const card = e.currentTarget;
-		card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-	};
+	useEffect(() => {
+		fetchPosts.refetch();
+	}, [fetchPosts]);
 
 	const handleCardClick = (post: Post) => {
-		navigate(`/blog/${post.id}`, { state: post });
+		navigate(`/blog/${post.id}`, { state: { post } });
 	};
+
+	if (status === 'loading') {
+		return <Typography>Loading...</Typography>;
+	}
+
+	if (status === 'failed') {
+		return <Typography color='error'>{error}</Typography>;
+	}
 
 	return (
 		<BlogContainer>
@@ -50,18 +48,11 @@ const Blog: React.FC = () => {
 				{posts.map((post, index) => (
 					<BlogCard
 						key={index}
-						onMouseMove={(e) => handleMouseMove(e, index)}
-						onMouseLeave={(e) => handleMouseLeave(e, index)}
+						title={post.title}
+						imgSrc={post.image}
+						tags={post.tags}
 						onClick={() => handleCardClick(post)}
-					>
-						<div>
-							<BlogTags>
-								<BlogTag>{post.tags[0]}</BlogTag>
-							</BlogTags>
-							<Typography variant='h6'>{post.title}</Typography>
-						</div>
-						<img src={post.imgSrc} alt={post.title} style={{ display: 'block' }} />
-					</BlogCard>
+					/>
 				))}
 			</BlogContent>
 		</BlogContainer>

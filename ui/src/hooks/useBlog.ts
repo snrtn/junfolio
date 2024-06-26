@@ -31,8 +31,8 @@ const useBlog = (): UseBlog => {
 		status,
 		error,
 		fetchPosts,
-		createPost: (post: Omit<Post, 'id'>) => {
-			createPost.mutate(post, {
+		createPost: (formData: FormData) => {
+			createPost.mutate(formData, {
 				onSuccess: () => {
 					dispatch(setStatus('succeeded'));
 				},

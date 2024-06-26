@@ -7,14 +7,15 @@ import { uploadToDropbox } from '../../utils/uploadToDropbox';
 export const createPost = async (req: Request, res: Response) => {
 	upload.single('image')(req, res, async (err) => {
 		if (err) {
+			console.error('Image upload failed:', err);
 			return res.status(400).json({ message: 'Image upload failed.' });
 		}
 
 		console.log('Request Body:', req.body);
-
 		const { title, content, tags, author } = req.body;
 
 		if (!title || !content || !tags || !author) {
+			console.error('All fields are required.');
 			return res.status(400).json({ message: 'All fields are required.' });
 		}
 
@@ -37,7 +38,6 @@ export const createPost = async (req: Request, res: Response) => {
 			});
 
 			console.log('Blog post data before save:', blogPost);
-
 			await blogPost.save();
 			console.log('Blog post saved to MongoDB:', blogPost);
 			res.status(201).json({ message: 'Blog post created successfully.', blogPost });

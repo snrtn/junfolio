@@ -31,7 +31,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, imgSrc, tags, onClick }) => 
 		<BlogCardContainer onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} onClick={onClick}>
 			<div>
 				<BlogCardTags>
-					{tags.map((tag) => (
+					{tags.slice(0, 1).map((tag) => (
 						<BlogCardTag key={tag}>{tag}</BlogCardTag>
 					))}
 				</BlogCardTags>

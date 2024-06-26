@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { BlogCard, BlogLayout } from '../components';
-
 import { useNavigate } from 'react-router-dom';
-
-import Pagination from '@mui/material/Pagination';
+import { Pagination, Typography } from '@mui/material';
 import { BlogContainer, BlogContentContainer } from './blogView.styles';
-
-import { posts, Post } from '../data/posts';
+import { BlogCard, BlogLayout } from '../components';
+import { useBlog } from '../hooks';
+import { Post } from '../interfaces';
 
 const BlogView: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const postsPerPage = 8;
 	const navigate = useNavigate();
+	const { posts, fetchPosts, status, error } = useBlog();
+
+	useEffect(() => {
+		fetchPosts.refetch();
+	}, [fetchPosts]);
 
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -22,22 +25,26 @@ const BlogView: React.FC = () => {
 	};
 
 	const handleCardClick = (post: Post) => {
-		navigate(`/blog/${post.id}`, { state: post });
+		navigate(`/blog/${post.id}`, { state: { post } });
 	};
 
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+	if (status === 'loading') {
+		return <Typography>Loading...</Typography>;
+	}
+
+	if (status === 'failed') {
+		return <Typography color='error'>{error}</Typography>;
+	}
 
 	return (
 		<BlogContainer>
 			<BlogContentContainer>
 				<BlogLayout>
-					{currentPosts.map((post) => (
+					{currentPosts.map((post, index) => (
 						<BlogCard
-							key={post.id}
+							key={index}
 							title={post.title}
-							imgSrc={post.imgSrc}
+							imgSrc={post.image}
 							tags={post.tags}
 							onClick={() => handleCardClick(post)}
 						/>

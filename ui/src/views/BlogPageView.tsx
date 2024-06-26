@@ -1,29 +1,28 @@
 import React from 'react';
 import { Typography, IconButton } from '@mui/material';
 import { RiArrowLeftLine } from 'react-icons/ri';
-import { useNavigate, useParams } from 'react-router-dom';
-import { posts } from '../data/posts';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
 	BlogPageOverlayContainer,
 	BlogPageBackButtonContainer,
 	BlogPageContentContainer,
 	BlogPageImageContainer,
 } from './blogPageView.styles';
+import { Post } from '../interfaces';
+import { LocationState } from '../interfaces'; // Adjust import path if necessary
 
 const BlogPageView: React.FC = () => {
 	const navigate = useNavigate();
-	const params = useParams();
-	const id = params.id as string;
-
-	const postId = parseInt(id, 10);
-	const post = posts.find((p) => p.id === postId);
+	const location = useLocation();
+	const state = location.state as LocationState; // Type assertion here
+	const post = state?.post;
 
 	if (!post) {
 		navigate('/notfound');
 		return null;
 	}
 
-	const { title, tags, imgSrc, content } = post;
+	const { title, tags, image, content } = post;
 
 	return (
 		<BlogPageOverlayContainer>
@@ -43,7 +42,7 @@ const BlogPageView: React.FC = () => {
 					{content}
 				</Typography>
 				<BlogPageImageContainer>
-					<img src={imgSrc} alt={title} style={{ maxWidth: '100%', maxHeight: '400px' }} />
+					<img src={image} alt={title} style={{ maxWidth: '100%', maxHeight: '400px' }} />
 				</BlogPageImageContainer>
 			</BlogPageContentContainer>
 		</BlogPageOverlayContainer>

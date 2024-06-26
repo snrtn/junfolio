@@ -3,7 +3,7 @@ import { fetchPostsApi, Post } from '../index';
 
 export const useFetchPosts = () => {
 	return useQuery<Post[], Error>({
-		queryKey: ['posts'],
+		queryKey: ['blog'],
 		queryFn: fetchPostsApi,
 	});
 };

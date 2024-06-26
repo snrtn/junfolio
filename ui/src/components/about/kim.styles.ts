@@ -15,13 +15,19 @@ interface SectionSVGProps {
 	visible: boolean;
 }
 
-export const KimScrollContainer = styled(Box)<{ scrollEnabled: boolean }>(({ scrollEnabled }) => ({
+interface KimScrollContainerProps {
+	scrollEnabled: string;
+}
+
+export const KimScrollContainer = styled(Box, {
+	shouldForwardProp: (prop) => prop !== 'scrollEnabled',
+})<KimScrollContainerProps>(({ scrollEnabled }) => ({
 	width: '100%',
 	height: scrollEnabled ? '100vh' : '100%',
 	overflowY: scrollEnabled ? 'scroll' : 'hidden',
 	position: 'relative',
-	overflowStyle: 'none' /* IE and Edge */,
-	scrollbarWidth: 'none' /* Firefox */,
+	overflowStyle: 'none',
+	scrollbarWidth: 'none',
 	boxSizing: 'border-box',
 }));
 
