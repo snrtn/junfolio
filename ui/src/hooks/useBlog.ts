@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../redux/store';
 import { useFetchPosts, useCreatePost, useUpdatePost, useDeletePost } from '../redux/modules/blog';
 import { setPosts, setStatus, setError } from '../redux/slices/blogSlice';
-import { UseBlog, Post } from '../interfaces';
+import { UseBlog } from '../interfaces';
 
 const useBlog = (): UseBlog => {
 	const dispatch = useDispatch<AppDispatch>();

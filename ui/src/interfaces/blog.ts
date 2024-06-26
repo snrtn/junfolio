@@ -1,11 +1,14 @@
-import { UseQueryResult } from '@tanstack/react-query';
+interface Author {
+	_id: string;
+	username: string;
+}
 
 export interface Post {
 	_id: string;
 	title: string;
 	content: string;
 	tags: string[];
-	author: string;
+	author: Author;
 	image: string;
 	createdAt: string;
 	updatedAt: string;
@@ -17,14 +20,15 @@ export interface BlogState {
 	error: string | null;
 }
 
+// src/interfaces/index.ts
 export interface UseBlog {
-	fetchPosts: UseQueryResult<Post[], Error>;
-	createPost: (formData: FormData) => void;
-	updatePost: (post: Post) => void;
-	deletePost: (postId: number) => void;
 	posts: Post[];
-	status: 'idle' | 'loading' | 'succeeded' | 'failed';
+	status: string;
 	error: string | null;
+	fetchPosts: any;
+	createPost: (formData: FormData) => void;
+	updatePost: (formData: FormData) => void;
+	deletePost: (postId: string) => void;
 }
 
 export interface LocationState {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
@@ -40,7 +40,13 @@ const DashboardView = () => {
 		formData.append('title', updatedPost.title);
 		formData.append('content', updatedPost.content);
 		formData.append('tags', updatedPost.tags.join(','));
-		formData.append('author', updatedPost.author); // Assuming author is a string, adjust if necessary
+
+		if (typeof updatedPost.author === 'object' && '_id' in updatedPost.author) {
+			formData.append('author', updatedPost.author._id);
+		} else {
+			console.error('Author 객체가 유효하지 않습니다.', updatedPost.author);
+		}
+
 		if (image) {
 			formData.append('image', image);
 		}
@@ -104,13 +110,7 @@ const DashboardView = () => {
 			<Box sx={{ height: 400, width: '100%', marginTop: '20px' }}>
 				{status === 'loading' && <Typography>Loading...</Typography>}
 				{status === 'failed' && <Typography color='error'>{error}</Typography>}
-				{status === 'succeeded' && (
-					<DataGrid
-						rows={posts}
-						columns={columns}
-						getRowId={(row) => row._id} // _id를 id로 사용
-					/>
-				)}
+				{status === 'succeeded' && <DataGrid rows={posts} columns={columns} getRowId={(row) => row._id} />}
 			</Box>
 			<EditModal
 				isOpen={isEditModalOpen}

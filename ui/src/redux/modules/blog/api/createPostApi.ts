@@ -1,4 +1,3 @@
-// src/redux/modules/blog/api.ts
 import axiosInstance from '../../axiosInstance';
 import { Post } from '../index';
 
