@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-	origin: process.env.ORIGIN || 'https://junfolio-wine.vercel.app',
+	origin: 'https://junfolio-wine.vercel.app',
 	credentials: true,
 };
 
