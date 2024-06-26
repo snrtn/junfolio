@@ -25,7 +25,7 @@ const BlogView: React.FC = () => {
 	};
 
 	const handleCardClick = (post: Post) => {
-		navigate(`/blog/${post.id}`, { state: { post } });
+		navigate(`/blog/${post._id}`, { state: { post } });
 	};
 
 	if (status === 'loading') {

@@ -15,7 +15,7 @@ export const updatePost = async (req: AuthenticatedRequest, res: Response) => {
 		const { id } = req.params;
 		const { title, content, tags, author } = req.body;
 
-		console.log('Request Body:', req.body); // 디버깅 로그 추가
+		console.log('Request Body:', req.body); // Debugging log
 
 		if (!title || !content || !tags || !author) {
 			return res.status(400).json({ message: 'All fields are required.' });

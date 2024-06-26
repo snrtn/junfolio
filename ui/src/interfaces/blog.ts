@@ -1,12 +1,12 @@
 import { UseQueryResult } from '@tanstack/react-query';
 
 export interface Post {
-	id: number;
+	_id: string;
 	title: string;
 	content: string;
 	tags: string[];
-	image: string;
 	author: string;
+	image: string;
 	createdAt: string;
 	updatedAt: string;
 }

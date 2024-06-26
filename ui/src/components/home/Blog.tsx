@@ -18,7 +18,7 @@ const Blog: React.FC = () => {
 	}, [fetchPosts]);
 
 	const handleCardClick = (post: Post) => {
-		navigate(`/blog/${post.id}`, { state: { post } });
+		navigate(`/blog/${post._id}`, { state: { post } });
 	};
 
 	if (status === 'loading') {

@@ -34,16 +34,24 @@ const DashboardView = () => {
 		setIsImageModalOpen(true);
 	};
 
-	const handleEditSubmit = () => {
-		if (selectedPost) {
-			updatePost(selectedPost);
-			setIsEditModalOpen(false);
+	const handleEditSubmit = (updatedPost: Post, image: File | null) => {
+		const formData = new FormData();
+		formData.append('_id', updatedPost._id);
+		formData.append('title', updatedPost.title);
+		formData.append('content', updatedPost.content);
+		formData.append('tags', updatedPost.tags.join(','));
+		formData.append('author', updatedPost.author); // Assuming author is a string, adjust if necessary
+		if (image) {
+			formData.append('image', image);
 		}
+
+		updatePost(formData);
+		setIsEditModalOpen(false);
 	};
 
 	const handleDeleteSubmit = () => {
 		if (selectedPost) {
-			deletePost(selectedPost.id);
+			deletePost(selectedPost._id);
 			setIsDeleteModalOpen(false);
 		}
 	};

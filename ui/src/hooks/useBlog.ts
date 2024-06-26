@@ -42,8 +42,8 @@ const useBlog = (): UseBlog => {
 				},
 			});
 		},
-		updatePost: (post: Post) => {
-			updatePost.mutate(post, {
+		updatePost: (formData: FormData) => {
+			updatePost.mutate(formData, {
 				onSuccess: () => {
 					dispatch(setStatus('succeeded'));
 				},
@@ -53,7 +53,7 @@ const useBlog = (): UseBlog => {
 				},
 			});
 		},
-		deletePost: (postId: number) => {
+		deletePost: (postId: string) => {
 			deletePost.mutate(postId, {
 				onSuccess: () => {
 					dispatch(setStatus('succeeded'));

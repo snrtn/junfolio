@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Typography, IconButton } from '@mui/material';
 import { RiArrowLeftLine } from 'react-icons/ri';

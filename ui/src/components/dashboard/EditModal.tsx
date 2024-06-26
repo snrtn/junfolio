@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Modal, Box, Typography, TextField, Button, Autocomplete, Chip } from '@mui/material';
 import { Post } from '../../interfaces';
@@ -6,7 +7,7 @@ interface EditModalProps {
 	isOpen: boolean;
 	onClose: () => void;
 	post: Post | null;
-	onSubmit: () => void;
+	onSubmit: (updatedPost: Post, image: File | null) => void;
 	onChange: (field: string, value: string) => void;
 }
 
@@ -49,11 +50,8 @@ const EditModal: React.FC<EditModalProps> = ({ isOpen, onClose, post, onSubmit, 
 
 	const handleSave = () => {
 		if (post) {
-			onChange('title', title);
-			onChange('content', content);
-			onChange('tags', tags.join(',')); // Join tags with comma
-			// Handle image update logic here if necessary
-			onSubmit();
+			const updatedPost = { ...post, title, content, tags };
+			onSubmit(updatedPost, image);
 		}
 	};
 
@@ -78,21 +76,7 @@ const EditModal: React.FC<EditModalProps> = ({ isOpen, onClose, post, onSubmit, 
 					value={tags} // Ensure value is always an array
 					onChange={(event, newValue) => setTags(newValue as string[])}
 					renderTags={(value: readonly string[], getTagProps) =>
-						value.map((option: string, index: number) => {
-							const tagProps = getTagProps({ index });
-							return (
-								<Chip
-									key={index}
-									variant='outlined'
-									label={option}
-									className={tagProps.className}
-									disabled={tagProps.disabled}
-									data-tag-index={tagProps['data-tag-index']}
-									tabIndex={tagProps.tabIndex}
-									onDelete={tagProps.onDelete}
-								/>
-							);
-						})
+						value.map((option: string, index: number) => <Chip key={index} variant='outlined' label={option} />)
 					}
 					renderInput={(params) => <TextField {...params} variant='outlined' label='Tags' placeholder='Add tags' />}
 				/>
