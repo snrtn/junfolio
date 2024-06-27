@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import redisClient from '../../config/redis';
+// import redisClient from '../../config/redis';
 import { AuthenticatedRequest } from '../../interfaces/authenticatedRequest';
 
 export const logout = async (req: AuthenticatedRequest, res: Response) => {
@@ -11,11 +11,11 @@ export const logout = async (req: AuthenticatedRequest, res: Response) => {
 	}
 
 	try {
-		await redisClient.del(`accessToken:${req.user?._id}`);
-		await redisClient.del(`refreshToken:${req.user?._id}`);
+		// await redisClient.del(`accessToken:${req.user?._id}`);
+		// await redisClient.del(`refreshToken:${req.user?._id}`);
 
-		await redisClient.set(`blacklist:${refreshToken}`, 'blacklisted', { EX: 3600 });
-		await redisClient.set(`blacklist:${accessToken}`, 'blacklisted', { EX: 3600 });
+		// await redisClient.set(`blacklist:${refreshToken}`, 'blacklisted', { EX: 3600 });
+		// await redisClient.set(`blacklist:${accessToken}`, 'blacklisted', { EX: 3600 });
 
 		res.clearCookie('refreshToken', {
 			httpOnly: true,

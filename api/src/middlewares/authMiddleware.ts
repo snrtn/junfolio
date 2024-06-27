@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { AuthenticatedRequest } from '../interfaces/authenticatedRequest';
-import redisClient from '../config/redis';
+// import redisClient from '../config/redis';
 import User from '../models/user';
 
 const authMiddleware = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
@@ -13,11 +13,11 @@ const authMiddleware = async (req: AuthenticatedRequest, res: Response, next: Ne
 	}
 
 	try {
-		const isBlacklisted = await redisClient.get(`blacklist:${token}`);
-		if (isBlacklisted) {
-			console.log('Token is blacklisted.');
-			return res.status(401).json({ message: 'Invalid token.' });
-		}
+		// const isBlacklisted = await redisClient.get(`blacklist:${token}`);
+		// if (isBlacklisted) {
+		// console.log('Token is blacklisted.');
+		// return res.status(401).json({ message: 'Invalid token.' });
+		// }ㄴ
 
 		const decoded = jwt.verify(token, process.env.SECRET_KEY!) as { userId: string };
 		console.log('Decoded JWT:', decoded);
