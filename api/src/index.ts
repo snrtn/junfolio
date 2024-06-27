@@ -6,7 +6,7 @@ import dashboardRoutes from './routes/dashboardRoutes';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import helmet from 'helmet';
-// import cors from 'cors';
+import cors from 'cors';
 import errorHandler from './middlewares/errorHandler';
 import cookieParser from 'cookie-parser';
 
@@ -14,12 +14,12 @@ dotenv.config();
 
 const app = express();
 
-// const corsOptions = {
-// 	origin: process.env.ORIGIN || 'https://junfolio-wine.vercel.app',
-// 	credentials: true,
-// };
+const corsOptions = {
+	origin: process.env.ORIGIN,
+	credentials: true,
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
