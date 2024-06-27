@@ -6,7 +6,7 @@ import dashboardRoutes from './routes/dashboardRoutes';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import helmet from 'helmet';
-// import cors from 'cors';
+import cors from 'cors';
 import errorHandler from './middlewares/errorHandler';
 import cookieParser from 'cookie-parser';
 
@@ -14,14 +14,14 @@ dotenv.config();
 
 const app = express();
 
-// const corsOptions = {
-// 	origin: process.env.ORIGIN,
-// 	credentials: true,
-// 	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-// 	allowedHeaders: ['Content-Type', 'Authorization'],
-// };
+const corsOptions = {
+	origin: process.env.ORIGIN,
+	credentials: true,
+	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+	allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });

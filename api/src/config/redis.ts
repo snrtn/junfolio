@@ -12,7 +12,6 @@ const redisClient = createClient({
 
 redisClient.on('error', (err: Error) => console.error('Redis Client Error', err));
 
-// 수동 타임아웃 구현
 const connectWithTimeout = (client: { connect: () => Promise<any> }, timeout: number | undefined) => {
 	return new Promise<void>((resolve, reject) => {
 		const timer = setTimeout(() => {
