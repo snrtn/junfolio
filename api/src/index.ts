@@ -14,12 +14,12 @@ dotenv.config();
 
 const app = express();
 
-const corsOptions = {
-	origin: process.env.ORIGIN || 'https://junfolio-wine.vercel.app',
-	credentials: true,
-};
+// const corsOptions = {
+// 	origin: process.env.ORIGIN || 'https://junfolio-wine.vercel.app',
+// 	credentials: true,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
