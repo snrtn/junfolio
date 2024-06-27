@@ -15,18 +15,21 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-	origin: process.env.ORIGIN,
+	origin: 'https://portfront-six.vercel.app',
 	credentials: true,
 	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 	allowedHeaders: ['Content-Type', 'Authorization'],
+	preflightContinue: false,
+	optionsSuccessStatus: 204,
 };
+
+app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
 	console.log('CORS settings applied:', corsOptions);
 	next();
 });
 
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
