@@ -3,6 +3,9 @@ import { getCookie, clearAuthToken } from './auth';
 
 const axiosInstance = axios.create({
 	baseURL: 'https://portback-five.vercel.app',
+	headers: {
+		'Content-Type': 'application/json',
+	},
 	withCredentials: true,
 });
 
