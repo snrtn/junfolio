@@ -15,12 +15,11 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-	origin: 'https://junfolio-wine.vercel.app',
+	origin: process.env.ORIGIN || 'https://junfolio-wine.vercel.app',
 	credentials: true,
 };
 
 app.use(cors(corsOptions));
-
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
@@ -40,7 +39,6 @@ app.get('/', (req, res) => {
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });
