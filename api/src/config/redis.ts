@@ -12,8 +12,33 @@ const redisClient = createClient({
 
 redisClient.on('error', (err: Error) => console.error('Redis Client Error', err));
 
-redisClient.connect().catch((err: Error) => {
-	console.error('Redis connection error', err);
-});
+// 수동 타임아웃 구현
+const connectWithTimeout = (client: { connect: () => Promise<any> }, timeout: number | undefined) => {
+	return new Promise<void>((resolve, reject) => {
+		const timer = setTimeout(() => {
+			reject(new Error('Redis connection timeout'));
+		}, timeout);
+
+		client
+			.connect()
+			.then(() => {
+				clearTimeout(timer);
+				resolve();
+			})
+			.catch((err: any) => {
+				clearTimeout(timer);
+				reject(err);
+			});
+	});
+};
+
+(async () => {
+	try {
+		await connectWithTimeout(redisClient, 5000); // 타임아웃을 5초로 설정
+		console.log('Redis connected');
+	} catch (error) {
+		console.error('Redis connection error', error);
+	}
+})();
 
 export default redisClient;
