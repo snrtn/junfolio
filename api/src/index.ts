@@ -6,7 +6,7 @@ import dashboardRoutes from './routes/dashboardRoutes';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import cors from 'cors';
+// import cors from 'cors';
 import errorHandler from './middlewares/errorHandler';
 import cookieParser from 'cookie-parser';
 
