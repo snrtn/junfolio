@@ -14,15 +14,12 @@ export const login = async (req: Request, res: Response) => {
 	try {
 		console.log(`Attempting to log in user: ${username}`);
 		const user = await User.findOne({ username });
-		console.log('MongoDB user query result:', user); // 디버깅 로그 추가
 		if (!user) {
-			console.log(`User not found: ${username}`);
 			return res.status(400).json({ message: 'User not found' });
 		}
 
 		const isMatch = await bcrypt.compare(password, user.password);
 		if (!isMatch) {
-			console.log(`Invalid credentials for user: ${username}`);
 			return res.status(400).json({ message: 'Invalid credentials' });
 		}
 
@@ -33,20 +30,19 @@ export const login = async (req: Request, res: Response) => {
 		await redisClient.set(`refreshToken:${user._id.toString()}`, refreshToken, { EX: 7 * 24 * 60 * 60 });
 
 		res.cookie('accessToken', accessToken, {
-			httpOnly: false,
+			httpOnly: true,
 			secure: process.env.NODE_ENV === 'production',
-			sameSite: 'lax',
+			sameSite: 'none',
 			maxAge: 3600000,
 		});
 
 		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
 			secure: process.env.NODE_ENV === 'production',
-			sameSite: 'strict',
+			sameSite: 'none',
 			maxAge: 7 * 24 * 60 * 60 * 1000,
 		});
 
-		console.log('Login successful for user:', user.username);
 		res.json({ message: 'Login successful', accessToken, refreshToken });
 	} catch (error) {
 		console.error('Server Error:', error);
