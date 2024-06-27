@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getCookie, clearAuthToken } from './auth';
 
 const axiosInstance = axios.create({
-	baseURL: 'https://portback-five.vercel.app/',
+	baseURL: 'https://portback-five.vercel.app',
 	withCredentials: true,
 });
 
