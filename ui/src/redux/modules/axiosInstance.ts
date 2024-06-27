@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getCookie, clearAuthToken } from './auth';
 
 const axiosInstance = axios.create({
-	baseURL: 'https://junfolioapi.vercel.app/api',
+	baseURL: 'https://junfolioapi.vercel.app',
 	withCredentials: true,
 });
 

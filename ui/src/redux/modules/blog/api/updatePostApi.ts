@@ -3,7 +3,7 @@ import { Post } from '../types/blogTypes';
 
 export const updatePostApi = async (formData: FormData): Promise<Post> => {
 	try {
-		const response = await axiosInstance.put(`/blog/${formData.get('_id')}`, formData);
+		const response = await axiosInstance.put(`/api/blog/${formData.get('_id')}`, formData);
 		return response.data;
 	} catch (error: any) {
 		if (error.response) {
