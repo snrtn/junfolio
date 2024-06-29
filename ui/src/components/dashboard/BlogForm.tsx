@@ -64,20 +64,37 @@ const BlogForm: React.FC = () => {
 		setImage(null);
 	};
 
+	const handleContentChange = (e: React.FormEvent<HTMLDivElement>) => {
+		setContent(e.currentTarget.innerHTML);
+	};
+
+	const handleFontSizeChange = (size: string) => {
+		document.execCommand('fontSize', false, size);
+	};
+
 	return (
 		<Box component='form' onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
 			<Typography variant='h4'>Create a New Post</Typography>
 			{status === 'loading' && <Typography>Loading...</Typography>}
 			{status === 'failed' && <Typography color='error'>{error}</Typography>}
 			<TextField label='Title' value={title} onChange={(e) => setTitle(e.target.value)} fullWidth required />
-			<TextField
-				label='Content'
-				value={content}
-				onChange={(e) => setContent(e.target.value)}
-				fullWidth
-				multiline
-				rows={4}
-				required
+			<Box>
+				<Button onClick={() => handleFontSizeChange('1')}>Small</Button>
+				<Button onClick={() => handleFontSizeChange('3')}>Normal</Button>
+				<Button onClick={() => handleFontSizeChange('5')}>Large</Button>
+			</Box>
+			<Box
+				contentEditable
+				suppressContentEditableWarning
+				onInput={handleContentChange}
+				dangerouslySetInnerHTML={{ __html: content }}
+				style={{
+					border: '1px solid #ccc',
+					minHeight: '200px',
+					padding: '10px',
+					borderRadius: '4px',
+					overflow: 'auto',
+				}}
 			/>
 			<Autocomplete
 				multiple
