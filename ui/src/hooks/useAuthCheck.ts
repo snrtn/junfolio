@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser, setToken } from '../redux/slices/authSlice';
 import { fetchUserByIdApi } from '../redux/modules/auth';
-import { getCookie } from '../redux/modules/auth'; // getCookie 함수가 쿠키에서 토큰을 읽어오는 함수라고 가정합니다.
+import { getCookie } from '../redux/modules/auth';
 
 const useAuthCheck = () => {
 	const dispatch = useDispatch();
