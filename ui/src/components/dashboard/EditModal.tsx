@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Box, Typography, TextField, Button, Autocomplete, Chip } from '@mui/material';
 import { Post } from '../../interfaces';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 interface EditModalProps {
 	isOpen: boolean;
@@ -60,15 +62,7 @@ const EditModal: React.FC<EditModalProps> = ({ isOpen, onClose, post, onSubmit, 
 			<Box sx={{ padding: '60px', backgroundColor: 'white', margin: '100px auto', width: '600px' }}>
 				<Typography variant='h6'>Edit Post</Typography>
 				<TextField label='Title' value={title} onChange={(e) => setTitle(e.target.value)} fullWidth required />
-				<TextField
-					label='Content'
-					value={content}
-					onChange={(e) => setContent(e.target.value)}
-					fullWidth
-					multiline
-					rows={4}
-					required
-				/>
+				<ReactQuill value={content} onChange={setContent} />
 				<Autocomplete
 					multiple
 					freeSolo

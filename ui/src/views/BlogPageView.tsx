@@ -9,7 +9,6 @@ import {
 	BlogPageContentContainer,
 	BlogPageImageContainer,
 } from './blogPageView.styles';
-import { Post } from '../interfaces';
 import { LocationState } from '../interfaces'; // Adjust import path if necessary
 
 const BlogPageView: React.FC = () => {
@@ -39,9 +38,7 @@ const BlogPageView: React.FC = () => {
 				<Typography variant='h4' component='h1' gutterBottom>
 					{title}
 				</Typography>
-				<Typography variant='body1' gutterBottom>
-					{content}
-				</Typography>
+				<Typography variant='body1' gutterBottom dangerouslySetInnerHTML={{ __html: content }} />
 				<BlogPageImageContainer>
 					<img src={image} alt={title} style={{ maxWidth: '100%', maxHeight: '400px' }} />
 				</BlogPageImageContainer>
