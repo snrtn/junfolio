@@ -20,7 +20,6 @@ export interface BlogState {
 	error: string | null;
 }
 
-// src/interfaces/index.ts
 export interface UseBlog {
 	posts: Post[];
 	status: string;

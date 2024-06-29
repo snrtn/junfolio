@@ -22,5 +22,5 @@ export interface UseAuth {
 	token: string | null;
 	authStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
 	authError: string | null;
-	user: User | null; // user 속성 추가
+	user: User | null;
 }

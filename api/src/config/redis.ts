@@ -33,7 +33,7 @@ const connectWithTimeout = (client: { connect: () => Promise<any> }, timeout: nu
 
 (async () => {
 	try {
-		await connectWithTimeout(redisClient, 5000); // 타임아웃을 5초로 설정
+		await connectWithTimeout(redisClient, 5000);
 		console.log('Redis connected');
 	} catch (error) {
 		console.error('Redis connection error', error);
