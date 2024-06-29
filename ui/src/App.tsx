@@ -13,8 +13,11 @@ import {
 	DashboardView,
 } from './views';
 import PrivateRoute from './components/navigation/PrivateRoute';
+import useAuthCheck from './hooks/useAuthCheck';
 
 const App: React.FC = () => {
+	useAuthCheck();
+
 	return (
 		<Routes>
 			<Route path='/' element={<LayoutView />}>
